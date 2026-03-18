@@ -1,5 +1,5 @@
 #build folder
 bin/
 
-# macOS 
+#macOS 
 .DS_Store
