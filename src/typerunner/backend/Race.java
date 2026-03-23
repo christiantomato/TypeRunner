@@ -29,6 +29,13 @@ public class Race {
         return botSpeed;
     }
 
+    public int setBotSpeed(int botSpeed) {
+        this.botSpeed = botSpeed;
+        return botSpeed;
+    }
+
+    
+
     public int getTime() {
         return time;
     }   
