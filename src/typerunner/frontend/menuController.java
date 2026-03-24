@@ -23,8 +23,9 @@ public class menuController {
         System.out.println("tutorial");
     }
     
-    public void adminControls(ActionEvent e) {
+    public void adminControls(ActionEvent e) throws IOException{
         System.out.println("admin");
+        switchScene(e, "adminControls.fxml");
     }
     
     public void exit(ActionEvent e) {
@@ -35,6 +36,8 @@ public class menuController {
     private void switchScene(ActionEvent e, String fxmlFile) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
+
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
     }
 }
