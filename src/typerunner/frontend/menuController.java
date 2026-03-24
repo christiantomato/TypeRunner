@@ -36,7 +36,6 @@ public class menuController {
     private void switchScene(ActionEvent e, String fxmlFile) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-
         Scene scene = stage.getScene();
         scene.setRoot(root);
     }

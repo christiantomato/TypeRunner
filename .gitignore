@@ -1,8 +1,5 @@
 #build folder
 bin/
 
-#macOS 
-.DS_Store.DS_Store
-*.class
-bin/
-.vscode/
+#macOS
+.DS_Store
