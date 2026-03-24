@@ -1,11 +1,18 @@
 package typerunner.frontend;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class menuController {
 
-    public void login(ActionEvent e) {
-        System.out.println("login");
+    public void loginPage(ActionEvent e) throws IOException {
+        System.out.println("going to login page");
+        switchScene(e, "login.fxml");
     }
 
      public void viewLeaderboard(ActionEvent e) {
@@ -22,5 +29,12 @@ public class menuController {
     
     public void exit(ActionEvent e) {
         System.out.println("exit");
+    }
+
+    //helper method to swtich scenes
+    private void switchScene(ActionEvent e, String fxmlFile) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 }
