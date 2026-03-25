@@ -14,7 +14,7 @@ public class Player { // Represents one player in the TypeRunner game
         this.username = username;
         this.totalGames = 0; // Start with 0 total games
         this.totalScore = 0; // Start with total score = 0
-        this.bestScroe = 0; // Start with best score = 0
+        this.bestScore = 0; // Start with best score = 0
         this.unlockedLevel = 1; // Start with level 1 unlocked
     }
 
@@ -51,9 +51,8 @@ public class Player { // Represents one player in the TypeRunner game
         this.totalScore = 0;
         this.bestScore = 0;
         this.unlockedLevel = 1; // Reset to level 1
-    }
         this.totalScore = 0;
-        this.bestScroe = 0;
+        this.bestScore = 0;
         this.unlockedLevel = 1; // Reset to level 1
     }
 
