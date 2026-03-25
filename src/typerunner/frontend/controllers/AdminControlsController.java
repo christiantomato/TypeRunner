@@ -8,7 +8,7 @@ public class AdminControlsController {
 
     public void accountManage(ActionEvent e) throws IOException{
         System.out.println("Account Management");
-        ScreenNavigator.switchScene(e, "fxml.accountManagement.fxml");
+        ScreenNavigator.switchScene(e, "fxml/accountManagement.fxml");
     }
 
     public void createAccount(ActionEvent e) throws IOException{
