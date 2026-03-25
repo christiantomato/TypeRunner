@@ -13,7 +13,7 @@ public class AdminPasskeyController {
         pass it into the corresponding method
         if true, navigate to the admin controls
         */
-        System.out.println("switching to admin controls");
+        System.out.println("going to admin controls");
         ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
     }
     

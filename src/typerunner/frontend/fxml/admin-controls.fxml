@@ -29,17 +29,17 @@
             <Insets />
          </GridPane.margin>
       </Text>
-      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#createAccount" text="Create Account" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToCreateAccount" text="Create Account" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#accountManage" text="Account Management" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#adminBack" text="&lt;--" textAlignment="CENTER" GridPane.columnIndex="2">
+      <Button mnemonicParsing="false" onAction="#returnToMenu" text="&lt;--" textAlignment="CENTER" GridPane.columnIndex="2">
          <font>
             <Font size="15.0" />
          </font>

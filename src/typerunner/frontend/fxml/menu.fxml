@@ -23,19 +23,19 @@
    <center>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#loginPage" text="Login" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToLoginPage" text="Login" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#adminControls" text="Admin Controls" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToAdminControls" text="Admin Controls" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#viewLeaderboard" text="Leaderboard" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToLeaderboard" text="Leaderboard" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#tutorial" text="Tutorial" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToTutorial" text="Tutorial" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
