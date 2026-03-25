@@ -19,6 +19,7 @@ public class loginController {
     private void switchScene(ActionEvent e, String fxmlFile) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
+        Scene scene = stage.getScene();
+        scene.setRoot(root);
     }
 }
