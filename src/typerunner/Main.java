@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //set the root node as the main menu fxml
-        Parent root = FXMLLoader.load(getClass().getResource("frontend/menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("frontend/fxml/menu.fxml"));
         //set the title of the stage 
         primaryStage.setTitle("TypeRunner");
         //create a scene with the root node to set on our stage
