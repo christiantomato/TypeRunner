@@ -1,31 +1,64 @@
 package typerunner.backend;
 
-public class Player { // Represents one player in the TypeRunner game
+/**
+ * Represents one player in the TypeRunner game
+ * Stores the player's ID, username, scores, and unlocked level
+ * 
+ * @author Tanya Sahota
+ * @version 1.0
+ */
+public class Player { 
 
-    private String id; // Unique ID for the player
-    private String username; // Username for the player
-    private int totalGames; // Total games the user has played
-    private int totalScore; // User's total score across all games
-    private int bestScore; // User's best score yet in a single game
-    private int unlockedLevel; // Highest level unlocked by the user
-
-    public Player(String id, String username) { // Creates a new player with an ID and username with default starting stats
+    /** Unique ID for the player */
+    private String id; 
+    /** Username for the player */
+    private String username;
+    /** Total games the user has played */
+    private int totalGames; 
+    /** User's total score across all games */
+    private int totalScore;
+    /** User's best score yet in a single game */
+    private int bestScore;
+    /** Highest level unlocked by the user */
+    private int unlockedLevel;
+    /** 
+     * Creates a new player with the given ID and username
+     * All starting stats are set to default
+     * @param id the unique ID of the player
+     * @param username the username of the player
+     */
+    public Player(String id, String username) {
         this.id = id;
         this.username = username;
-        this.totalGames = 0; // Start with 0 total games
-        this.totalScore = 0; // Start with total score = 0
-        this.bestScore = 0; // Start with best score = 0
-        this.unlockedLevel = 1; // Start with level 1 unlocked
+        /* Start with 0 total games */
+        this.totalGames = 0;
+        /* Start with total score = 0 */
+        this.totalScore = 0;
+        /* Start with best score = 0 */
+        this.bestScore = 0; 
+        /* Start with unlocked level 1 */
+        this.unlockedLevel = 1; 
     }
-
-    public String getId() { // Get player ID
-        return id; // Return player ID
+    /** 
+     * Gets player ID
+     * @return the player's ID
+     */
+    public String getId() { 
+        return id;
     }
-
-    public String getUsername() { // Get username
-        return username; // Return username
+    /** 
+     * Gets player username
+     * @return player's username
+     */
+    public String getUsername() { 
+        return username; 
     }
-    public void recordGame(int score) { // Update player stats after game is finished
+    /** 
+     * Update player stats after game is finished
+     * 
+     * @param score the score the player got in the completed game
+     */
+    public void recordGame(int score) {
     totalGames++;
     totalScore += score;
 
@@ -33,27 +66,35 @@ public class Player { // Represents one player in the TypeRunner game
         bestScore = score;
     }
 }
-
-    public int getBestScore() { // Get user best score
-        return bestScore; // Return user best score
+    /** 
+     * Get user best score
+     * @return player's best score
+     */
+    public int getBestScore() {
+        return bestScore;
     }
-
-    public int getUnlockedLevel() { // Get highest unlocked level
-        return unlockedLevel; // Return highest unlocked level
+    /** 
+     * Get highest unlocked level
+     * @return highest unlocked level
+     */
+    public int getUnlockedLevel() { 
+        return unlockedLevel;
     }
-
-    public void setUnlockedLevel(int unlockedLevel) { // Set the player's unlocked level
+    /** 
+     * Set the player's unlocked level
+     * @param unlockedLevel
+     */
+    public void setUnlockedLevel(int unlockedLevel) {
         this.unlockedLevel = unlockedLevel;
     }
-
-    public void resetStats() { // Reset all stats back to default
+    /** 
+     * Reset all stats back to default
+     */
+    public void resetStats() {
         this.totalGames = 0;
         this.totalScore = 0;
         this.bestScore = 0;
-        this.unlockedLevel = 1; // Reset to level 1
-        this.totalScore = 0;
-        this.bestScore = 0;
-        this.unlockedLevel = 1; // Reset to level 1
+        this.unlockedLevel = 1;
     }
 
 
