@@ -182,5 +182,27 @@ public class PlayerStatistics {
         this.totalWordsTyped = totalWordsTyped;
     }
 
+    public void resetActualStats() {
+        this.averageWPM =  0.0;
+        this.peakWPM = 0.0;
+        this.accuracypercentage = 0.0;
+        this.level = 1;
+        this.errorCount = 0;
+        this.totalTimePlayed = 0;
+        this.highestscore = 0;
+        this.totalWordsTyped = 0;
+    }
+
+    public void InsertStats(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
+        this.averageWPM = averageWPM;
+        this.peakWPM = peakWPM;
+        this.accuracypercentage = accuracypercentage;
+        this.level = level;
+        this.errorCount = errorCount;
+        this.totalTimePlayed = totalTimePlayed;
+        this.highestscore = highestscore;
+        this.totalWordsTyped = totalWordsTyped;
+    }
+
 
 }

@@ -5,7 +5,7 @@ public class Admin extends Player {
     private String passKeyHash;
     
     public Admin(String username, String password, String passKey) {
-        super(username, password);
+        super(username, password); // Admins use their password as the passKey for simplicity
         this.passKeyHash = passKey;
     }
 
