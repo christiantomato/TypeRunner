@@ -3,3 +3,6 @@ bin/
 
 #macOS 
 .DS_Store
+
+#ignore configs for each machine
+.vscode/
