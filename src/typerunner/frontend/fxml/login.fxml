@@ -19,7 +19,7 @@
          <children>
             <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" promptText="enter username..." />
             <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" promptText="enter password..." />
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Login">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#login" text="Login">
                <font>
                   <Font size="20.0" />
                </font></Button>
