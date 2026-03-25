@@ -28,8 +28,12 @@ public class menuController {
         switchScene(e, "adminControls.fxml");
     }
     
-    public void exit(ActionEvent e) {
-        System.out.println("exit");
+    public void exit(ActionEvent e) throws IOException {
+        System.out.println("exiting");
+        //get the current stage
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        //close it
+        stage.close();
     }
 
     //helper method to swtich scenes
