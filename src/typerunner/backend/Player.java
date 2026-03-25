@@ -21,15 +21,21 @@ public class Player {
     private int bestScore;
     /** Highest level unlocked by the user */
     private int unlockedLevel;
+    /** User's password for authentication */
+    private String password;
+    /** Isadmin verification */
+    private boolean isAdmin = false;
     /** 
      * Creates a new player with the given ID and username
      * All starting stats are set to default
      * @param id the unique ID of the player
      * @param username the username of the player
      */
-    public Player(String id, String username) {
+    public Player(String id, String username, String password, boolean isAdmin) {
         this.id = id;
         this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
         /* Start with 0 total games */
         this.totalGames = 0;
         /* Start with total score = 0 */
@@ -95,6 +101,18 @@ public class Player {
         this.totalScore = 0;
         this.bestScore = 0;
         this.unlockedLevel = 1;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
     }
 
 
