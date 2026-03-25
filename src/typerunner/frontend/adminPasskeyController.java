@@ -4,10 +4,10 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 
-public class adminPasskeyController {
+public class AdminPasskeyController {
     
     public void mainMenu(ActionEvent e) throws IOException {
-        sceneNavigator.switchScene(e, "menu.fxml");
+        ScreenNavigator.switchScene(e, "menu.fxml");
     }
 
 }

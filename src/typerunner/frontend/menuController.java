@@ -7,7 +7,7 @@ public class MenuController {
 
     public void loginPage(ActionEvent e) throws IOException {
         System.out.println("going to login page");
-        SceneNavigator.switchScene(e, "login.fxml");
+        ScreenNavigator.switchScene(e, "login.fxml");
     }
 
      public void viewLeaderboard(ActionEvent e) {
@@ -20,11 +20,11 @@ public class MenuController {
     
     public void adminControls(ActionEvent e) throws IOException{
         System.out.println("admin");
-        SceneNavigator.switchScene(e, "admin-passkey.fxml");
+        ScreenNavigator.switchScene(e, "admin-passkey.fxml");
     }
     
     public void exit(ActionEvent e) throws IOException {
         System.out.println("exiting TypeRunner");
-        SceneNavigator.closeStage(e);
+        ScreenNavigator.closeStage(e);
     }
 }
