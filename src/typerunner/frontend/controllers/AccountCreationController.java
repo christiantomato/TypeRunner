@@ -5,6 +5,23 @@ import javafx.event.ActionEvent;
 import typerunner.frontend.ScreenNavigator;
 
 public class AccountCreationController {
+
+    /**
+     * Account Creation
+     * 
+     * @param e
+     * @throws IOException
+     */
+
+    public void createAccount(ActionEvent e) throws IOException {
+        /*
+        get the strings from the textfields
+        pass it into the corresponding function
+        show confirmation based on return value (true or false)
+        */
+
+        System.out.println("creating account");
+    }
     
     public void returnToAdminControls(ActionEvent e) throws IOException {
         System.out.println("returning to admin controls");
