@@ -25,7 +25,7 @@ public class menuController {
     
     public void adminControls(ActionEvent e) throws IOException{
         System.out.println("admin");
-        switchScene(e, "adminControls.fxml");
+        switchScene(e, "adminPasskey.fxml");
     }
     
     public void exit(ActionEvent e) throws IOException {
