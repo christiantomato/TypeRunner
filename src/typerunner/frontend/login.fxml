@@ -17,13 +17,16 @@
             <Insets top="20.0" />
          </padding>
          <children>
-            <TextField maxWidth="300.0" minHeight="50.0" promptText="enter username..." />
-            <TextField maxWidth="300.0" minHeight="50.0" promptText="enter password..." />
+            <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" promptText="enter username..." />
+            <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" promptText="enter password..." />
             <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Login">
                <font>
                   <Font size="20.0" />
                </font></Button>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" />
+         </BorderPane.margin>
       </VBox>
    </center>
    <top>
@@ -37,7 +40,7 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#mainMenu" text="&lt;--" textAlignment="CENTER" />
+            <Button alignment="CENTER" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#mainMenu" text="&lt;--" textAlignment="CENTER" />
          </children>
          <BorderPane.margin>
             <Insets left="50.0" right="50.0" top="20.0" />
