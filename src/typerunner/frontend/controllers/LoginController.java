@@ -10,4 +10,14 @@ public class LoginController {
         System.out.println("going back to menu page");
         ScreenNavigator.switchScene(e, "fxml/menu.fxml");
     }
+
+    public void login(ActionEvent e) throws IOException {
+        //get the username and password as strings
+
+        //pass into the login method login(username, password)
+
+        //if return is true, switch scenes to the player screen. 
+
+        ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+    }
 }
