@@ -1,4 +1,4 @@
-package typerunner;
+package typerunner.backend;
 
 /**
  * Represents the statistics of a player in the TypeRunner game.

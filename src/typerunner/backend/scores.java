@@ -1,4 +1,4 @@
-package typerunner;
+package typerunner.backend;
 
 /**
  * Represents a player's score entry in the TypeRunner game.
