@@ -2,14 +2,12 @@ package typerunner.frontend;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
-import javafx.stage.Stage;
 
-public class menuController {
+public class MenuController {
 
     public void loginPage(ActionEvent e) throws IOException {
         System.out.println("going to login page");
-        sceneNavigator.switchScene(e, "login.fxml");
+        SceneNavigator.switchScene(e, "login.fxml");
     }
 
      public void viewLeaderboard(ActionEvent e) {
@@ -22,14 +20,11 @@ public class menuController {
     
     public void adminControls(ActionEvent e) throws IOException{
         System.out.println("admin");
-        sceneNavigator.switchScene(e, "adminPasskey.fxml");
+        SceneNavigator.switchScene(e, "admin-passkey.fxml");
     }
     
     public void exit(ActionEvent e) throws IOException {
-        System.out.println("exiting");
-        //get the current stage
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        //close it
-        stage.close();
+        System.out.println("exiting TypeRunner");
+        SceneNavigator.closeStage(e);
     }
 }
