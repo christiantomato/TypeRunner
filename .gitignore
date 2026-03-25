@@ -1,5 +1,8 @@
 #build folder
 bin/
 
-#macOS
+#launch and settings configurations
+.vscode/
+
+#macOS stuff
 .DS_Store
