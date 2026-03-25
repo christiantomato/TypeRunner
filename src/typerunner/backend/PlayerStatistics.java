@@ -3,6 +3,7 @@ package typerunner.backend;
 /**
  * Represents the statistics of a player in the TypeRunner game.
  * Tracks metrics such as words per minute (WPM), accuracy, level, errors, time played, and highest score.
+ * @author Olorunfemi Martins
  */
 public class PlayerStatistics {
     private double averageWPM;
