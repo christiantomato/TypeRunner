@@ -6,3 +6,6 @@ bin/
 
 #ignore configs for each machine
 .vscode/
+
+#ignore the target folder for maven
+target/
