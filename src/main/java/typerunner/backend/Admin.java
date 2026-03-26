@@ -13,10 +13,6 @@ public class Admin extends Player {
         return this.passKeyHash.equals(inputKey);
     }
 
-    public void changePassKey(String newPassKey) {
-        this.passKeyHash = newPassKey; // hash it?
-    }
-
     public void resetHighScores(Player player) {
         player.resetStats();
     }
