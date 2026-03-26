@@ -40,7 +40,7 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button alignment="CENTER" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToMenu" text="&lt;--" textAlignment="CENTER" />
+            <Button alignment="CENTER" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToMenu" text="←" textAlignment="CENTER" />
          </children>
          <BorderPane.margin>
             <Insets left="50.0" right="50.0" top="20.0" />

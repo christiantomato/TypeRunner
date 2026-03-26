@@ -39,7 +39,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#returnToMenu" text="&lt;--" textAlignment="CENTER" GridPane.columnIndex="2">
+      <Button mnemonicParsing="false" onAction="#returnToMenu" text="←" textAlignment="CENTER" GridPane.columnIndex="2">
          <font>
             <Font size="15.0" />
          </font>

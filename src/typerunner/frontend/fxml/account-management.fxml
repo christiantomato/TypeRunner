@@ -24,7 +24,7 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToAdminControls" text="&lt;--" />
+            <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToAdminControls" text="←" />
          </children>
          <padding>
             <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
