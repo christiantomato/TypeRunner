@@ -50,7 +50,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </VBox>
-            <MenuButton fx:id="accountType" mnemonicParsing="false" text="Account Type" translateX="230.0" translateY="-65.0">
+            <MenuButton fx:id="accountType" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" text="Account Type" translateX="230.0" translateY="-82.0">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#selectAccountType" text="Player" />
                 <MenuItem mnemonicParsing="false" onAction="#selectAccountType" text="Administrator" />
