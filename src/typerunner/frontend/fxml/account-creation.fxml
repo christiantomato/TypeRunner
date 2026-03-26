@@ -44,6 +44,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Text fx:id="creationMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
                <padding>
                   <Insets left="20.0" right="20.0" />
