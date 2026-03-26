@@ -3,6 +3,7 @@ package typerunner.backend;
 /**
  * Represents the statistics of a player in the TypeRunner game.
  * Tracks metrics such as words per minute (WPM), accuracy, level, errors, time played, and highest score.
+ * @author Olorunfemi Martins
  */
 public class PlayerStatistics {
     private double averageWPM;
@@ -178,6 +179,28 @@ public class PlayerStatistics {
      * @param totalWordsTyped the new total words typed
      */
     public void setTotalWordsTyped(int totalWordsTyped) {
+        this.totalWordsTyped = totalWordsTyped;
+    }
+
+    public void resetActualStats() {
+        this.averageWPM =  0.0;
+        this.peakWPM = 0.0;
+        this.accuracypercentage = 0.0;
+        this.level = 1;
+        this.errorCount = 0;
+        this.totalTimePlayed = 0;
+        this.highestscore = 0;
+        this.totalWordsTyped = 0;
+    }
+
+    public void InsertStats(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
+        this.averageWPM = averageWPM;
+        this.peakWPM = peakWPM;
+        this.accuracypercentage = accuracypercentage;
+        this.level = level;
+        this.errorCount = errorCount;
+        this.totalTimePlayed = totalTimePlayed;
+        this.highestscore = highestscore;
         this.totalWordsTyped = totalWordsTyped;
     }
 

@@ -8,7 +8,7 @@ public class Bot extends Player {
 
 
     public Bot(String id, String username) {
-        super(id, username);
+        super(id, username); // Bots don't need passwords
     }
 
     public String generateTypedText(String prompt){

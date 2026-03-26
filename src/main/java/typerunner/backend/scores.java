@@ -3,6 +3,7 @@ package typerunner.backend;
 /**
  * Represents a player's score entry in the TypeRunner game.
  * This class stores the player's name, their achieved score, and the level they reached.
+ * @author Olorunfemi Martins
  */
 public class scores {
     private String name;
