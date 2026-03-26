@@ -39,6 +39,7 @@
                <children>
                   <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new username..." />
                   <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new password..." />
+                  <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter administrator username..." />
                   <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#createAccount" text="Create">
                      <font>
                         <Font size="20.0" />
@@ -50,12 +51,13 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </VBox>
-            <MenuButton fx:id="accountType" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" text="Account Type" translateX="230.0" translateY="-82.0">
+            <MenuButton fx:id="accountType" maxWidth="120.0" minWidth="120.0" mnemonicParsing="false" text="Account Type" translateX="230.0" translateY="-120.0">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#selectAccountType" text="Player" />
                 <MenuItem mnemonicParsing="false" onAction="#selectAccountType" text="Administrator" />
               </items>
             </MenuButton>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="* Field Required for Player Accounts" translateX="-260.0" translateY="20.0" />
          </children>
       </StackPane>
    </center>
