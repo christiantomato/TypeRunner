@@ -37,9 +37,9 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new username..." />
-                  <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new password..." />
-                  <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter administrator username..." />
+                  <TextField fx:id="usernameField" focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new username..." />
+                  <TextField fx:id="passwordField" focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter new password..." />
+                  <TextField fx:id="administratorField" focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter administrator username..." />
                   <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#createAccount" text="Create">
                      <font>
                         <Font size="20.0" />
