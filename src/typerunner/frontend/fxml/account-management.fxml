@@ -32,28 +32,32 @@
       </HBox>
    </top>
    <center>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+      <HBox alignment="CENTER" spacing="100.0">
          <children>
-            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account username..." />
-            <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account password..." />
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Enter">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <MenuButton mnemonicParsing="false" text="Select Player ">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account username..." />
+                  <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account password..." />
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Enter">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <MenuButton mnemonicParsing="false" text="Select Player Under Your Account">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem mnemonicParsing="false" text="Player 1" />
+                <MenuItem mnemonicParsing="false" text="Player 2" />
               </items>
             </MenuButton>
          </children>
-      </VBox>
+      </HBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER" spacing="20.0">
                <children>
                   <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="View Statistics">
                      <font>
@@ -67,7 +71,7 @@
                   </Button>
                </children>
             </VBox>
-            <VBox alignment="CENTER" spacing="10.0">
+            <VBox alignment="CENTER" spacing="20.0">
                <children>
                   <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Reset Statistics">
                      <font>
