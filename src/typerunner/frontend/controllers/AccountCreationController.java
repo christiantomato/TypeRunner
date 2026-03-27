@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import typerunner.frontend.ScreenNavigator;
 
 /**
- * Controller for the Account Creation Page
+ * Controller for the Account Creation Screen
  * 
  * Handles GUI events on this page. Details for a new account are inputted here
  * and sent to the backend to initialize a new account. 
