@@ -53,7 +53,7 @@ public class AccountCreationController {
             accountTypeString = clicked.getText();
         } 
         
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception while selecting account type:\n" + exception);
         }
     }
@@ -131,7 +131,7 @@ public class AccountCreationController {
         } 
 
         catch (Exception exception) {
-            System.out.println("exception going back to admin controls:\n" + exception);
+            System.out.println("exception while returning to admin controls:\n" + exception);
         }
     }
 }

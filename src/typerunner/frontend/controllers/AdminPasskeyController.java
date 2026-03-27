@@ -54,7 +54,7 @@ public class AdminPasskeyController {
             ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
         } 
 
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception while validating passkey:\n" + exception);
         }
     }
@@ -74,7 +74,7 @@ public class AdminPasskeyController {
             ScreenNavigator.switchScene(e, "fxml/menu.fxml");
         } 
 
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going back to menu:\n" + exception);
         }
     }

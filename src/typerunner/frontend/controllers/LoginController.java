@@ -57,7 +57,7 @@ public class LoginController {
             //ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
         } 
 
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception while logging in:\n" + exception);
         }
     }
@@ -77,7 +77,7 @@ public class LoginController {
             ScreenNavigator.switchScene(e, "fxml/menu.fxml");
         } 
 
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going back to menu:\n" + exception);
         }
     }

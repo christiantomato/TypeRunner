@@ -30,7 +30,7 @@ public class MenuController {
             ScreenNavigator.switchScene(e, "fxml/login.fxml");
         } 
 
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going to login:\n" + exception);
         }
     }
@@ -50,7 +50,7 @@ public class MenuController {
             ScreenNavigator.switchScene(e, "fxml/admin-passkey.fxml");
         } 
         
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going to passkey:\n" + exception);
         }
     }
@@ -70,7 +70,7 @@ public class MenuController {
             ScreenNavigator.switchScene(e, "fxml/leaderboard.fxml");
         } 
         
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going to leaderboard:\n" + exception);
         }
     }
@@ -90,7 +90,7 @@ public class MenuController {
             ScreenNavigator.switchScene(e, "fxml/tutorial.fxml");
         } 
         
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going to tutorial:\n" + exception);
         }
     }
@@ -110,7 +110,7 @@ public class MenuController {
             ScreenNavigator.closeStage(e);
         } 
         
-        catch (Exception exception) {
+        catch(Exception exception) {
             System.out.println("exception going to passkey:\n" + exception);
         }
     }
