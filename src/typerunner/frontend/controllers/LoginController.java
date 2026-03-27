@@ -43,7 +43,7 @@ public class LoginController {
             System.out.println(username);
             System.out.println(password);
 
-            //make sure they are not empty
+            //make sure they are not blank
             if(username.isBlank() || password.isBlank()) {
                 System.out.println("a field is empty");
                 return;
