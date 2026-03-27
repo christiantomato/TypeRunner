@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import typerunner.frontend.ScreenNavigator;
 
 /**
- * Controller for the Passkey Page
+ * Controller for the Passkey Screen
  * 
  * Handles the GUI events on this page. Works with backend to
  * allow access to the administrator controls screen.

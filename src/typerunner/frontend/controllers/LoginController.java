@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import typerunner.frontend.ScreenNavigator;
 
 /**
- * Controller for the Login Page
+ * Controller for the Login Screen
  * 
  * Handles the GUI events on this page, and works with the backend by
  * processing user input for logging in.
