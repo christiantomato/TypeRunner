@@ -2,29 +2,89 @@ package typerunner.frontend.controllers;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import typerunner.frontend.ScreenNavigator;
+
+/**
+ * Controller for the Main Menu
+ * 
+ * Includes the methods for the 5 different options available from the main menu:
+ * login, leaderboard, tutorial, admin controls, and exit. 
+ * 
+ * @author Christian Tamayo
+ */
 
 public class MenuController {
 
-    public void goToLoginPage(ActionEvent e) throws IOException {
-        System.out.println("going to login page");
+    /**
+     * Go to Login Page
+     * 
+     * takes the user to the login page.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
+
+    @FXML
+    private void goToLogin(ActionEvent e) throws IOException {
+        System.out.println("going to login");
         ScreenNavigator.switchScene(e, "fxml/login.fxml");
     }
 
-     public void goToLeaderboard(ActionEvent e) {
-        System.out.println("going to leaderboard");
-    }
-    
-    public void goToTutorial(ActionEvent e) {
-        System.out.println("going to tutorial");
-    }
-    
-    public void goToAdminControls(ActionEvent e) throws IOException{
-        System.out.println("going to passkey page");
+    /**
+     * Go to Passkey Page
+     * 
+     * takes the user to the admin passkey page.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
+
+    @FXML
+    private void goToPasskey(ActionEvent e) throws IOException{
+        System.out.println("going to passkey first");
         ScreenNavigator.switchScene(e, "fxml/admin-passkey.fxml");
     }
+
+    /**
+     * Go to Leaderboard Page
+     * 
+     * takes the user to the leaderboard page.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
+
+    @FXML
+    private void goToLeaderboard(ActionEvent e) {
+        System.out.println("going to leaderboard");
+    }
+
+    /**
+     * Go to Tutorial Page
+     * 
+     * takes the user to the tutorial page.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
     
-    public void exit(ActionEvent e) throws IOException {
+    @FXML
+    private void goToTutorial(ActionEvent e) {
+        System.out.println("going to tutorial");
+    }
+
+    /**
+     * Exit TypeRunner
+     * 
+     * closes the game.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
+    
+    @FXML
+    private void exit(ActionEvent e) throws IOException {
         System.out.println("exiting TypeRunner");
         ScreenNavigator.closeStage(e);
     }
