@@ -25,8 +25,8 @@ public class LoginController {
     /** 
      * Player Login
      * 
-     * processes the text in the textfields and sends the information to the 
-     * login method in the backend.
+     * Processes the text in the textfields and sends the information to the 
+     * login method in the backend. Sends user to player screen if successful.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
@@ -61,7 +61,7 @@ public class LoginController {
     /**
      * Return to the Main Menu
      * 
-     * takes the user back to the main menu. 
+     * Takes the user back to the main menu. 
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
