@@ -17,9 +17,9 @@ import typerunner.frontend.ScreenNavigator;
 public class MenuController {
 
     /**
-     * Go to Login Page
+     * Go to Login Screen
      * 
-     * takes the user to the login page.
+     * Takes the user to the login screen.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
@@ -32,9 +32,9 @@ public class MenuController {
     }
 
     /**
-     * Go to Passkey Page
-     * 
-     * takes the user to the admin passkey page.
+     * Go to Passkey Screen
+     *
+     * Takes the user to the admin passkey screen.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
@@ -47,9 +47,9 @@ public class MenuController {
     }
 
     /**
-     * Go to Leaderboard Page
+     * Go to Leaderboard Screen
      * 
-     * takes the user to the leaderboard page.
+     * Takes the user to the leaderboard screen.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
@@ -61,9 +61,9 @@ public class MenuController {
     }
 
     /**
-     * Go to Tutorial Page
+     * Go to Tutorial Screen
      * 
-     * takes the user to the tutorial page.
+     * Takes the user to the tutorial screen.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
@@ -77,7 +77,7 @@ public class MenuController {
     /**
      * Exit TypeRunner
      * 
-     * closes the game.
+     * Closes the game.
      * 
      * @param e the button event
      * @throws IOException if there is an input/output problem
