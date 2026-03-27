@@ -10,4 +10,28 @@ public class AccountManagementController {
         System.out.println("returning to admin controls");
         ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
     }
+
+    public void checkAdminCredentials(ActionEvent e) {
+        
+    }
+
+    public void populatePlayerMenu(ActionEvent e) {
+
+    }
+
+    public void viewPlayerStatistics(ActionEvent e) {
+
+    }
+
+    public void resetPassword(ActionEvent e) {
+
+    }
+
+    public void resetStatistics(ActionEvent e) {
+
+    }
+
+    public void resetHighscore(ActionEvent e) {
+
+    }
 }
