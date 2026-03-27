@@ -39,7 +39,7 @@
                <children>
                   <StackPane>
                      <children>
-                        <PasswordField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter admin passkey..." />
+                        <PasswordField fx:id="passkeyField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter admin passkey..." />
                         <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter admin passkey..." visible="false" />
                      </children>
                   </StackPane>
