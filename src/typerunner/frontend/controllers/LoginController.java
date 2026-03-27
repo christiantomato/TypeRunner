@@ -2,29 +2,73 @@ package typerunner.frontend.controllers;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import typerunner.frontend.ScreenNavigator;
 
+/**
+ * Controller for the Login Page
+ * 
+ * Handles the GUI events on this page, and works with the backend by
+ * processing user input for logging in.
+ * 
+ * @author Christian Tamayo
+ */
+
 public class LoginController {
+
+    /** the username textfield */
+    @FXML private TextField usernameField;
+    /** the password textfield */
+    @FXML private TextField passwordField;
 
     /** 
      * Player Login
      * 
-     * @param e
-     * @throws IOException
+     * processes the text in the textfields and sends the information to the 
+     * login method in the backend.
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
     */
 
-    public void login(ActionEvent e) throws IOException {
+    @FXML
+    private void login(ActionEvent e) throws IOException {
+
+        //get the username and password
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        //print for debugging purposes
+        System.out.println(username);
+        System.out.println(password);
+
+        //make sure they are not empty
+        if(username.isBlank() || password.isBlank()) {
+            System.out.println("a field is empty");
+            return;
+        }
 
         /*
-        get the username and password as strings
-        pass into the login method login(username, password)
-        if return is true, switch scenes to the player screen. 
+        boolean successful = backend.login(username, password);
+        if successful, switch scenes, otherwise provide feedback for invalid login.
         */
-
-        ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+        
+        //ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
     }
     
-    public void returnToMenu(ActionEvent e) throws IOException {
+
+    /**
+     * Return to the Main Menu
+     * 
+     * takes the user back to the main menu. 
+     * 
+     * @param e the button event
+     * @throws IOException if there is an input/output problem
+     */
+
+    @FXML
+    private void returnToMenu(ActionEvent e) throws IOException {
         System.out.println("going back to menu page");
         ScreenNavigator.switchScene(e, "fxml/menu.fxml");
     }
