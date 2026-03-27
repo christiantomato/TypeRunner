@@ -1,6 +1,5 @@
 package typerunner.frontend.controllers;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import typerunner.frontend.ScreenNavigator;
@@ -22,13 +21,18 @@ public class MenuController {
      * Takes the user to the login screen.
      * 
      * @param e the button event
-     * @throws IOException if there is an input/output problem
      */
 
     @FXML
-    private void goToLogin(ActionEvent e) throws IOException {
-        System.out.println("going to login");
-        ScreenNavigator.switchScene(e, "fxml/login.fxml");
+    private void goToLogin(ActionEvent e) {
+        try {
+            System.out.println("going to login");
+            ScreenNavigator.switchScene(e, "fxml/login.fxml");
+        } 
+
+        catch (Exception exception) {
+            System.out.println("exception going to login:\n" + exception);
+        }
     }
 
     /**
@@ -37,13 +41,18 @@ public class MenuController {
      * Takes the user to the admin passkey screen.
      * 
      * @param e the button event
-     * @throws IOException if there is an input/output problem
      */
 
     @FXML
-    private void goToPasskey(ActionEvent e) throws IOException{
-        System.out.println("going to passkey first");
-        ScreenNavigator.switchScene(e, "fxml/admin-passkey.fxml");
+    private void goToPasskey(ActionEvent e) {
+        try {
+            System.out.println("going to passkey first");
+            ScreenNavigator.switchScene(e, "fxml/admin-passkey.fxml");
+        } 
+        
+        catch (Exception exception) {
+            System.out.println("exception going to passkey:\n" + exception);
+        }
     }
 
     /**
@@ -52,12 +61,18 @@ public class MenuController {
      * Takes the user to the leaderboard screen.
      * 
      * @param e the button event
-     * @throws IOException if there is an input/output problem
      */
 
     @FXML
     private void goToLeaderboard(ActionEvent e) {
-        System.out.println("going to leaderboard");
+         try {
+            System.out.println("going to leaderboard");
+            ScreenNavigator.switchScene(e, "fxml/leaderboard.fxml");
+        } 
+        
+        catch (Exception exception) {
+            System.out.println("exception going to leaderboard:\n" + exception);
+        }
     }
 
     /**
@@ -66,12 +81,18 @@ public class MenuController {
      * Takes the user to the tutorial screen.
      * 
      * @param e the button event
-     * @throws IOException if there is an input/output problem
      */
     
     @FXML
     private void goToTutorial(ActionEvent e) {
-        System.out.println("going to tutorial");
+         try {
+            System.out.println("going to tutorial");
+            ScreenNavigator.switchScene(e, "fxml/tutorial.fxml");
+        } 
+        
+        catch (Exception exception) {
+            System.out.println("exception going to tutorial:\n" + exception);
+        }
     }
 
     /**
@@ -80,12 +101,17 @@ public class MenuController {
      * Closes the game.
      * 
      * @param e the button event
-     * @throws IOException if there is an input/output problem
      */
     
     @FXML
-    private void exit(ActionEvent e) throws IOException {
-        System.out.println("exiting TypeRunner");
-        ScreenNavigator.closeStage(e);
+    private void exit(ActionEvent e) {
+         try {
+            System.out.println("exiting TypeRunner");
+            ScreenNavigator.closeStage(e);
+        } 
+        
+        catch (Exception exception) {
+            System.out.println("exception going to passkey:\n" + exception);
+        }
     }
 }
