@@ -1,10 +1,14 @@
 package typerunner.frontend;
 
 import java.io.IOException;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -35,6 +39,42 @@ public class ScreenNavigator {
         //set the new root node
         stage.getScene().setRoot(root);
     }
+
+    /**
+     * Confirmation Popup
+     * 
+     * Alerts the user with a popup when commiting a destructive action. 
+     * Execution is paused until user confirms. 
+     * 
+     * @param owner the stage on which this method was called
+     * @param title the title of the popup
+     * @param message the message to give the user
+     * @return true if confirmed, false otherwise
+     */
+
+    public static boolean confirmationPopup(Stage owner, String title, String message) {
+        //create an alert and set title and messgage
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(message);
+
+        //pass in the stage it is on
+        alert.initOwner(owner);
+        //make it so that the user cannot continue until popup is dealt with
+        alert.initModality(Modality.WINDOW_MODAL);
+
+        //get the result
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.isPresent() && result.get() == ButtonType.OK;
+    }
+
+    /**
+     * Close The Stage
+     * 
+     * Sloses the currect stage.
+     * 
+     * @param e the button event
+     */
 
     public static void closeStage(ActionEvent e) {
         //get the current stage

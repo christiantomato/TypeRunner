@@ -5,11 +5,14 @@ import java.util.Optional;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import typerunner.frontend.ScreenNavigator;
 
 /**
@@ -126,36 +129,71 @@ public class AccountManagementController {
         alert.showAndWait();
     }
 
+    /**
+     * Reset Password
+     * 
+     * Displays a popup where the user can set a new password for the 
+     * desired player account. 
+     * 
+     * @param e
+     */
+
     @FXML
     private void resetPassword(ActionEvent e) {
         //TODO: create popup? 
     }
 
+    /**
+     * Reset Statistics
+     * 
+     * Resets the statistics for the desired player account.
+     * A confirmation message is displayed before action is carried out. 
+     * 
+     * @param e the button event
+     */
+
     @FXML
     private void resetStatistics(ActionEvent e) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Reset");
-        alert.setHeaderText("Reset stats for " + selectedPlayer + "?");
-        alert.setContentText("This action cannot be undone.");
+        //get the stage we are on 
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 
-        Optional<ButtonType> result = alert.showAndWait();
+        //display a confirmation popup
+        boolean confirmed = ScreenNavigator.confirmationPopup(
+            stage,
+            "Reset Statistics?",
+            "Are you sure you want to reset the statistics for " + selectedPlayer + " ?"
+        );
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            System.out.println("Resetting statistics...");
+        if(confirmed) {
+            //TODO: call the backend method to reset the statistics
+            System.out.println("resetting statistics.");
         }
     }
 
+   /**
+     * Reset Highscore
+     * 
+     * Resets the highscore for the desired player account.
+     * A confirmation message is displayed before action is carried out. 
+     * 
+     * @param e the button event
+     */
+
     @FXML
     private void resetHighscore(ActionEvent e) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Reset");
-        alert.setHeaderText("Reset highscore for " + selectedPlayer + "?");
-        alert.setContentText("This action cannot be undone.");
+        //get the stage we are on 
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 
-        Optional<ButtonType> result = alert.showAndWait();
+        //display a confirmation popup
+        boolean confirmed = ScreenNavigator.confirmationPopup(
+            stage,
+            "Reset Highscore?",
+            "Are you sure you want to reset the highscore for " + selectedPlayer + " ?"
+        );
 
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            System.out.println("Resetting highscore...");
+        if(confirmed) {
+            //TODO: call the backend method to reset the highscore
+            System.out.println("resetting highscore");
         }
     }
 
