@@ -1,8 +1,12 @@
 package typerunner.frontend.controllers;
 
 import java.util.List;
+import java.util.Optional;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -26,7 +30,7 @@ public class AccountManagementController {
     @FXML private TextField passwordField;
     /** the drop down for the players the admin manages */
     @FXML private MenuButton playerMenu; 
-    /** the selected player we are managing */
+    /** the selected player we are managing, which can also include the admin itself! */
     private String selectedPlayer;
 
     /**
@@ -73,8 +77,10 @@ public class AccountManagementController {
      * @see selectPlayer
      */
 
-    @FXML
     private void populatePlayerMenu(List<String> players) {
+        //clear before populating
+        playerMenu.getItems().clear();
+
         //go through all the players
         for(String player : players) {
             //create a menu item for each player
@@ -87,10 +93,13 @@ public class AccountManagementController {
     }
 
     /**
+     * Select Player
      * 
-     * @param e
+     * updates the player menu to show the user the player
+     * that has been selected to manage. 
+     * 
+     * @param e the selection event
      */
-
 
     @FXML
     private void selectPlayer(ActionEvent e) {
@@ -99,24 +108,55 @@ public class AccountManagementController {
         selectedPlayer = clicked.getText();
     }
 
+    /**
+     * View Player Statistics
+     * 
+     * displays a pop-up window for the selected player which shows all
+     * of their statistics. 
+     * 
+     * @param e the button event
+     */
+
     @FXML
     private void viewPlayerStatistics(ActionEvent e) {
-
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Player Statistics");
+        alert.setHeaderText("Stats for " + selectedPlayer);
+        alert.setContentText("WPM: 85\nAccuracy: 97%\n\n\n\n\n\n\n\n");
+        alert.showAndWait();
     }
 
     @FXML
     private void resetPassword(ActionEvent e) {
-
+        //TODO: create popup? 
     }
 
     @FXML
     private void resetStatistics(ActionEvent e) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Reset");
+        alert.setHeaderText("Reset stats for " + selectedPlayer + "?");
+        alert.setContentText("This action cannot be undone.");
 
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("Resetting statistics...");
+        }
     }
 
     @FXML
     private void resetHighscore(ActionEvent e) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Reset");
+        alert.setHeaderText("Reset highscore for " + selectedPlayer + "?");
+        alert.setContentText("This action cannot be undone.");
 
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.out.println("Resetting highscore...");
+        }
     }
 
     /**

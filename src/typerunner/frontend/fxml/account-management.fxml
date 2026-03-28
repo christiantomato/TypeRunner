@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -45,12 +44,7 @@
                   </Button>
                </children>
             </VBox>
-            <MenuButton mnemonicParsing="false" text="Select Player Under Your Account">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Player 1" />
-                <MenuItem mnemonicParsing="false" text="Player 2" />
-              </items>
-            </MenuButton>
+            <MenuButton mnemonicParsing="false" text="Select Player Under Your Account" />
          </children>
       </HBox>
    </center>
@@ -59,12 +53,12 @@
          <children>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="View Statistics">
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#viewPlayerStatistics" text="View Statistics">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Reset Password">
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetPassword" text="Reset Password">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -73,12 +67,12 @@
             </VBox>
             <VBox alignment="CENTER" spacing="20.0">
                <children>
-                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Reset Statistics">
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetStatistics" text="Reset Statistics">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Reset Highscore ">
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetHighscore" text="Reset Highscore ">
                      <font>
                         <Font size="20.0" />
                      </font>
