@@ -42,20 +42,14 @@ public class AccountCreationController {
      */
 
     public void selectAccountType(ActionEvent e) {
-        try {
-            System.out.println("selecting account type");
+        System.out.println("selecting account type");
 
-            //get which menu item was clicked
-            MenuItem clicked = (MenuItem) e.getSource();
+        //get which menu item was clicked
+        MenuItem clicked = (MenuItem) e.getSource();
 
-            //display the selected type and save the value
-            accountType.setText(clicked.getText());
-            accountTypeString = clicked.getText();
-        } 
-        
-        catch(Exception exception) {
-            System.out.println("exception while selecting account type:\n" + exception);
-        }
+        //display the selected type and save the value
+        accountType.setText(clicked.getText());
+        accountTypeString = clicked.getText();
     }
 
     /**
@@ -68,52 +62,46 @@ public class AccountCreationController {
      */
 
     public void createAccount(ActionEvent e) {
-        try {
-            System.out.println("creating account");
+        System.out.println("creating account");
 
-            //get the strings from the fields
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-            String administrator = administratorField.getText();
+        //get the strings from the fields
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        String administrator = administratorField.getText();
 
-            //print everything out for debugging purposes
-            System.out.println(username);
-            System.out.println(password);
-            System.out.println(administrator);
+        //print everything out for debugging purposes
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(administrator);
 
-            //make sure the username or password are not blank, and that the account type is selected
-            if(username.isBlank() || password.isBlank() || accountTypeString == null) {
-                System.out.println("username or password is blank, or unselected type");
+        //make sure the username or password are not blank, and that the account type is selected
+        if(username.isBlank() || password.isBlank() || accountTypeString == null) {
+            System.out.println("username or password is blank, or unselected type");
+            return;
+        }
+
+        //create based on the account type
+        if(accountTypeString.equals("Player")) {
+            //check to make sure the administrator field is not empty
+            if(administrator.isBlank()) {
+                System.out.println("specify the administrator that is managing this account.");
                 return;
             }
 
-            //create based on the account type
-            if(accountTypeString.equals("Player")) {
-                //check to make sure the administrator field is not empty
-                if(administrator.isBlank()) {
-                    System.out.println("specify the administrator that is managing this account.");
-                    return;
-                }
-
-                System.out.println("creating player account");
-                //TODO: pass in parameters to method
-            }
-            else if(accountTypeString.equals("Administrator")) {
-                System.out.println("creating admin account");
-                //TODO: pass in parameters to method
-            }
-            else {
-                //the user has not selected...
-                System.out.println("select an account type.");
-            }
-
-            //TODO: set the correct display message based on return value from account creation
-            creationMessage.setText("Successfully Created");
-        } 
-        
-        catch (Exception exception) {
-            System.out.println("exception while creating account:\n" + exception);
+            System.out.println("creating player account");
+            //TODO: pass in parameters to method
         }
+        else if(accountTypeString.equals("Administrator")) {
+            System.out.println("creating admin account");
+            //TODO: pass in parameters to method
+        }
+        else {
+            //the user has not selected...
+            System.out.println("select an account type.");
+        }
+
+        //TODO: set the correct display message based on return value from account creation
+        creationMessage.setText("Successfully Created");
     }
 
     /**
