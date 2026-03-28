@@ -1,8 +1,10 @@
 package typerunner.frontend.controllers;
 
+import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import typerunner.frontend.ScreenNavigator;
 
@@ -23,75 +25,97 @@ public class AccountManagementController {
     /** the admin password field */
     @FXML private TextField passwordField;
     /** the drop down for the players the admin manages */
-    @FXML private MenuButton playerDropdown; 
-
+    @FXML private MenuButton playerMenu; 
+    /** the selected player we are managing */
+    private String selectedPlayer;
 
     /**
      * Verifies Admin Account Exists
      * 
-     * takes the inputted values in the textfields and finds the 
+     * Takes the inputted values in the textfields and finds the 
      * associated admin account in order to load the corresponding
      * players this account manages. 
      * 
      * @param e the button event
+     * @see populatePlayerMenu
      */
 
     @FXML
     private void checkAdminCredentials(ActionEvent e) {
-        try {
-            System.out.println("checking the admin credentials");
+        System.out.println("checking the admin credentials");
 
-            //get the strings from the textfields
-            String username = usernameField.getText();
-            String password = passwordField.getText();
+        //get the strings from the textfields
+        String username = usernameField.getText();
+        String password = passwordField.getText();
 
-            //print out for debugging purposes
-            System.out.println(username);
-            System.out.println(password);
+        //print out for debugging purposes
+        System.out.println(username);
+        System.out.println(password);
 
-            //make sure the username or password are not blank
-            if(username.isBlank() || password.isBlank()) {
-                System.out.println("username or password is blank, or unselected type");
-                return;
-            }
+        //make sure the username or password are not blank
+        if(username.isBlank() || password.isBlank()) {
+            System.out.println("username or password is blank, or unselected type");
+            return;
+        }
 
-            //TODO: check if the account exists, and if so, then popoulate the player menu
-            //populatePlayerMenu(e); 
-        } 
-        catch(Exception exception) {
-            System.out.println("exception while checking admin credentials:\n" + exception);
+        //TODO: check if the account exists, and if so, then popoulate the player menu
+        //populatePlayerMenu(players); 
+    }
+
+    /**
+     * Populate Player Menu
+     * 
+     * After identifying the administrator, populate the menu with the 
+     * corresponding players under them. Each created menu item is set with an action so that
+     * if it is selected, it updates visually on the GUI. 
+     * 
+     * @param players the list of players the admin manages    
+     * @see selectPlayer
+     */
+
+    @FXML
+    private void populatePlayerMenu(List<String> players) {
+        //go through all the players
+        for(String player : players) {
+            //create a menu item for each player
+            MenuItem item = new MenuItem(player);
+            //set each menu button with an action to update the menu value if it is selected
+            item.setOnAction(this::selectPlayer);
+            //add it to the menu 
+            playerMenu.getItems().add(item);
         }
     }
 
     /**
-     * thanks for the delicioso matcha chrissy my love <3333
-     * 
-     * 
-     * 
-     * 
-     * 
      * 
      * @param e
      */
 
+
     @FXML
-    private void populatePlayerMenu(ActionEvent e) {
+    private void selectPlayer(ActionEvent e) {
+        MenuItem clicked = (MenuItem) e.getSource();
+        playerMenu.setText(clicked.getText());
+        selectedPlayer = clicked.getText();
+    }
+
+    @FXML
+    private void viewPlayerStatistics(ActionEvent e) {
 
     }
 
-    public void viewPlayerStatistics(ActionEvent e) {
+    @FXML
+    private void resetPassword(ActionEvent e) {
 
     }
 
-    public void resetPassword(ActionEvent e) {
+    @FXML
+    private void resetStatistics(ActionEvent e) {
 
     }
 
-    public void resetStatistics(ActionEvent e) {
-
-    }
-
-    public void resetHighscore(ActionEvent e) {
+    @FXML
+    private void resetHighscore(ActionEvent e) {
 
     }
 
@@ -103,7 +127,8 @@ public class AccountManagementController {
      * @param e the button event
      */
 
-    public void returnToAdminControls(ActionEvent e) {
+    @FXML
+    private void returnToAdminControls(ActionEvent e) {
         try {
             System.out.println("returning to admin controls");
             ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");

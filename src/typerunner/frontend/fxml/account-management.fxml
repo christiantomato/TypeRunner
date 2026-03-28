@@ -36,9 +36,9 @@
          <children>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account username..." />
-                  <TextField maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account password..." />
-                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" text="Enter">
+                  <TextField fx:id="usernameField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account username..." />
+                  <TextField fx:id="passwordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account password..." />
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#checkAdminCredentials" text="Enter">
                      <font>
                         <Font size="20.0" />
                      </font>
