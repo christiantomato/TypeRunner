@@ -1,6 +1,9 @@
 package typerunner.frontend.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
 import typerunner.frontend.ScreenNavigator;
 
 /**
@@ -15,13 +18,64 @@ import typerunner.frontend.ScreenNavigator;
 
 public class AccountManagementController {
     
+    /** the admin username field */
+    @FXML private TextField usernameField;
+    /** the admin password field */
+    @FXML private TextField passwordField;
+    /** the drop down for the players the admin manages */
+    @FXML private MenuButton playerDropdown; 
 
 
-    public void checkAdminCredentials(ActionEvent e) {
-        
+    /**
+     * Verifies Admin Account Exists
+     * 
+     * takes the inputted values in the textfields and finds the 
+     * associated admin account in order to load the corresponding
+     * players this account manages. 
+     * 
+     * @param e the button event
+     */
+
+    @FXML
+    private void checkAdminCredentials(ActionEvent e) {
+        try {
+            System.out.println("checking the admin credentials");
+
+            //get the strings from the textfields
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            //print out for debugging purposes
+            System.out.println(username);
+            System.out.println(password);
+
+            //make sure the username or password are not blank
+            if(username.isBlank() || password.isBlank()) {
+                System.out.println("username or password is blank, or unselected type");
+                return;
+            }
+
+            //TODO: check if the account exists, and if so, then popoulate the player menu
+            //populatePlayerMenu(e); 
+        } 
+        catch(Exception exception) {
+            System.out.println("exception while checking admin credentials:\n" + exception);
+        }
     }
 
-    public void populatePlayerMenu(ActionEvent e) {
+    /**
+     * thanks for the delicioso matcha chrissy my love <3333
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * @param e
+     */
+
+    @FXML
+    private void populatePlayerMenu(ActionEvent e) {
 
     }
 
