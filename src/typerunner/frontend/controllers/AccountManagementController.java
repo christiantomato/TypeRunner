@@ -122,11 +122,18 @@ public class AccountManagementController {
 
     @FXML
     private void viewPlayerStatistics(ActionEvent e) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Player Statistics");
-        alert.setHeaderText("Stats for " + selectedPlayer);
-        alert.setContentText("WPM: 85\nAccuracy: 97%\n\n\n\n\n\n\n\n");
-        alert.showAndWait();
+        System.out.println("displaying player stats");
+
+        //get the stage we are on
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+        ScreenNavigator.informationPopup(
+            stage,
+            "Player Statistics", 
+            "Statistics for " + selectedPlayer, 
+            "WPM: 85\nAccuracy: 97%\nPeak WPM: 120");
+        
+        //TODO: implement this with the player statistics ToString
     }
 
     /**

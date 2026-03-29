@@ -69,9 +69,37 @@ public class ScreenNavigator {
     }
 
     /**
+     * Information Popup
+     * 
+     * Creates a popup displaying a string of information. 
+     * 
+     * @param owner the stage on which this method was called
+     * @param title the title of the popup
+     * @param header the header of the popup
+     * @param information the information to display
+     */
+
+    public static void informationPopup(Stage owner, String title, String header, String information) {
+        //create an alert and set title and messgage
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        //pass in parameters
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(information);
+
+        //pass in the stage it is on
+        alert.initOwner(owner);
+        //make it so that the user cannot continue until popup is closed
+        alert.initModality(Modality.WINDOW_MODAL);
+
+        //show it
+        alert.showAndWait();
+    }
+
+    /**
      * Close The Stage
      * 
-     * Sloses the currect stage.
+     * Closes the currect stage.
      * 
      * @param e the button event
      */
