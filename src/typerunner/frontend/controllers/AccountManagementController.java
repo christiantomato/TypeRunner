@@ -143,7 +143,20 @@ public class AccountManagementController {
 
     @FXML
     private void resetPassword(ActionEvent e) {
-        //TODO: create popup? 
+        //get the stage we are on
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+
+        //create the reset password dialog
+        String newPassword = ScreenNavigator.inputStringDialog(
+            stage, 
+            "Reset Password",
+            "Resetting password for " + selectedPlayer,
+            "enter new password..."
+        );
+
+        System.out.println(newPassword);
+        
+        //TODO: pass in the new password to backend function.
     }
 
     /**

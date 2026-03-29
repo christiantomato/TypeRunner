@@ -7,14 +7,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
  * Class for Navigating and Managing Screens
  * 
- * Includes helper methods for switching scenes and closing stages.
+ * Includes helper methods for switching scenes, popups, and stages.
  * 
  * @author Christian Tamayo
  */
@@ -94,6 +97,56 @@ public class ScreenNavigator {
 
         //show it
         alert.showAndWait();
+    }
+
+    /**
+     * Input String Dialog
+     * 
+     * Creates a popup where the user can input a string. 
+     * 
+     * @param owner
+     * @param title
+     * @param header
+     * @param prompt
+     * @return the inputted value 
+     */
+
+    public static String inputStringDialog(Stage owner, String title, String header, String prompt) {
+        //create the Dialog
+        Dialog<String> dialog = new Dialog<>();
+
+        //set the parameters
+        dialog.setTitle(title);
+        dialog.setHeaderText(header);
+
+        //set owner and modality
+        dialog.initOwner(owner);
+        dialog.initModality(Modality.WINDOW_MODAL);
+
+        //add confirm and cancel button
+        ButtonType confirmButton = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(confirmButton, ButtonType.CANCEL);
+
+        //text field to get the input
+        TextField textField = new TextField();
+        textField.setPromptText(prompt);
+
+        //set the textfield onto the dialog pane
+        dialog.getDialogPane().setContent(textField);
+
+        //set the function which will determine the return value for the dialog
+        dialog.setResultConverter(button -> {
+            //get string in textfield if confirm is clicked
+            if (button == confirmButton) {
+                return textField.getText();
+            }
+            return null;
+        });
+
+        //show the dialog
+        Optional<String> result = dialog.showAndWait();
+        //return the result once a button is pressed
+        return result.orElse(null);
     }
 
     /**
