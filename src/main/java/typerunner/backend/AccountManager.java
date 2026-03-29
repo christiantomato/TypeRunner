@@ -8,6 +8,15 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Account Manager
+ * 
+ * This class handles all the logic with reading and writing from the player database.
+ * 
+ * @author Noh Woldetinsae
+ * @author Christian Tamayo
+ */
+
 public class AccountManager {
     private List<Player> accounts;
     private File databaseFile;
