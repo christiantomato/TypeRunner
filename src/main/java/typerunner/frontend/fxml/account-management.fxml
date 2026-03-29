@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.AccountManagementController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Region maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" />
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage">
+               <font>
+                  <Font size="70.0" />
+               </font>
+            </Text>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToAdminControls" text="←" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="50.0" right="50.0" top="20.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <HBox alignment="CENTER" spacing="100.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <TextField fx:id="usernameField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account username..." />
+                  <TextField fx:id="passwordField" maxHeight="50.0" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="insert admin account password..." />
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#checkAdminCredentials" text="Enter">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <MenuButton mnemonicParsing="false" text="Select Player Under Your Account" />
+         </children>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#viewPlayerStatistics" text="View Statistics">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetPassword" text="Reset Password">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetStatistics" text="Reset Statistics">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#resetHighscore" text="Reset Highscore ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

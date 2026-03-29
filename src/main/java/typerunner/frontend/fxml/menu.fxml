@@ -9,33 +9,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.menuController">
+<BorderPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.MenuController">
    <top>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="TypeRunner" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font size="70.0" />
          </font>
          <BorderPane.margin>
-            <Insets top="20.0" />
+            <Insets bottom="20.0" top="20.0" />
          </BorderPane.margin>
       </Text>
    </top>
    <center>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#login" text="Login" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToLogin" text="Login" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#adminControls" text="Admin Controls" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToPasskey" text="Admin Controls" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#viewLeaderboard" text="Leaderboard" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToLeaderboard" text="Leaderboard" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#tutorial" text="Tutorial" VBox.vgrow="ALWAYS">
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToTutorial" text="Tutorial" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="20.0" />
                </font></Button>
