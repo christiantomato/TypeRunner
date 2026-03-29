@@ -1,17 +1,13 @@
 package typerunner.frontend.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import typerunner.frontend.ScreenNavigator;
 
@@ -65,8 +61,8 @@ public class AccountManagementController {
             return;
         }
 
-        //TODO: check if the account exists, and if so, then popoulate the player menu
-        //populatePlayerMenu(players); 
+        //TODO: check if the account exists, and if so, then popoulate the player menu with the right players list
+        populatePlayerMenu(new ArrayList<>());
     }
 
     /**
