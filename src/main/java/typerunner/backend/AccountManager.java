@@ -116,7 +116,7 @@ public class AccountManager {
      * @param isAdmin admin account if true, player if false
      * @return true if account creation was successful
      */
-    public boolean createAccount(String username, String password, boolean isAdmin) {
+    public boolean createAccount(String username, String password, boolean isAdmin, String adminstrator) {
         //make sure a player with that username does not already exist
         if (findPlayer(username) == null) {
             //create admin account
@@ -181,12 +181,7 @@ public class AccountManager {
         }
     }
 
-    public void findPlayerByAdmin(Admin admin) { // return a list of players that are managed by the admin
-
-        // go over the list of players
-        //check who their administrator is
-        //if it is the admin we are looking for, add them to the list of players
-    }
+    
 
     public ArrayList<Player> getAccounts() {
         return accounts;
