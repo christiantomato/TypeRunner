@@ -33,7 +33,8 @@ public class Player {
      * @param password the password of the player
      */
 
-    public Player(String username, String password) {
+    public Player(String username, String password, Admin administrator) {
+        this.administrator = administrator;
         this.username = username;
         this.password = password;
         /* Start with 0 total games */
@@ -45,6 +46,21 @@ public class Player {
         /* Start with unlocked level 1 */
         this.unlockedLevel = 1; 
     }
+
+    
+    public Player(String username, String password) {
+        this(username, password, null);
+        this.username = username;
+        this.password = password;
+        /* Start with 0 total games */
+        this.totalGames = 0;
+        /* Start with total score = 0 */
+        this.totalScore = 0;
+        /* Start with best score = 0 */
+        this.bestScore = 0; 
+        /* Start with unlocked level 1 */
+        this.unlockedLevel = 1; 
+     }
 
     /**
      * Get Administrator
