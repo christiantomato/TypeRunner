@@ -183,6 +183,7 @@ public class AccountManager {
         try {
             Writer writer = new FileWriter(databaseFile);
             gson.toJson(accounts, writer);
+            writer.close();
         } catch (IOException e) {
             System.err.println("Error saving JSON: " + e);
         }
