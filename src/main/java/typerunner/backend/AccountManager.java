@@ -8,8 +8,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -28,7 +26,7 @@ public class AccountManager {
     /** the singular instance of this class */
     private static AccountManager instance;
     /** the list of player account */
-    private List<Player> accounts;
+    private ArrayList<Player> accounts;
     /** the database file */
     private File databaseFile;
     /** not sure what a Gson is */
@@ -68,6 +66,18 @@ public class AccountManager {
             instance = new AccountManager("accounts.json");
         }
         return instance;
+    }
+
+    /**
+     * Get Accounts
+     * 
+     * Returns the list of accounts. 
+     * 
+     * @return the list of accounts
+     */
+
+    public ArrayList<Player> getAccounts() {
+        return this.accounts;
     }
 
     // --- UML PUBLIC METHODS ---
@@ -138,7 +148,7 @@ public class AccountManager {
 
         try (Reader reader = new FileReader(databaseFile)) {
             Type listType = new TypeToken<ArrayList<Player>>(){}.getType();
-            List<Player> loadedData = gson.fromJson(reader, listType);
+            ArrayList<Player> loadedData = gson.fromJson(reader, listType);
             if (loadedData != null) {
                 this.accounts = loadedData;
             }
