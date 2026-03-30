@@ -127,8 +127,15 @@ public class AccountManager {
                 return true;
             } //create a regular player account
             else {
+                //create new player
                 Player newPlayer = new Player(username, password);
+                //add it to the accounts
                 accounts.add(newPlayer);
+                //get the admin of the player
+                Admin adminOfPlayer = (Admin) findPlayer(adminstrator);
+                //add the player under the administrator
+                adminOfPlayer.addPlayer(newPlayer.getUsername());
+                //write everything
                 saveAccounts();
                 return true;
             }
