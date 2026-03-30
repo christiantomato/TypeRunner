@@ -106,19 +106,16 @@ public class AccountManager {
         if(findPlayer(username) == null) {
             //create admin account
             if(isAdmin) {
-
-
-
-
+                Admin newAdmin = new Admin(username, password);
+                accounts.add(newAdmin);
+                saveAccounts();
+                return true;
             }
             //create a regular player account
             else {
                 Player newPlayer = new Player(username, password);
                 accounts.add(newPlayer);
                 saveAccounts();
-                
-
-                
                 return true;
             }
         }
@@ -150,11 +147,21 @@ public class AccountManager {
         }
     }
 
+    /**
+     * Save Accounts to Database
+     * 
+     * Writes the data from the accounts list into pretty string in the json.
+     * 
+     */
+
     public void saveAccounts() { 
-        try (Writer writer = new FileWriter(databaseFile)) {
+        try {
+            Writer writer = new FileWriter(databaseFile);
             gson.toJson(accounts, writer);
-        } catch (IOException e) {
-            System.err.println("Error saving JSON: " + e.getMessage());
+        } 
+
+        catch(IOException e) {
+            System.err.println("Error saving JSON: " + e);
         }
     }
 
