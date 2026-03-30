@@ -14,6 +14,8 @@ public class Main {
         accountManager.createAccount("admin1", "password123", true, "admin1");
         accountManager.createAccount("player1", "password456", false, "admin1");
 
+        accountManager.createAccount("player2", "password456", false, "admin1");
+
         accountManager.getAccounts();
 
         //accountManager.getAccounts();

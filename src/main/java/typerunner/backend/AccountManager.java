@@ -6,12 +6,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * Account Manager
@@ -156,22 +158,33 @@ public class AccountManager {
         return null;
     }
 
-    public void loadAccounts() {
-        if (!databaseFile.exists()) {
-            return;
-        }
+  public void loadAccounts() {
+    
+    if (!databaseFile.exists()) return;
 
-        try (Reader reader = new FileReader(databaseFile)) {
-            Type listType = new TypeToken<ArrayList<Player>>() {
-            }.getType();
-            ArrayList<Player> loadedData = gson.fromJson(reader, listType);
-            if (loadedData != null) {
-                this.accounts = loadedData;
+    try (Reader reader = new FileReader(databaseFile)) {
+        // 1. Parse the JSON into a generic list of elements
+        JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
+        this.accounts = new ArrayList<>();
+
+        for (JsonElement element : jsonArray) {
+            JsonObject obj = element.getAsJsonObject();
+            
+            // 2. Check the "isAdmin" flag we saved
+            boolean isThisAnAdmin = obj.has("isAdmin") && obj.get("isAdmin").getAsBoolean();
+
+            if (isThisAnAdmin) {
+                // Force Gson to build an Admin object (including the managed list)
+                this.accounts.add(gson.fromJson(obj, Admin.class));
+            } else {
+                // Build a standard Player object
+                this.accounts.add(gson.fromJson(obj, Player.class));
             }
-        } catch (IOException e) {
-            System.err.println("Error loading JSON: " + e.getMessage());
         }
+    } catch (IOException e) {
+        System.err.println("Error loading JSON: " + e.getMessage());
     }
+}
 
     /**
      * Save Accounts to Database

@@ -28,6 +28,7 @@ public class Admin extends Player {
     public Admin(String username, String password) {
         //pass into super
         super(username, password);
+        this.isAdmin = true;
 
         //initalize an empty list
         this.playersManaging = new ArrayList<>();
