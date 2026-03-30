@@ -95,6 +95,7 @@ public class AccountCreationController {
             //get the instance of the account manager
             AccountManager accountManager = AccountManager.getInstance();
 
+
             //create the player account - we need to pass in the administrator as well!
             //accountManager.createAccount(username, password, false, administrator)
         }
