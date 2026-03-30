@@ -4,6 +4,7 @@ package typerunner.backend;
  * Manages the state and logic for a single race in the TypeRunner game.
  * This class tracks the player's progress, speed, stamina, and handles the
  * activation of power-ups like SpeedBoost and StaminaRefill based on game events.
+ * @author Olorunfemi Martins
  */
 public class Race {
 
