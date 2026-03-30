@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.PlayerScreenController">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="115.0" minHeight="0.0" prefHeight="33.0" valignment="CENTER" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="241.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="215.0" minHeight="10.0" prefHeight="128.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="133.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player Screen">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name Here" GridPane.columnIndex="1">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Button mnemonicParsing="false" onAction="#logOut" text="&lt;--" GridPane.columnIndex="2">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <children>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#newGame" text="Start New Game" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#selectLevel" text="Select Level" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#viewStats" text="View Stats" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#logOut" text="Log out" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</GridPane>
