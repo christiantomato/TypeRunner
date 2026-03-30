@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Admin extends Player {
     /** a list of all the players they manage */
-    private ArrayList<Player> players; 
+    private ArrayList<String> playerUsernames; 
 
     /**
      * Admin Constructor
@@ -30,6 +30,6 @@ public class Admin extends Player {
         super(username, password);
 
         //initalize an empty list
-        this.players = new ArrayList<>();
+        this.playerUsernames = new ArrayList<>();
     }
 }
