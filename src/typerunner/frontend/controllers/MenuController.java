@@ -11,8 +11,9 @@ public class MenuController {
         ScreenNavigator.switchScene(e, "fxml/login.fxml");
     }
 
-     public void viewLeaderboard(ActionEvent e) {
+    public void viewLeaderboard(ActionEvent e) throws IOException{
         System.out.println("leaderboard");
+        ScreenNavigator.switchScene(e, "fxml/leaderboard.fxml");
     }
     
     public void tutorial(ActionEvent e) {

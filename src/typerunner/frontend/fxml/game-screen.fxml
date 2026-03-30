@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.GameScreenController">
+   <children>
+      <VBox layoutX="98.0" layoutY="68.0" prefHeight="165.0" prefWidth="405.0" spacing="5.0">
+         <children>
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LIME" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="AQUA" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Line endX="305.0" endY="-1.0" startX="-100.0" />
+         </children>
+      </VBox>
+      <GridPane layoutX="-2.0" prefHeight="68.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gameplay Level:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="2">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#startGame" text="Start" />
+                  <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#backButton" text="Exit Level" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="68.0" prefWidth="178.0" spacing="10.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Ups:" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Polygon fill="TRANSPARENT" points="18.0, 40.0, 47.5, 29.0, 18.0, 18.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fill="TRANSPARENT" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </GridPane>
+      <VBox alignment="CENTER" layoutX="14.0" layoutY="68.0" prefHeight="165.0" prefWidth="69.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WPM: " />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Health:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="478.0" layoutY="68.0" prefHeight="165.0" prefWidth="30.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="98.0" layoutY="235.0" prefHeight="165.0" prefWidth="410.0">
+         <children>
+            <TextArea layoutX="1.0" prefHeight="165.0" prefWidth="410.0" promptText="Paragraph goes here" wrapText="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
