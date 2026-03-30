@@ -10,8 +10,6 @@ package typerunner.backend;
  */
 
 public class Player {
-    /** Reference to the administrator of this player */
-    private Admin administrator;
     /** Username for the player */
     private String username;
     /** Total games the user has played */
@@ -26,30 +24,17 @@ public class Player {
     private String password;
 
     /** 
+     * Player Constructor
+     * 
      * Creates a new player with the given ID and username
      * All starting stats are set to default
      * 
      * @param username the username of the player
      * @param password the password of the player
+     * @param administrator the admin of the player
      */
 
-    public Player(String username, String password, Admin administrator) {
-        this.administrator = administrator;
-        this.username = username;
-        this.password = password;
-        /* Start with 0 total games */
-        this.totalGames = 0;
-        /* Start with total score = 0 */
-        this.totalScore = 0;
-        /* Start with best score = 0 */
-        this.bestScore = 0; 
-        /* Start with unlocked level 1 */
-        this.unlockedLevel = 1; 
-    }
-
-    
     public Player(String username, String password) {
-        this(username, password, null);
         this.username = username;
         this.password = password;
         /* Start with 0 total games */
@@ -60,18 +45,6 @@ public class Player {
         this.bestScore = 0; 
         /* Start with unlocked level 1 */
         this.unlockedLevel = 1; 
-     }
-
-    /**
-     * Get Administrator
-     * 
-     * returns the administrator for this player
-     * 
-     * @return the administrator of this player
-     */
-
-    public Admin getAdministrator() {
-        return this.administrator;
     }
 
     /** 
@@ -95,7 +68,7 @@ public class Player {
             bestScore = score;
         }
     }
-    
+
     /** 
      * Get user best score
      * @return player's best score
