@@ -38,7 +38,6 @@ public class AudioManager {
 /** Checks if music is currently playing.
  * 
  * @return true if music is playing, false otherwise.
- * @return
  */
     public boolean isPlaying() {
         return isPlaying;
