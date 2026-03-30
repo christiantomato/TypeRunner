@@ -6,6 +6,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import typerunner.backend.AccountManager;
 import typerunner.frontend.ScreenNavigator;
 
 /**
@@ -90,6 +91,12 @@ public class AccountCreationController {
 
             System.out.println("creating player account");
             //TODO: pass in parameters to method
+
+            //get the instance of the account manager
+            AccountManager accountManager = AccountManager.getInstance();
+
+            //create the player account - we need to pass in the administrator as well!
+            //accountManager.createAccount(username, password, false, administrator)
         }
         else if(accountTypeString.equals("Administrator")) {
             System.out.println("creating admin account");

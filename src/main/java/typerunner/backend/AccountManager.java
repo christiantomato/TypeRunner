@@ -8,17 +8,60 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Account Manager
+ * 
+ * This class handles all the logic with reading and writing from the player database.
+ * There is only ever one instance of this class.
+ * 
+ * @author Olorunfemi Martins Kayode
+ * @author Christian Tamayo
+ */
+
 public class AccountManager {
+    /** the singular instance of this class */
+    private static AccountManager instance;
+    /** the list of player account */
     private List<Player> accounts;
+    /** the database file */
     private File databaseFile;
+    /** not sure what a Gson is */
     private final Gson gson;
 
-    public AccountManager(String filePath) {
+    /**
+     * Account Manager Constructor
+     * 
+     * The constructor for the account manager. It is private so no other classes can build it, 
+     * as we want only one instance throughout the program. 
+     * 
+     * @param filePath the json file storing account information
+     */
+
+    private AccountManager(String filePath) { 
         this.databaseFile = new File(filePath);
         // Pretty printing makes the JSON file human-readable
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.accounts = new ArrayList<>();
         loadAccounts();
+    }
+
+    /**
+     * Get Instance
+     * 
+     * Returns the instance of the account manager. If it has not been initialized yet, 
+     * it calls the constructor and builds it. 
+     * Static so we can call it from anywhere to get the account manager instance. 
+     * 
+     * @return the instance of the account manager
+     * @see AccountManager
+     */
+
+    public static AccountManager getInstance() {
+        //create an instance if there isn't one
+        if(instance == null) {
+            instance = new AccountManager("accounts.json");
+        }
+        return instance;
     }
 
     // --- UML PUBLIC METHODS ---
@@ -52,7 +95,7 @@ public class AccountManager {
         return false;
     }
 
-    public Player findPlayer(String username) {
+    public Player findPlayer(String username) { 
         if (username == null) return null;
         for (Player p : accounts) {
             // Logic for entering it irrespective of case
@@ -63,8 +106,7 @@ public class AccountManager {
         return null;
     }
 
-
-    public void loadAccounts() {
+    public void loadAccounts() { 
         if (!databaseFile.exists()) return;
 
         try (Reader reader = new FileReader(databaseFile)) {
@@ -78,7 +120,7 @@ public class AccountManager {
         }
     }
 
-    public void saveAccounts() {
+    public void saveAccounts() { 
         try (Writer writer = new FileWriter(databaseFile)) {
             gson.toJson(accounts, writer);
         } catch (IOException e) {
