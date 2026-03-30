@@ -7,8 +7,8 @@ public class Bot extends Player {
     private int difficulty;
 
 
-    public Bot(String id, String username) {
-        super(id, username, "bot@typerunner.com", false); // Bots don't need passwords
+    public Bot(String botName) {
+        super(botName, "none");
     }
 
     public String generateTypedText(String prompt){
@@ -18,7 +18,4 @@ public class Bot extends Player {
     public int stimulateScore(){
         return 0;
     }
-
-    
-    
 }
