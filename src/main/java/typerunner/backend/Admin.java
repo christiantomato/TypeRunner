@@ -32,4 +32,16 @@ public class Admin extends Player {
         //initalize an empty list
         this.playerUsernames = new ArrayList<>();
     }
+
+    /**
+     * Add Player
+     * 
+     * Adds a player to the list under the admin. 
+     * 
+     * @param playerUsername the player to add under the admin
+     */
+
+    public void addPlayer(String playerUsername) {
+        playerUsernames.add(playerUsername);
+    }
 }
