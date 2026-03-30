@@ -69,15 +69,15 @@ public class AccountManager {
     }
 
     /**
-     * Get Accounts
+     * Set Player Under Admin
      * 
-     * Returns the list of accounts. 
-     * 
-     * @return the list of accounts
+     * Adds the player to the list of players for the admin.
+     *
      */
 
-    public ArrayList<Player> getAccounts() {
-        return this.accounts;
+    public void setPlayerUnderAdmin(String adminUsername, String playerUsername) {
+        Admin admin = (Admin) findPlayer(adminUsername);
+        admin.addPlayer(playerUsername);
     }
 
     // --- UML PUBLIC METHODS ---
