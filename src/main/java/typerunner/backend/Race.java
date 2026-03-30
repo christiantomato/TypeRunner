@@ -4,7 +4,10 @@ package typerunner.backend;
  * Manages the state and logic for a single race in the TypeRunner game.
  * This class tracks the player's progress, speed, stamina, and handles the
  * activation of power-ups like SpeedBoost and StaminaRefill based on game events.
+ *
  * @author Olorunfemi Martins
+ * @author Tanya Sahota
+ * @version 1.0
  */
 public class Race {
 
@@ -18,11 +21,11 @@ public class Race {
     private int time;
     /** The number of consecutively typed correct words. */
     private int wordsTyped;
-    /** The player's current words per minute. */
+    /** The player's current words per minute (WPM). */
     private int wpm;
     /** The player's current speed or progress metric. */
     private int playerSpeed;
-    /** The player's current stamina, from 0 to 100. */
+    /** The player's current stamina, ranging from 0 to 100. */
     private int Stamina = 100;
 
     /**
@@ -68,7 +71,7 @@ public class Race {
     /**
      * Sets the speed of the bot opponent.
      * @param botSpeed the bot's new speed.
-     * @return the bot's new speed.
+     * @return the bot's updated speed.
      */
     public int setBotSpeed(int botSpeed) {
         this.botSpeed = botSpeed;
@@ -102,6 +105,7 @@ public class Race {
     /**
      * Applies a speed boost to the player based on the current level.
      * This method creates a {@link SpeedBoost} power-up and increases the player's speed.
+     * 
      * @param level the current game level, used to determine the boost amount.
      */
     public void triggerSpeedBoost(int level) {
@@ -144,10 +148,12 @@ public class Race {
 
 
     /**
-     * Processes a typed word, updating game state accordingly.
-     * If the word is complete, it increments the consecutive words counter and checks
-     * if a speed boost should be triggered. If the word is incorrect, stamina is reduced
-     * and the consecutive word counter is reset. It also handles triggering stamina refills.
+     * Updates the race state after a word is typed.
+     * If the word is completed correctly, the typed word counter increases.
+     * If the word is incorrect, stamina is reduced and the counter resets.
+     * This method also checks whether stamina refill or speed boost power-ups
+     * should be triggered based on the player's current state and level.
+     *
      * @param word the {@link Word} object that was just attempted by the player.
      */
     public void wordsTypedIncrement(Word word) {
@@ -195,7 +201,7 @@ public class Race {
     }
 
     /**
-     * Updates the player's words per minute.
+     * Updates the player's words per minute (WPM).
      * Note: This method is currently a placeholder and has no implementation.
      */
     public void updateWpm() {
