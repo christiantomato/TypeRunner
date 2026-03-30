@@ -23,6 +23,8 @@ public class Player {
     /** User's password for authentication */
     private String password;
 
+    protected boolean isAdmin = false;
+
     /** 
      * Player Constructor
      * 
