@@ -10,6 +10,7 @@ import typerunner.frontend.ScreenNavigator;
  * 
  * Handles the GUI events on this page. Works with backend to
  * allow access to the administrator controls screen.
+ * The global admin passkey for typerunner is 1234.
  * 
  * @author Christian Tamayo
  */
@@ -18,6 +19,8 @@ public class AdminPasskeyController {
 
     /** the passkey passwordfield*/
     @FXML private PasswordField passkeyField;
+    /** the hardcoded passkey to get through*/
+    private static final String PASSKEY = "1234";
 
     /**
      * Passkey Verification
@@ -45,13 +48,15 @@ public class AdminPasskeyController {
                 return;
             }
 
-            /*
-            boolean successful = backend.passkey(passkey);
-            if true, navigate to the admin controls...
-            */
-        
-            System.out.println("going to admin controls");
-            ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
+            //check the passkey
+            if(passkey.equals(PASSKEY)) {
+                System.out.println("going to admin controls");
+                ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
+            }
+            else {
+                System.out.println("incorrect passkey");
+                //TODO: give feed back that it was incorrect...
+            }
         } 
 
         catch(Exception exception) {
