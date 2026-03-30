@@ -84,13 +84,37 @@ public class AccountManager {
         return false;
     }
 
-    public boolean createAccount(String username, String password, boolean isAdmin, String stringid) {
-        // Check irrespective of case
-        if (findPlayer(username) == null) {
-            Player newPlayer = new Player(stringid, username, password, isAdmin);
-            accounts.add(newPlayer);
-            saveAccounts();
-            return true;
+    /**
+     * Create Account Method
+     * 
+     * Creates either a player or admin account.
+     * 
+     * @param username the username
+     * @param password the password
+     * @param isAdmin admin account if true, player if false
+     * @return true if account creation was successful
+     */
+
+    public boolean createAccount(String username, String password, boolean isAdmin) {
+        //make sure a player with that username does not already exist
+        if(findPlayer(username) == null) {
+            //create admin account
+            if(isAdmin) {
+
+
+
+
+            }
+            //create a regular player account
+            else {
+                Player newPlayer = new Player(username, password);
+                accounts.add(newPlayer);
+                saveAccounts();
+                
+
+                
+                return true;
+            }
         }
         return false;
     }
