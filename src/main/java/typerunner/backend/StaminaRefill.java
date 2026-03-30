@@ -22,21 +22,21 @@ public class StaminaRefill implements PowerUp {
      *
      * @return The stamina bonus.
      */
-    public int getStaminaBonus() {
+    public int getStaminaBonus(int Levelnum) {
+        switch (Levelnum) {
+            case 1:
+                staminaBonus = 40;
+                break;
+            case 2:
+                staminaBonus = 20;
+                break;
+            case 3:
+                staminaBonus = 10;
+                break;
+            default:
+                staminaBonus = 0; // Default case if Levelnum is out of expected range
+        }
         return staminaBonus;
-    }
-
-    /**
-     * Activates the stamina refill power-up for the specified player.
-     * <p>
-     * Note: The implementation logic is pending the finalization of the player's stamina mechanics.
-     *
-     * @param player The player to apply the power-up to.
-     */
-    @Override
-    public void activate(Player player) {
-        // Logic to activate the stamina refill for the player
-        // Not implemented yet, as it depends on the game mechanics and how the player's stamina is managed
     }
 
     /**

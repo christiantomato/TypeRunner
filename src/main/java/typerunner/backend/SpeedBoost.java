@@ -9,8 +9,10 @@ package typerunner.backend;
 public class SpeedBoost implements PowerUp{
     /** The distance or advantage gained from the speed boost. */
     private int boostDistance;
-    /** The number of consecutive words required to trigger the boost. */
-    private int requiredConsecutivetWords;
+
+
+    private int requiredConsecutiveWords;   
+    private int levelnum;
 
     /**
      * Constructs a new SpeedBoost power-up with specific parameters.
@@ -18,9 +20,10 @@ public class SpeedBoost implements PowerUp{
      * @param boostDistance The distance advantage this boost provides.
      * @param requiredConsecutivetWords The number of consecutive correct words needed to trigger this boost.
      */
-    public SpeedBoost(int boostDistance, int requiredConsecutivetWords) {
+    public SpeedBoost(int levelnum, int boostDistance, int requiredConsecutiveWords) {
         this.boostDistance = boostDistance;
-        this.requiredConsecutivetWords = requiredConsecutivetWords;
+        this.levelnum = levelnum;
+        this.requiredConsecutiveWords = requiredConsecutiveWords;
     }
 
     /**
@@ -28,30 +31,21 @@ public class SpeedBoost implements PowerUp{
      *
      * @return The boost distance.
      */
-    public int getBoostDistance() {
+    public int getBoostDistance(int levelnum) {
+        switch (levelnum) {
+            case 1:
+                boostDistance = 10;
+                break;
+            case 2:
+                boostDistance = 20;
+                break;
+            case 3:
+                boostDistance = 30;
+                break;
+            default:
+                boostDistance = 0; // Default case if levelnum is out of expected range
+        }
         return boostDistance;
-    }
-
-    /**
-     * Gets the number of consecutive correct words required to trigger the boost.
-     *
-     * @return The number of required consecutive words.
-     */
-    public int getRequiredConsecutivetWords() {
-        return requiredConsecutivetWords;
-    }
-
-    /**
-     * Activates the speed boost for the specified player.
-     * <p>
-     * Note: The implementation logic is pending the finalization of the game's speed and player progression mechanics.
-     *
-     * @param player The player to apply the power-up to.
-     */
-    @Override
-    public void activate(Player player) {
-        // Logic to activate the speed boost for the player
-        // Not implemented yet, as it depends on the game mechanics and how the player's speed is managed
     }
 
     /**
@@ -67,47 +61,4 @@ public class SpeedBoost implements PowerUp{
         return true;
     }   
 
-    /**
-     * Calculates the boost distance based on the game level.
-     * <p>
-     * Note: This method does not modify the state of the current object.
-     * Its name is misleading; a name like {@code calculateBoostDistance} would be more appropriate.
-     *
-     * @param level The game level to calculate the boost distance for.
-     * @return The calculated boost distance for the given level.
-     */
-    public int setBoostDistance(Level level) {
-        int boostDistance = 0;
-        int levelDifficulty = level.getDifficulty();
-        if (levelDifficulty == 1) {
-            boostDistance = 2;
-        } else if (levelDifficulty == 2) {
-            boostDistance = 4;
-        } else if (levelDifficulty == 3) {
-            boostDistance = 6;
-        }
-        return boostDistance;
-    }   
-
-    /**
-     * Calculates the number of required consecutive words based on the game level.
-     * <p>
-     * Note: This method does not modify the state of the current object.
-     * Its name is misleading; a name like {@code calculateRequiredConsecutiveWords} would be more appropriate.
-     *
-     * @param level The game level to calculate the requirement for.
-     * @return The number of required consecutive words for the given level.
-     */
-    public int setRequiredConsecutiveWords(Level level) {
-        int requiredConsecutiveWords = 0;
-        int levelDifficulty = level.getDifficulty();
-        if (levelDifficulty == 1) {
-            requiredConsecutiveWords = 5;
-        } else if (levelDifficulty == 2) {
-            requiredConsecutiveWords = 10;
-        } else if (levelDifficulty == 3) {
-            requiredConsecutiveWords = 15;
-        }
-        return requiredConsecutiveWords;
-    }
 }

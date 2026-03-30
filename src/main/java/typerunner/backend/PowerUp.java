@@ -19,13 +19,6 @@ public interface PowerUp {
      */
     int level = 1;
 
-    /**
-     * Activates the power-up's effect on the specified player.
-     * The concrete implementation will define the specific behavior.
-     *
-     * @param player The player to apply the power-up to.
-     */
-    void activate(Player player);
 
     /**
      * Checks if the conditions required to trigger the power-up have been met.
