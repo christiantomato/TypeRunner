@@ -81,7 +81,13 @@ public class AccountCreationController {
             return;
         }
 
+        //get the instance of the account manager
+        AccountManager accountManager = AccountManager.getInstance();
+        //create a boolean to track successful creation
+        boolean success = false; 
+
         //create based on the account type
+
         if(accountTypeString.equals("Player")) {
             //check to make sure the administrator field is not empty
             if(administrator.isBlank()) {
@@ -90,26 +96,25 @@ public class AccountCreationController {
             }
 
             System.out.println("creating player account");
-            //TODO: pass in parameters to method
-
-            //get the instance of the account manager
-            AccountManager accountManager = AccountManager.getInstance();
-
-
-            //create the player account - we need to pass in the administrator as well!
-            //accountManager.createAccount(username, password, false, administrator)
+            success = accountManager.createAccount(username, password, false, administrator);
         }
+
         else if(accountTypeString.equals("Administrator")) {
             System.out.println("creating admin account");
-            //TODO: pass in parameters to method
+            success = accountManager.createAccount(username, password, true, administrator);
         }
+
         else {
             //the user has not selected...
             System.out.println("select an account type.");
         }
 
-        //TODO: set the correct display message based on return value from account creation
-        creationMessage.setText("Successfully Created");
+        if(success) {
+            creationMessage.setText("Successfully Created");
+        }
+        else {
+            creationMessage.setText("Unsuccessful");
+        }
     }
 
     /**
