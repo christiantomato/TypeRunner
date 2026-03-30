@@ -8,11 +8,23 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    //override the application classes start method
+    /**
+     * Start
+     * 
+     * A method from the Application class. We override it here and use it to
+     * setup our application and run the game. 
+     * 
+     * @param primaryStage the main stage that we start on
+     * @throws Exception if something goes wrong
+     */
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //create our FXML loader and initalize it with the main menu fxml file
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("frontend/fxml/menu.fxml"));
         //set the root node as the main menu fxml
-        Parent root = FXMLLoader.load(getClass().getResource("frontend/fxml/menu.fxml"));
+        Parent root = loader.load();
+
         //set the title of the stage 
         primaryStage.setTitle("TypeRunner");
         //create a scene with the root node to set on our stage
