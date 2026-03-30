@@ -14,7 +14,7 @@ import java.util.List;
  * This class handles all the logic with reading and writing from the player database.
  * There is only ever one instance of this class.
  * 
- * @author Noh Woldetinsae
+ * @author Olorunfemi Martins Kayode
  * @author Christian Tamayo
  */
 
