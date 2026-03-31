@@ -10,19 +10,13 @@ package typerunner.backend;
  */
 
 public class Player {
-    /** Username for the player */
+    /** username for the player */
     private String username;
-    /** Total games the user has played */
-    private int totalGames; 
-    /** User's total score across all games */
-    private int totalScore;
-    /** User's best score yet in a single game */
-    private int bestScore;
-    /** Highest level unlocked by the user */
-    private int unlockedLevel;
-    /** User's password for authentication */
+    /** user's password for authentication */
     private String password;
-
+    /** the statistics of the player */
+    private PlayerStatistics statistics;
+    /** boolean flag for the json file */
     protected boolean isAdmin = false;
 
     /** 
@@ -39,77 +33,77 @@ public class Player {
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
-        /* Start with 0 total games */
-        this.totalGames = 0;
-        /* Start with total score = 0 */
-        this.totalScore = 0;
-        /* Start with best score = 0 */
-        this.bestScore = 0; 
-        /* Start with unlocked level 1 */
-        this.unlockedLevel = 1; 
+        this.statistics = new PlayerStatistics(0,0,0,0,0,0,0, 0);
     }
 
     /** 
-     * Gets player username
+     * Get Username
+     * 
+     * Gets player username.
+     * 
      * @return player's username
      */
+
     public String getUsername() { 
         return username; 
     }
 
-    /** 
-     * Update player stats after game is finished
+    /**
+     * Get Password
      * 
-     * @param score the score the player got in the completed game
+     * Getter for password. 
+     * 
+     * @return the players password
      */
-    public void recordGame(int score) {
-        totalGames++;
-        totalScore += score;
 
-        if (score > bestScore) {
-            bestScore = score;
-        }
+    public String getPassword() {
+        return password;
     }
+
+    /**
+     * Set Password
+     * 
+     * Sets a new password for the player. 
+     * 
+     * @param newPassword the new password
+     */
+
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
+    } 
 
     /** 
      * Get user best score
      * @return player's best score
      */
+
     public int getBestScore() {
-        return bestScore;
+        return this.statistics.getHighestscore();
     }
 
     /** 
      * Get highest unlocked level
      * @return highest unlocked level
      */
+
     public int getUnlockedLevel() { 
-        return unlockedLevel;
+        return this.statistics.getLevel();
     }
 
     /** 
      * Set the player's unlocked level
      * @param unlockedLevel
      */
+
     public void setUnlockedLevel(int unlockedLevel) {
-        this.unlockedLevel = unlockedLevel;
+        this.statistics.setLevel(unlockedLevel);
     }
 
     /** 
      * Reset all stats back to default
      */
+
     public void resetStats() {
-        this.totalGames = 0;
-        this.totalScore = 0;
-        this.bestScore = 0;
-        this.unlockedLevel = 1;
+        this.statistics.resetActualStats();
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String newPassword) {
-        this.password = newPassword;
-    } 
 }
