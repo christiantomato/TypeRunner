@@ -61,14 +61,14 @@ public class Player {
     }
 
     /**
-     * Get isAdmin
+     * Is Admin
      * 
      * Getter for admin flag 
      * 
      * @return true if admin, false if just regular player
      */
 
-    public boolean getIsAdmin() {
+    public boolean isAdmin() {
         return this.isAdmin;
     }
 
