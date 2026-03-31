@@ -13,16 +13,12 @@ public class Dictionary {
     public Dictionary(){
 
         this.wordList = new ArrayList<>();
-        System.out.println(1);
-
         File file = new File("group01\\src\\main\\java\\typerunner\\backend\\data\\words.txt");
-        System.out.println(2);
 
         try {
             this.scanner = new Scanner(file);
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine().trim();
-                System.out.println(line);
                 if(line.length() > 1){
                     Word word = new Word(line);
                     wordList.add(word);
