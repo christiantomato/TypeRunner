@@ -44,7 +44,7 @@
                   </Button>
                </children>
             </VBox>
-            <MenuButton mnemonicParsing="false" text="Select Player Under Your Account" />
+            <MenuButton fx:id="playerMenu" mnemonicParsing="false" text="Select Player Under Your Account" />
          </children>
       </HBox>
    </center>
