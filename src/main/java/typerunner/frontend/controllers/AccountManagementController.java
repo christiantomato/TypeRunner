@@ -9,6 +9,9 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import typerunner.backend.AccountManager;
+import typerunner.backend.Admin;
+import typerunner.backend.Player;
 import typerunner.frontend.ScreenNavigator;
 
 /**
@@ -61,8 +64,21 @@ public class AccountManagementController {
             return;
         }
 
-        //TODO: check if the account exists, and if so, then popoulate the player menu with the right players list
-        populatePlayerMenu(new ArrayList<>());
+        //get the instance of the account manager
+        AccountManager accountManager = AccountManager.getInstance();
+        //look for the administrator
+        Player p = accountManager.findPlayer(username);
+
+        //check if they are actually an admin
+        if(p instanceof Admin) {
+            //cast
+            Admin admin = (Admin) p;
+            ArrayList<String> players = admin.getPlayers();
+            populatePlayerMenu(players);
+        }
+        else {
+            System.out.println("not an admin.");
+        }
     }
 
     /**
@@ -76,14 +92,14 @@ public class AccountManagementController {
      * @see selectPlayer
      */
 
-    private void populatePlayerMenu(List<String> players) {
+    private void populatePlayerMenu(ArrayList<String> players) {
         //clear before populating
         playerMenu.getItems().clear();
 
         //go through all the players
-        for(String player : players) {
+        for(String username : players) {
             //create a menu item for each player
-            MenuItem item = new MenuItem(player);
+            MenuItem item = new MenuItem(username);
             //set each menu button with an action to update the menu value if it is selected
             item.setOnAction(this::selectPlayer);
             //add it to the menu 
