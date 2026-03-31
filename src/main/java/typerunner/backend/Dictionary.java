@@ -11,13 +11,18 @@ public class Dictionary {
     private Scanner scanner;
 
     public Dictionary(){
+
         this.wordList = new ArrayList<>();
-        File file = new File("src/main/java/typerunner/backend/data/words.txt");
-       
+        System.out.println(1);
+
+        File file = new File("group01\\src\\main\\java\\typerunner\\backend\\data\\words.txt");
+        System.out.println(2);
+
         try {
-             this.scanner = new Scanner(file);
+            this.scanner = new Scanner(file);
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine().trim();
+                System.out.println(line);
                 if(line.length() > 1){
                     Word word = new Word(line);
                     wordList.add(word);
@@ -27,6 +32,7 @@ public class Dictionary {
            
         }
          catch (Exception e) {
+            System.out.println("Error reading the file: " + e.getMessage());
         }
    
     }
