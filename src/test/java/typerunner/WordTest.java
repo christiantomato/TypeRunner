@@ -14,8 +14,8 @@ public class WordTest {
     @BeforeEach
     void setUp() {
         word = new Word(
-            "testword", // fullText
-            100         // pointsValue
+            "testword" // fullText
+            //100 // pointsValue
         );
     }
 
