@@ -1,12 +1,8 @@
 [
   {
-    "playersManaging": [
-      "player",
-      "player1",
-      "player2"
-    ],
-    "username": "admin",
-    "password": "thepassword",
+    "playersManaging": [],
+    "username": "christomato",
+    "password": "mypassword",
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
@@ -18,50 +14,5 @@
       "totalWordsTyped": 0
     },
     "isAdmin": true
-  },
-  {
-    "username": "player",
-    "password": "password",
-    "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "highestscore": 0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": false
-  },
-  {
-    "username": "player1",
-    "password": "password",
-    "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "highestscore": 0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": false
-  },
-  {
-    "username": "player2",
-    "password": "password",
-    "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "highestscore": 0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": false
   }
 ]
