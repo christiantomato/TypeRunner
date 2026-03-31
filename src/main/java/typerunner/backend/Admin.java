@@ -35,6 +35,16 @@ public class Admin extends Player {
     }
 
     /**
+     * Get Players Managing
+     * 
+     * Getter for the list of players under the admin,
+     */
+
+    public ArrayList<String> getPlayers() {
+        return this.playersManaging;
+    }
+
+    /**
      * Add Player
      * 
      * Adds a player to the list under the admin. 
