@@ -54,7 +54,7 @@ public class LoginController {
             if successful, switch scenes, otherwise provide feedback for invalid login.
             */
             
-            //ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+            ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
         } 
 
         catch(Exception exception) {
