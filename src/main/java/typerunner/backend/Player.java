@@ -61,6 +61,30 @@ public class Player {
     }
 
     /**
+     * Get isAdmin
+     * 
+     * Getter for admin flag 
+     * 
+     * @return true if admin, false if just regular player
+     */
+
+    public boolean getIsAdmin() {
+        return this.isAdmin;
+    }
+
+    /**
+     * Get Statistics
+     * 
+     * Getter for player statistics
+     * 
+     * @return the statistics object
+     */
+
+    public PlayerStatistics getStatistics() {
+        return this.statistics;
+    }
+
+    /**
      * Set Password
      * 
      * Sets a new password for the player. 
