@@ -17,9 +17,9 @@ public class Word {
      * @param fullText The full text of the word that the player needs to type.
      * @param pointsValue The points value of the word, which determines how many points the player earns for typing it correctly.
      */
-    public Word(String fullText, int pointsValue) {
+    public Word(String fullText) {
         this.fullText = fullText;
-        this.pointsValue = pointsValue;
+        //this.pointsValue = pointsValue;
         this.typeIndex = 0;
     }
 
