@@ -18,7 +18,7 @@ import com.google.gson.JsonParser;
  * Account Manager
  *
  * This class handles all the logic with reading and writing from the player
- * database. There is only ever one instance of this class.
+ * database. There is only ever one instance of this class, accessible globally. 
  *
  * @author Olorunfemi Martins Kayode
  * @author Noh Woldetinsae

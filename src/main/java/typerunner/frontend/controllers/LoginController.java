@@ -3,6 +3,7 @@ package typerunner.frontend.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import typerunner.backend.LoginManager;
 import typerunner.frontend.ScreenNavigator;
 
 /**
@@ -49,12 +50,17 @@ public class LoginController {
                 return;
             }
 
-            /*
-            boolean successful = backend.login(username, password);
-            if successful, switch scenes, otherwise provide feedback for invalid login.
-            */
-            
-            ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+            //bring in the login manager
+            LoginManager loginManager = LoginManager.getInstance();
+            boolean successful = loginManager.login(username, password);
+
+            if(successful) {
+                System.out.println("successful login");
+                ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+            }
+            else {
+                System.out.println("invalid login");
+            }
         } 
 
         catch(Exception exception) {
