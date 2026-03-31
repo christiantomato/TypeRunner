@@ -34,7 +34,7 @@ public class Main {
     //Testing Dicionary.java to see if the words appear in the wordList
         Dictionary dictionary = new Dictionary();
         ArrayList<Word> words = dictionary.getWordList();
-        int limit = Math.min(10, words.size());
+        int limit = 10; // Limit the number of words printed to 10
         
         for (int i = 0; i < limit; i++) {
             Word currentWord = words.get(i);
