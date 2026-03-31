@@ -5,7 +5,7 @@ package typerunner.backend;
  * This class stores the player's name, their achieved score, and the level they reached.
  * @author Olorunfemi Martins
  */
-public class scores {
+public class Scores {
     private String name;
     private int score;
     private int level;
@@ -17,7 +17,7 @@ public class scores {
      * @param score the score achieved by the player
      * @param level the level reached by the player
      */
-    public scores(String name, int score, int level) {
+    public Scores(String name, int score, int level) {
         this.name = name;
         this.score = score;
         this.level = level;
