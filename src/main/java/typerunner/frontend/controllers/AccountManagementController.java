@@ -1,7 +1,6 @@
 package typerunner.frontend.controllers;
 
 import java.util.ArrayList;
-import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
