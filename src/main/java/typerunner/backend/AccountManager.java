@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -22,25 +21,19 @@ import com.google.gson.JsonParser;
  * database. There is only ever one instance of this class.
  *
  * @author Olorunfemi Martins Kayode
+ * @author Noh Woldetinsae
  * @author Christian Tamayo
  */
+
 public class AccountManager {
 
-    /**
-     * the singular instance of this class
-     */
+    /** the singular instance of this class */
     private static AccountManager instance;
-    /**
-     * the list of player account
-     */
+    /** the list of all accounts */
     private ArrayList<Player> accounts;
-    /**
-     * the database file
-     */
+    /** the database file of accounts */
     private File databaseFile;
-    /**
-     * not sure what a Gson is
-     */
+    /** our Gson */
     private final Gson gson;
 
     /**
@@ -52,11 +45,15 @@ public class AccountManager {
      *
      * @param filePath the json file storing account information
      */
+
     private AccountManager(String filePath) {
+        //set the file with the path
         this.databaseFile = new File(filePath);
-        // Pretty printing makes the JSON file human-readable
+        //create the Gson builder
         this.gson = new GsonBuilder().setPrettyPrinting().create();
+        //init the accounts list
         this.accounts = new ArrayList<>();
+        //load any data that has been written already
         loadAccounts();
     }
 
@@ -70,6 +67,7 @@ public class AccountManager {
      * @return the instance of the account manager
      * @see AccountManager
      */
+
     public static AccountManager getInstance() {
         //create an instance if there isn't one
         if (instance == null) {
@@ -82,22 +80,40 @@ public class AccountManager {
      * Set Player Under Admin
      *
      * Adds the player to the list of players for the admin.
-     *
      */
+
     public void setPlayerUnderAdmin(String adminUsername, String playerUsername) {
         Admin admin = (Admin) findPlayer(adminUsername);
         admin.addPlayer(playerUsername);
     }
 
-    // --- UML PUBLIC METHODS ---
+    /**
+     * Reset Statistics
+     * 
+     * Resets the statistics for a player, then writes the change to the file. 
+     * 
+     * @param player the player whose stats are being reset
+     * @return true if successful, false otherwise
+     */
+
     public boolean resetStats(Player player) {
-        if (player != null) {
+        if(player != null) {
             player.resetStats();
             saveAccounts();
             return true;
         }
         return false;
     }
+
+    /**
+     * Reset Password
+     * 
+     * Resets the password for the selected player.
+     * 
+     * @param player player whos password is being reset
+     * @param newPassword the new password
+     * @return true if successful, false otherwise
+     */
 
     public boolean resetPassword(Player player, String newPassword) {
         if (player != null && newPassword != null) {
@@ -118,6 +134,7 @@ public class AccountManager {
      * @param isAdmin admin account if true, player if false
      * @return true if account creation was successful
      */
+
     public boolean createAccount(String username, String password, boolean isAdmin, String adminstrator) {
         //make sure a player with that username does not already exist
         if (findPlayer(username) == null) {
@@ -145,53 +162,69 @@ public class AccountManager {
         return false;
     }
 
+    /**
+     * Find Player
+     * 
+     * Finds a player by their username, and returns the player object. 
+     * 
+     * @param username the player we are finding
+     * @return the player object
+     */
+
     public Player findPlayer(String username) {
-        if (username == null) {
+        if(username == null) {
             return null;
         }
+
         for (Player p : accounts) {
-            // Logic for entering it irrespective of case
-            if (p.getUsername().equalsIgnoreCase(username)) {
+            if (p.getUsername().equals(username)) {
                 return p;
             }
         }
         return null;
     }
 
-  public void loadAccounts() {
-    
-    if (!databaseFile.exists()) return;
+    /**
+     * Load Accounts
+     * 
+     * Responsible for reading from the Json and updating the information.
+     */
 
-    try (Reader reader = new FileReader(databaseFile)) {
-        // 1. Parse the JSON into a generic list of elements
-        JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
-        this.accounts = new ArrayList<>();
+    public void loadAccounts() {
+        if (!databaseFile.exists()) return;
 
-        for (JsonElement element : jsonArray) {
-            JsonObject obj = element.getAsJsonObject();
-            
-            // 2. Check the "isAdmin" flag we saved
-            boolean isThisAnAdmin = obj.has("isAdmin") && obj.get("isAdmin").getAsBoolean();
+        try (Reader reader = new FileReader(databaseFile)) {
+            //parse the JSON into a generic list of elements
+            JsonArray jsonArray = JsonParser.parseReader(reader).getAsJsonArray();
+            this.accounts = new ArrayList<>();
 
-            if (isThisAnAdmin) {
-                // Force Gson to build an Admin object (including the managed list)
-                this.accounts.add(gson.fromJson(obj, Admin.class));
-            } else {
-                // Build a standard Player object
-                this.accounts.add(gson.fromJson(obj, Player.class));
+            for (JsonElement element : jsonArray) {
+                JsonObject obj = element.getAsJsonObject();
+                
+                //check the "isAdmin" boolean
+                boolean isThisAnAdmin = obj.has("isAdmin") && obj.get("isAdmin").getAsBoolean();
+
+                if(isThisAnAdmin) {
+                    //build an Admin
+                    this.accounts.add(gson.fromJson(obj, Admin.class));
+                } 
+                else {
+                    //build a player
+                    this.accounts.add(gson.fromJson(obj, Player.class));
+                }
             }
+        } 
+        catch (IOException e) {
+            System.err.println("Error loading JSON: " + e);
         }
-    } catch (IOException e) {
-        System.err.println("Error loading JSON: " + e.getMessage());
     }
-}
 
     /**
      * Save Accounts to Database
      *
      * Writes the data from the accounts list into pretty string in the json.
-     *
      */
+
     public void saveAccounts() {
         try {
             Writer writer = new FileWriter(databaseFile);
@@ -202,10 +235,15 @@ public class AccountManager {
         }
     }
 
-    
+    /**
+     * Get Accounts
+     * 
+     * A getter for the list of accounts. 
+     * 
+     * @return list of the accounts
+     */
 
     public ArrayList<Player> getAccounts() {
         return accounts;
     }
-
 }
