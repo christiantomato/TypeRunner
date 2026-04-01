@@ -16,7 +16,7 @@ public class Dictionary {
         
 
         try {
-            File file = new File(getClass().getResource("/typerunner/backend/data/words.txt").toURI());
+            File file = new File(getClass().getResource("/data/words.txt").toURI());
             this.scanner = new Scanner(file);
             
             while(scanner.hasNextLine()){
