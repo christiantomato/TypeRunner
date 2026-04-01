@@ -44,6 +44,6 @@ public class SelectLevelController {
 
     public void backButton(ActionEvent e) throws IOException{
         System.out.println("back");
-        ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
     }
 }

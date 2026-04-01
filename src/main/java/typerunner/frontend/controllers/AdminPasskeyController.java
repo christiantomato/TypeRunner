@@ -51,7 +51,7 @@ public class AdminPasskeyController {
             //check the passkey
             if(passkey.equals(PASSKEY)) {
                 System.out.println("going to admin controls");
-                ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
+                ScreenNavigator.switchScene(e, "/fxml/admin-controls.fxml");
             }
             else {
                 System.out.println("incorrect passkey");
@@ -76,7 +76,7 @@ public class AdminPasskeyController {
     private void returnToMenu(ActionEvent e) {
         try {
             System.out.println("going back to menu page");
-            ScreenNavigator.switchScene(e, "fxml/menu.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
         } 
 
         catch(Exception exception) {

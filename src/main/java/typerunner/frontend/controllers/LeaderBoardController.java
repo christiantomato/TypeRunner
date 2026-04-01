@@ -8,11 +8,11 @@ public class LeaderBoardController {
     
     public void mainMenu(ActionEvent e) throws IOException {
         System.out.println("Back");
-        ScreenNavigator.switchScene(e, "fxml/menu.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
     }
 
     public void individualStats(ActionEvent e) throws IOException {
         System.out.println("individual stats");
-        ScreenNavigator.switchScene(e, "fxml/leaderboard-individual-stats.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/leaderboard-individual-stats.fxml");
     }
 }

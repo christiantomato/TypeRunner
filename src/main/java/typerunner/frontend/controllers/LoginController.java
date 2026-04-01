@@ -59,7 +59,7 @@ public class LoginController {
                 System.out.println("successful login");
                 //initilize game engine with the player information -- Sahej
                 GameEngine.getInstance().init(loginManager.getCurrentUser());
-                ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+                ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
             }
             else {
                 System.out.println("invalid login");
@@ -83,7 +83,7 @@ public class LoginController {
     private void returnToMenu(ActionEvent e) {
         try {
             System.out.println("going back to menu page");
-            ScreenNavigator.switchScene(e, "fxml/menu.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
         } 
 
         catch(Exception exception) {

@@ -24,7 +24,7 @@ public class GameScreenController implements Initializable {
 
     public void backButton(ActionEvent e) throws IOException{
         System.out.println("back");
-        ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
     }
 
     public void startGame(ActionEvent e){

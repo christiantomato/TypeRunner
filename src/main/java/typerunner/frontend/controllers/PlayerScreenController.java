@@ -43,17 +43,17 @@ public class PlayerScreenController {
 
     public void newGame(ActionEvent e) throws IOException{
         System.out.println("new game");
-        ScreenNavigator.switchScene(e, "fxml/game-screen.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/game-screen.fxml");
     }
 
     public void selectLevel(ActionEvent e) throws IOException{
         System.out.println("select level");
-        ScreenNavigator.switchScene(e, "fxml/select-level.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/select-level.fxml");
     }
 
     public void viewStats(ActionEvent e) throws IOException{
         System.out.println("statistics");
-        ScreenNavigator.switchScene(e, "fxml/statistics.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/statistics.fxml");
     }
 
     public void logOut(ActionEvent e) throws IOException{
@@ -63,6 +63,6 @@ public class PlayerScreenController {
         LoginManager loginManager = LoginManager.getInstance();
         loginManager.logout();
 
-        ScreenNavigator.switchScene(e, "fxml/login.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/login.fxml");
     }
 }

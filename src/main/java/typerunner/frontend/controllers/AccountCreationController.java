@@ -128,7 +128,7 @@ public class AccountCreationController {
     public void returnToAdminControls(ActionEvent e) {
         try {
             System.out.println("returning to admin controls");
-            ScreenNavigator.switchScene(e, "fxml/admin-controls.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/admin-controls.fxml");
         } 
 
         catch (Exception exception) {

@@ -27,7 +27,7 @@ public class MenuController {
     private void goToLogin(ActionEvent e) {
         try {
             System.out.println("going to login");
-            ScreenNavigator.switchScene(e, "fxml/login.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/login.fxml");
         } 
 
         catch(Exception exception) {
@@ -47,7 +47,7 @@ public class MenuController {
     private void goToPasskey(ActionEvent e) {
         try {
             System.out.println("going to passkey first");
-            ScreenNavigator.switchScene(e, "fxml/admin-passkey.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/admin-passkey.fxml");
         } 
         
         catch(Exception exception) {
@@ -67,7 +67,7 @@ public class MenuController {
     private void goToLeaderboard(ActionEvent e) {
          try {
             System.out.println("going to leaderboard");
-            ScreenNavigator.switchScene(e, "fxml/leaderboard.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/leaderboard.fxml");
         } 
         
         catch(Exception exception) {
@@ -87,7 +87,7 @@ public class MenuController {
     private void goToTutorial(ActionEvent e) {
          try {
             System.out.println("going to tutorial");
-            ScreenNavigator.switchScene(e, "fxml/tutorial.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/tutorial.fxml");
         } 
         
         catch(Exception exception) {

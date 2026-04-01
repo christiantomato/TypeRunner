@@ -22,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         //create our FXML loader and initalize it with the main menu fxml file
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/typerunner/frontend/fxml/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
         
         //set the root node as the main menu fxml
         Parent root = loader.load();
@@ -32,6 +32,9 @@ public class Main extends Application {
         
         //create a scene with the root node to set on our stage
         primaryStage.setScene(new Scene(root));
+
+        //load css file
+        primaryStage.getScene().getStylesheets().add(getClass().getResource("/styles/global.css").toExternalForm());
         
         //set fullscreen and dont let them leave
         // primaryStage.setFullScreen(true);
