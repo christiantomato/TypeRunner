@@ -26,7 +26,8 @@ public class GameEngine {
     public void startGame() {
 
         // Initialize game stat
-        isGameRunning = true;}
+        isGameRunning = true;
+    }
     public void updateGame() {
         // Update game state, check for win/loss conditions, etc.
     }

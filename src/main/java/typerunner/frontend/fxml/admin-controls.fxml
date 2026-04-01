@@ -2,47 +2,53 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.AdminControlsController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="146.0" minWidth="0.0" prefWidth="65.0" />
-    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="550.0" minWidth="10.0" prefWidth="450.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="197.0" minWidth="0.0" prefWidth="68.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="186.0" minHeight="10.0" prefHeight="181.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Controls" textAlignment="CENTER" wrappingWidth="389.00390625" GridPane.columnIndex="1">
-         <font>
-            <Font size="60.0" />
-         </font>
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Text>
-      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToCreateAccount" text="Create Account" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button mnemonicParsing="false" onAction="#returnToMenu" text="←" textAlignment="CENTER" GridPane.columnIndex="2">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-   </children>
-</GridPane>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.AdminControlsController">
+   <top>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Region prefHeight="200.0" prefWidth="0.0" />
+            <Region prefHeight="200.0" prefWidth="45.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Controls" textAlignment="CENTER" wrappingWidth="389.00390625">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Text>
+            <Region prefHeight="200.0" prefWidth="30.0" />
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#returnToMenu" text="←" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="228.0" prefWidth="600.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToCreateAccount" text="Create Account" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToAccountManagement" text="Account Management" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Region prefHeight="109.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

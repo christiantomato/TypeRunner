@@ -14,7 +14,7 @@ public class Race {
     /** The total number of words in the race text. */
     private int totalWords;
     /** The difficulty level of the current race. */
-    private Level level;
+    private Level level = Level.HIGHSCHOOL;
     /** The speed of the bot opponent. */
     private int botSpeed;
     /** The elapsed time in the race. */

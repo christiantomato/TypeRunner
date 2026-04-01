@@ -79,5 +79,10 @@ public class Word {
         return fullText.substring(typeIndex);
     }
 
+    @Override
+    public String toString(){
+        return fullText;
+    }
+
 
 }
