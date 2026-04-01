@@ -22,15 +22,15 @@
       <VBox layoutX="98.0" layoutY="68.0" prefHeight="165.0" prefWidth="405.0" spacing="5.0">
          <children>
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Rectangle fx:id="player1" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Rectangle fx:id="player2" arcHeight="5.0" arcWidth="5.0" fill="RED" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LIME" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Rectangle fx:id="player3" arcHeight="5.0" arcWidth="5.0" fill="LIME" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Rectangle fx:id="player4" arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="AQUA" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+            <Rectangle fx:id="player5" arcHeight="5.0" arcWidth="5.0" fill="AQUA" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
             <Line endX="305.0" endY="-1.0" startX="-100.0" />
          </children>
       </VBox>
@@ -51,7 +51,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                  <Text fx:id="currLevel" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -75,8 +75,8 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Ups:" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Polygon fill="TRANSPARENT" points="18.0, 40.0, 47.5, 29.0, 18.0, 18.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fill="TRANSPARENT" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Polygon fx:id="speedUp" fill="TRANSPARENT" points="18.0, 40.0, 47.5, 29.0, 18.0, 18.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="increaseStamina" fill="TRANSPARENT" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
                      </children>
                   </HBox>
                </children>
@@ -91,31 +91,31 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WPM: " />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="wpm" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="score" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="highScore" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Health:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="health" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
          </children>
@@ -186,7 +186,8 @@
       </VBox>
       <AnchorPane layoutX="98.0" layoutY="235.0" prefHeight="165.0" prefWidth="410.0">
          <children>
-            <TextArea layoutX="1.0" prefHeight="165.0" prefWidth="410.0" promptText="Paragraph goes here" wrapText="true" />
+            <TextArea fx:id="input" layoutY="97.0" prefHeight="68.0" prefWidth="411.0" promptText="Paragraph goes here" wrapText="true" />
+            <Text fx:id="paragraph" layoutX="2.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="411.0" />
          </children>
       </AnchorPane>
    </children>

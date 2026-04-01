@@ -26,61 +26,61 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Average WPM:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="avgWPM" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak WPM - HS:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="peakWPMHighSchool" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak WPM - College:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="peakWPMCollege" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peal WPM - Olympics:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="peakWPMOlympics" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Accuracy %:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="accuracy" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Error Count:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="errorCount" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Played:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="timePlayed" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="High Score:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="highScore" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Highest Level:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="highestLevel" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Words Typed Correct:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="wordsTypedCorrect" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
          </children>
