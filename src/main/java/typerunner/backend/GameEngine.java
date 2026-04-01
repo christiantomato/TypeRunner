@@ -2,11 +2,22 @@ package typerunner.backend;
 
 public class GameEngine {
 
+    private static GameEngine instance;
+
     private Player currentPlayer;
     private Race currentRace;
     private boolean isGameRunning;
 
-    public GameEngine(Player player) {
+    private GameEngine(){}
+
+    public static GameEngine getInstance(){
+        if (instance == null){
+            instance = new GameEngine();
+        }
+        return instance;
+    }
+
+    public void init(Player player) {
         this.currentPlayer = player;
         this.currentRace = new  Race();
         this.isGameRunning = true;
@@ -23,6 +34,14 @@ public class GameEngine {
     public void endGame() {
         // Handle end of game logic, such as displaying results, saving stats, etc.
         isGameRunning = false;
+    }
+
+    public void setLevel(Level level){
+        this.currentRace.setLevel(level);
+    }
+
+    public Level getLevel(){
+        return this.currentRace.getLevel();
     }
 
 }

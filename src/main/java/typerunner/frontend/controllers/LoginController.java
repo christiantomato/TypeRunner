@@ -3,6 +3,7 @@ package typerunner.frontend.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import typerunner.backend.GameEngine;
 import typerunner.backend.LoginManager;
 import typerunner.frontend.ScreenNavigator;
 
@@ -56,6 +57,8 @@ public class LoginController {
 
             if(successful) {
                 System.out.println("successful login");
+                //initilize game engine with the player information -- Sahej
+                GameEngine.getInstance().init(loginManager.getCurrentUser());
                 ScreenNavigator.switchScene(e, "fxml/player-screen.fxml");
             }
             else {

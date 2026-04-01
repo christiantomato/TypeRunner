@@ -31,7 +31,7 @@ public class Main {
         //accountManager.saveAccountsToJson();
 
 
-    //Testing Dicionary.java to see if the words appear in the wordList
+        //Testing Dicionary.java to see if the words appear in the wordList
         Dictionary dictionary = new Dictionary();
         ArrayList<Word> words = dictionary.getWordList();
         int limit = 10; // Limit the number of words printed to 10
@@ -44,12 +44,11 @@ public class Main {
         if (words.isEmpty()) {
             System.out.println("The word list is empty. Check your file path or words.txt content.");
         }
+
+
+        
     }
-
-
-
-
-    }
+}
 
     
     

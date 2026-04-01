@@ -88,4 +88,11 @@
          </padding>
       </GridPane>
    </top>
+   <bottom>
+      <Text fx:id="message" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="TOP_CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+      </Text>
+   </bottom>
 </BorderPane>
