@@ -74,11 +74,24 @@ public class GameEngine {
     /**
      * End Game
      * 
-     * Ends the game. 
+     * Ends the game, and writes all the statistics for the player.
      */
 
     public void endGame() {
-        isGameRunning = false;
+        //write all the statistics
+        Player player = LoginManager.getInstance().getCurrentUser();
+
+
+
+
+
+
+        //player.getStatistics().insertStats(0, 0, 0, 0, 0, 0, 0, null, 0);
+
+
+
+
+        this.isGameRunning = false;
     }
 
     /**
