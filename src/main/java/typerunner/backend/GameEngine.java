@@ -127,4 +127,8 @@ public class GameEngine {
     public Level getLevel(){
         return this.currentLevel;
     }
+
+    public boolean isGameRunning() {
+        return this.isGameRunning;
+    }
 }
