@@ -32,9 +32,7 @@
     "isAdmin": true
   },
   {
-    "playersManaging": [
-      "Femi"
-    ],
+    "playersManaging": [],
     "username": "noh",
     "password": "123",
     "statistics": {
@@ -62,6 +60,6 @@
       "highestscore": 0,
       "totalWordsTyped": 0
     },
-    "isAdmin": false
+    "isAdmin": true
   }
 ]
