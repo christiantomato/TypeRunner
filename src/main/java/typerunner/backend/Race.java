@@ -90,6 +90,15 @@ public class Race {
         this.botSpeed = level.getDifficulty() * 10;
     }
 
+    /*
+    * Return the full race text
+     */
+    public String getRaceText() {
+        return this.raceText;
+    }
+
+
+
     /**
      * Processes a single character input.
      * @param input The character typed by the user.
