@@ -18,66 +18,60 @@ import java.util.Random;
 
 public class Race {
 
+    //Typing 
+
+    /** The word list used for this specific race */
+    private ArrayList<Word> wordList;
     /** The total number of words in the race text.*/
     private int totalWords;
+    /** The actual string of words that the frontend will use */
+    private String raceText;
+    /** The index in the string of the race text */
+    private int currentRaceIndex = 0;
+    /** The index for the current word the player is typing from wordList */
+    private int currentWordIndex = 0;
+
+    //race variables
 
     /** The elapsed time in the race.*/
     private int time;
-
-    /** The number of consecutively typed correct words.*/
-    private int wordsTyped;
-
-    /** Counter for correct characters typed. */
-    private int correctCounter = 0;
-
-    /** The player's current words per minute (WPM).*/
-    private int wpm;
-    
-    /**Peak wpm for the race */
-    private int peakWPM = 0;
-
-    /**Accuracy */
-    private double accuracy = 0.0;
-
-    /**Error count */
-    private int errorCount = 0;
-
-    /** Current score */
-    private Score score;
-
-    /** The player's current stamina, ranging from 0 to 100.*/
-    private int stamina = 100;
-
-    /** The word list used for this specific race*/
-    private ArrayList<Word> wordList;
-
-    /**The actual string of words that the frontend will use*/
-    private String raceText;
-
-    /** The index for the race text*/
-    private int currentRaceIndex = 0;
-
-    /** Track the current word the player is typing from wordList */
-    private int currentWordIndex = 0;
-
     /** Track the start and end times of the race */
     private long startTime;
     private long endTime;
-
-    /** Speed of the bot i.e. duration of translation */
+    /** Counter for correct characters typed. */
+    private int correctCounter = 0;
+    /** Error count */
+    private int errorCount = 0;
+    
+     /** Speed of the bot i.e. duration of translation */
     private int botSpeed;
 
-    /** the base words */
-    public static final int BASE_WORDS = 25;
-    /** the max amount */
-    public static final int MAX = 5460;
+    //player statistics tracking
 
-    
+    /** The player's current words per minute (WPM).*/
+    private int wpm;
+    /** Peak wpm for the race */
+    private int peakWPM = 0;
+    /** Accuracy */
+    private double accuracy = 0.0;
+    /** Current score */
+    private Score score;
+    /** The number of consecutively typed correct words.*/
+    private int currentWordStreak;
+    /** The player's current stamina, ranging from 0 to 100.*/
+    private int stamina = 100;
+
+    //constants
+
+    /** base words constant */
+    public static final int BASE_WORDS = 25;
+    /** max words list constant */
+    public static final int MAX = 5460;
 
     public Race() {
         // Initialize starting values
         this.currentWordIndex = 0;
-        this.wordsTyped = 0;
+        this.currentWordStreak = 0;
         this.wpm = 0;
         this.stamina = 100;
         this.time = 0;
@@ -180,14 +174,14 @@ public class Race {
         System.out.println("current word: " + currentWord);
         System.out.println("current word index now: " + currentWord.getTypeIndex());
         System.out.println("Elapsed time in seconds: " + getTimeInSeconds() + "s");
-        System.out.println("Current stamina: " + getstamina());
+        System.out.println("Current stamina: " + getStamina());
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
             this.correctCounter++; // Increment correct character counter for accuracy calculation
             if (currentWord.isComplete()) {
                 System.out.println("going to next word.");
-                wordsTypedIncrement(currentWord); 
+                currentWordStreakIncrement(currentWord); 
                 currentWordIndex++;
             }
         } else {
@@ -389,17 +383,17 @@ public class Race {
      * @param word the {@link Word} object that was just attempted by the
      * player.
      */
-    public void wordsTypedIncrement(Word word) {
+    public void currentWordStreakIncrement(Word word) {
         if (word.isComplete()) {
-            wordsTyped++;
+            currentWordStreak++;
         } else {
             reducestamina(10); // Reduce stamina by 20 for each incorrect word
             System.out.println("REDUCED STAMINA " + stamina);
-            wordsTyped = 0; // Reset consecutive words count on incorrect word 3
+            currentWordStreak = 0; // Reset consecutive words count on incorrect word 3
         }
 
-        int stams = getstamina();
-        if (stams <= 50 && wordsTyped > 0) {
+        int stams = getStamina();
+        if (stams <= 50 && currentWordStreak > 0) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
                 stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
@@ -412,15 +406,15 @@ public class Race {
         /*Old logic for speedboost */
  /* 
         int levelnum = level.getDifficulty();
-        if (levelnum == 1 && wordsTyped == 5) {
+        if (levelnum == 1 && currentWordStreak == 5) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 2 && wordsTyped == 10) {
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
+        } else if (levelnum == 2 && currentWordStreak == 10) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 3 && wordsTyped == 15) {
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
+        } else if (levelnum == 3 && currentWordStreak == 15) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
         }
          */
     }
@@ -432,7 +426,7 @@ public class Race {
 
         int elapsedTimeInSeconds = getTimeInSeconds();
         if (elapsedTimeInSeconds > 0) {
-            this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
+            this.wpm = (int) ((currentWordStreak / (double) elapsedTimeInSeconds) * 60);
             if (this.wpm > this.peakWPM) {
                 this.peakWPM = this.wpm; // Update peak WPM if current WPM is higher
             }
@@ -480,7 +474,7 @@ public class Race {
      *
      * @return the current stamina value.
      */
-    public int getstamina() {
+    public int getStamina() {
         return stamina;
     }
 
