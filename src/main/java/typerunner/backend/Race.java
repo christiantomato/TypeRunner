@@ -16,34 +16,34 @@ import java.util.Random;
  */
 public class Race {
 
-    /*The total number of words in the race text.*/
+    /** The total number of words in the race text.*/
     private int totalWords;
-    
-    /**The elapsed time in the race.*/
+
+    /** The elapsed time in the race.*/
     private int time;
 
-    /**The number of consecutively typed correct words.*/
+    /** The number of consecutively typed correct words.*/
     private int wordsTyped;
 
-    /*** The player's current words per minute (WPM).*/
+    /** The player's current words per minute (WPM).*/
     private int wpm;
 
-    /**The player's current speed or progress metric. Will be used to determine how far the player goes in the screen*/
+    /** The player's current speed or progress metric. Will be used to determine how far the player goes in the screen*/
     private int playerSpeed;
 
     /** The player's current stamina, ranging from 0 to 100.*/
     private int Stamina = 100;
 
-    /**The word list used for this specific race*/
+    /*The word list used for this specific race*/
     private ArrayList<Word> wordList;
 
     /**The actual string of words that the frontend will use*/
     private String raceText;
 
-    /** the index for the race text */
+    /**The index for the race text*/
     private int currentRaceIndex = 0;
 
-    /* Track the current word the player is typing from wordList */
+    /* *Track the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
     /* Track the start and end times of the race */
@@ -76,14 +76,12 @@ public class Race {
         //int randomIndex = random.nextInt(5460);
         //list.add(dictionary.getWordList().get(randomIndex));
         //fullText.append(list.get(0).getFullText());
-
-
         for (int i = 0; i < numWords; i++) {
             int randomIndex = random.nextInt(5460);
             String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
-            
+
             //add a space after each word except for the last one
-            if(i<numWords -1){
+            if (i < numWords - 1) {
                 wordToAdd += " ";
             }
 
@@ -106,8 +104,7 @@ public class Race {
         * Set bot speed based on the level's difficulty
 
         this.botSpeed = level.getDifficulty() * 10; 
-        */
-        
+         */
     }
 
     /**
@@ -121,19 +118,14 @@ public class Race {
 
     /**
      * Get Current Race Index
-     * 
+     *
      * Getter for the index in the race text
-     * 
+     *
      * @return the current index in the race text
      */
-
     public int getCurrentRaceIndex() {
         return this.currentRaceIndex;
     }
-
-
-
-    
 
     /**
      * Processes a single character input.
@@ -141,11 +133,19 @@ public class Race {
      * @param input The character typed by the user get that
      * @return true if the character was correct, false otherwise.
      */
-
     public boolean checkInput(char input) {
+        // when the first char is typed, start the timer
+        if (currentRaceIndex == 0) {
+            System.out.println("starting timer");
+            startRaceTime();
+        }
         if (currentWordIndex >= wordList.size()) {
             return false; // prevent indexOutofBounds exception if all words are completed
         }
+
+        //update WPM every time they type a char
+        updateWpm();
+        System.out.println("current WPM: " + getWpm());
 
         // Get the word the player is currently supposed to type from the wordList
         Word currentWord = wordList.get(currentWordIndex);
@@ -156,12 +156,13 @@ public class Race {
 
         System.out.println("current word: " + currentWord);
         System.out.println("current word index now: " + currentWord.getTypeIndex());
+        System.out.println("Elapsed time in seconds: " + getTimeInSeconds() + "s");
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
-            if(currentWord.isComplete()) {
+            if (currentWord.isComplete()) {
                 System.out.println("going to next word.");
-                //wordsTypedIncrement(currentWord); 
+                wordsTypedIncrement(currentWord); 
                 currentWordIndex++;
             }
         } else {
@@ -169,26 +170,28 @@ public class Race {
             reduceStamina(5);
         }
 
-        this.currentRaceIndex+=1;
+        this.currentRaceIndex += 1;
+        if (this.currentRaceIndex >= raceText.length()) {
+            System.out.println("ending timer");
+            endRaceTime(); // End the timer when the last character is typed
+        }
         return isCorrect;
     }
 
     /**
      * Handle Backspace
-     * 
+     *
      * Decrements indices when backspace is pressed.
      */
-
     public void handleBackspace() {
         System.out.println("handling backspace start");
-
         //Get the word the player is currently supposed to type from the wordList
         Word currentWord = wordList.get(this.currentWordIndex);
 
         //if we are on the first letter of the word
-        if(currentWord.getTypeIndex() == 0){
+        if (currentWord.getTypeIndex() == 0) {
             //go back a word unless we are on the very first word
-            if(this.currentWordIndex == 0) {
+            if (this.currentWordIndex == 0) {
                 return;
             }
             //go back a word
@@ -197,17 +200,17 @@ public class Race {
             currentWord = wordList.get(this.currentWordIndex);
             //decrement index
             currentWord.decrementTypeIndex();
-        }
-        else {
+        } else {
             //otherwise, go back a letter in the word
             currentWord.decrementTypeIndex();
         }
 
         System.out.println("the current word: " + currentWord);
         System.out.println("the index for the current word now: " + currentWord.getTypeIndex());
+        
 
         //decrement it for the entire race text
-        if(this.currentRaceIndex > 0) {
+        if (this.currentRaceIndex > 0) {
             this.currentRaceIndex--;
         }
     }
@@ -244,8 +247,6 @@ public class Race {
         this.totalWords = totalWords;
     }
 
-
-
     /**
      * Gets the speed of the bot opponent.
      *
@@ -256,8 +257,9 @@ public class Race {
     }
 
     /**
-     * Sets the speed of the bot opponent.
-     * This will be used to set the translation duration of the bot in the frontend and will be based on the level difficulty and if the speedboost powerup is triggered or not
+     * Sets the speed of the bot opponent. This will be used to set the
+     * translation duration of the bot in the frontend and will be based on the
+     * level difficulty and if the speedboost powerup is triggered or not
      *
      * @param botSpeed the bot's new speed.
      * @return the bot's updated speed.
@@ -268,12 +270,17 @@ public class Race {
     }
 
     /**
-     * Gets the elapsed time of the race.
+     * Gets the elapsed time of the race. This will be used to calculate the
+     * player's WPM and also for the frontend to display
      *
      * @return elapsed time
      */
     public int getTimeInSeconds() {
-        return (int) ((endTime - startTime) / 1000);
+        long now = System.currentTimeMillis();
+        if (this.endTime > 0) {
+            now = endTime;
+        }
+        return (int) ((now - startTime) / 1000);
     }
 
     /**
@@ -331,8 +338,7 @@ public class Race {
                 // Handle default case if needed
                 break;
         }
-        */
-
+         */
     }
 
     /**
@@ -374,7 +380,7 @@ public class Race {
         }
 
         /*Old logic for speedboost */
-        /* 
+ /* 
         int levelnum = level.getDifficulty();
         if (levelnum == 1 && wordsTyped == 5) {
             triggerSpeedBoost(levelnum);
@@ -386,8 +392,7 @@ public class Race {
             triggerSpeedBoost(levelnum);
             wordsTyped = 0; // Reset consecutive words count after triggering boost
         }
-        */
-
+         */
     }
 
     /**
@@ -396,14 +401,14 @@ public class Race {
      * @return the current WPM.
      */
     public int getWpm() {
-        return wpm;
+        return this.wpm;
     }
 
     /**
      * Updates the player's words per minute (WPM).
      */
     public void updateWpm() {
-        
+
         int elapsedTimeInSeconds = getTimeInSeconds();
         if (elapsedTimeInSeconds > 0) {
             this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
@@ -429,7 +434,6 @@ public class Race {
     public int checkStamina() {
         return Stamina;
     }
-
 
     /**
      * Reduces the player's stamina by a specified amount. Stamina will not drop
