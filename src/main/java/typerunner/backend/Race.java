@@ -36,24 +36,29 @@ public class Race {
     /** The player's current stamina, ranging from 0 to 100.*/
     private int Stamina = 100;
 
-    /*The word list used for this specific race*/
+    /** The word list used for this specific race*/
     private ArrayList<Word> wordList;
 
     /**The actual string of words that the frontend will use*/
     private String raceText;
 
-    /**The index for the race text*/
+    /** The index for the race text*/
     private int currentRaceIndex = 0;
 
-    /* *Track the current word the player is typing from wordList */
+    /** Track the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
-    /* Track the start and end times of the race */
+    /** Track the start and end times of the race */
     private long startTime;
     private long endTime;
 
-    /*Speed of the bot i.e. duration of translation */
+    /** Speed of the bot i.e. duration of translation */
     private int botSpeed;
+
+    /** the base words */
+    public static final int BASE_WORDS = 25;
+    /** the max amount */
+    public static final int MAX = 5460;
 
     public Race() {
         //this.level = GameEngine.getInstance().getLevel();
@@ -67,7 +72,7 @@ public class Race {
         //get difficulty and num words
         ArrayList<Word> list = new ArrayList<>();
         int multiplier = GameEngine.getInstance().getLevel().getDifficulty();
-        int numWords = 25 * multiplier;
+        int numWords = BASE_WORDS * multiplier;
 
         Dictionary dictionary = new Dictionary();
         Random random = new Random();
@@ -79,7 +84,7 @@ public class Race {
         //list.add(dictionary.getWordList().get(randomIndex));
         //fullText.append(list.get(0).getFullText());
         for (int i = 0; i < numWords; i++) {
-            int randomIndex = random.nextInt(5460);
+            int randomIndex = random.nextInt(MAX);
             String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
 
             //add a space after each word except for the last one
