@@ -35,9 +35,22 @@ public class Word {
      * Returns the current index of the character being typed.
      * @return The current index of the character being typed.
      */ 
+
     public int getTypeIndex() {
         return typeIndex;
     }
+
+    /**
+     * Decrement Type Index
+     * 
+     * Called when we need to move back in a word for backspace 
+     */
+
+    public void decrementTypeIndex() {
+        this.typeIndex -= 1; 
+    }
+
+
     /**
      * Returns the points value of the word.
      * @return The points value of the word.
