@@ -80,6 +80,13 @@ public class GameEngine {
         //write all the statistics
         Player player = LoginManager.getInstance().getCurrentUser();
 
+        
+        currentRace.updateAccuracy();
+        currentRace.updateWpm();
+
+        //dummy 
+        currentRace.getTimeInSeconds();
+
         //Getting the race stats to update with recent stats
         player.getStatistics().updateStats(currentRace.getWpm(), currentRace.getPeakWPM(), currentRace.getAccuracy(), currentRace.getErrorCount(), currentRace.getTimeInMinutes(), currentRace.getScore(), currentRace.getCorrectlyTypedWords());
         AccountManager.getInstance().saveAccounts(); // save the statstiics to the user's account
