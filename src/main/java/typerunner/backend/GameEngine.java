@@ -66,6 +66,9 @@ public class GameEngine {
 
     public void updateGame() {
         // Update game state, check for win/loss conditions, etc.
+        currentRace.updateAccuracy();
+        currentRace.updateWpm();
+        //currentRace.updateStamina();
     }
 
     /**

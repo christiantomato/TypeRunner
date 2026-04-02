@@ -72,6 +72,8 @@ public class Race {
     /** the max amount */
     public static final int MAX = 5460;
 
+    
+
     public Race() {
         // Initialize starting values
         this.currentWordIndex = 0;
@@ -156,6 +158,7 @@ public class Race {
     public boolean checkInput(char input) {
         // when the first char is typed, start the timer
         if (currentRaceIndex == 0) {
+            GameEngine.getInstance().updateGame();
             System.out.println("starting timer");
             startRaceTime();
         }
@@ -198,6 +201,8 @@ public class Race {
         if (this.currentRaceIndex >= raceText.length()) {
             System.out.println("ending timer");
             endRaceTime(); // End the timer when the last character is typed
+
+            GameEngine.getInstance().endGame();  // when the player finishes a race, call the endGame method in GameEngine
         }
         return isCorrect;
     }
@@ -448,7 +453,6 @@ public class Race {
      * @return score
      */
     public int getScore() {
-        
         return this.score.calculateScore(GameEngine.getInstance().getLevel(),this.wpm, this.accuracy);
     }
 
