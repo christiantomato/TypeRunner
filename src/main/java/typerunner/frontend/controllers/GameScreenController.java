@@ -80,8 +80,10 @@ public class GameScreenController implements Initializable {
         //clear before setting up
         paragraph.getChildren().clear();
         System.out.println("start");
+        
+        Race newRace = new Race();
 
-        Race newRace = new Race(null)
+        targetText = newRace.getRaceText();
 
         //add it to the text flow
         Text textNode = new Text(targetText);
