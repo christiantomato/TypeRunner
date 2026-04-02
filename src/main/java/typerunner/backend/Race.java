@@ -27,14 +27,26 @@ public class Race {
     /** The number of consecutively typed correct words.*/
     private int wordsTyped;
 
+    /** Counter for correct characters typed. */
+    private int correctCounter = 0;
+
     /** The player's current words per minute (WPM).*/
     private int wpm;
+    
+    /**Peak wpm for the race */
+    private int peakWPM = 0;
 
-    /** The player's current speed or progress metric. Will be used to determine how far the player goes in the screen*/
-    private int playerSpeed;
+    /**Accuracy */
+    private double accuracy = 0.0;
+
+    /**Error count */
+    private int errorCount = 0;
+
+    /** Current score */
+    private Score score;
 
     /** The player's current stamina, ranging from 0 to 100.*/
-    private int Stamina = 100;
+    private int stamina = 100;
 
     /*The word list used for this specific race*/
     private ArrayList<Word> wordList;
@@ -55,14 +67,16 @@ public class Race {
     /*Speed of the bot i.e. duration of translation */
     private int botSpeed;
 
+
     public Race() {
-        //this.level = GameEngine.getInstance().getLevel();
-        //this.wordList = selectedWords;
         // Initialize starting values
         this.currentWordIndex = 0;
         this.wordsTyped = 0;
-        this.Stamina = 100;
+        this.wpm = 0;
+        this.stamina = 100;
         this.time = 0;
+        this.score = new Score(GameEngine.getInstance().getLevel());
+        
 
         //get difficulty and num words
         ArrayList<Word> list = new ArrayList<>();
@@ -162,6 +176,7 @@ public class Race {
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
+            this.correctCounter++; // Increment correct character counter for accuracy calculation
             if (currentWord.isComplete()) {
                 System.out.println("going to next word.");
                 wordsTypedIncrement(currentWord); 
@@ -170,6 +185,9 @@ public class Race {
         } else {
             // Handle a typo: reduce stamina directly
             reduceStamina(5);
+
+            // If what they tpyed is wrong, increase errorCount
+            this.errorCount++;
         }
 
         this.currentRaceIndex += 1;
@@ -178,6 +196,22 @@ public class Race {
             endRaceTime(); // End the timer when the last character is typed
         }
         return isCorrect;
+    }
+
+    /** 
+     * Calculate Accuracy */
+
+    public void updateAccuracy() {
+        this.accuracy = (correctCounter/raceText.length()) * 100;
+    }
+
+    /**
+     * Gets the player's accuracy
+     *
+     * @return the current accuracy.
+     */
+    public double getAccuracy() {
+        return this.accuracy;
     }
 
     /**
@@ -374,9 +408,9 @@ public class Race {
         if (stams <= 50 && wordsTyped > 0) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
-                Stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
-                if (Stamina > 100) {
-                    Stamina = 100; // Cap stamina at 100
+                stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
+                if (stamina > 100) {
+                    stamina = 100; // Cap stamina at 100
                 }
             }
         }
@@ -398,6 +432,22 @@ public class Race {
     }
 
     /**
+     * Updates the player's words per minute (WPM).
+     */
+    public void updateWpm() {
+
+        int elapsedTimeInSeconds = getTimeInSeconds();
+        if (elapsedTimeInSeconds > 0) {
+            this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
+            if (this.wpm > this.peakWPM) {
+                this.peakWPM = this.wpm; // Update peak WPM if current WPM is higher
+            }
+        } else {
+            this.wpm = 0; // Avoid division by zero
+        }
+    }
+
+    /**
      * Gets the player's current words per minute (WPM).
      *
      * @return the current WPM.
@@ -406,18 +456,31 @@ public class Race {
         return this.wpm;
     }
 
-    /**
-     * Updates the player's words per minute (WPM).
+     /**
+     * Getter for score
+     * 
+     * @return score
      */
-    public void updateWpm() {
-
-        int elapsedTimeInSeconds = getTimeInSeconds();
-        if (elapsedTimeInSeconds > 0) {
-            this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
-        } else {
-            this.wpm = 0; // Avoid division by zero
-        }
+    public int getScore() {
+        
+        return this.score.calculateScore(GameEngine.getInstance().getLevel().getDifficulty(),this.wpm, this.accuracy);
     }
+
+
+
+    
+
+    /**
+     * Get Peak WPM
+     * 
+     * @return peakWPM
+     * Getter for the peak WPM achieved during
+     */
+    public int getPeakWPM() {
+        return this.peakWPM;
+    }
+
+
 
     /**
      * Gets the player's current stamina.
@@ -425,7 +488,7 @@ public class Race {
      * @return the current stamina value.
      */
     public int getStamina() {
-        return Stamina;
+        return stamina;
     }
 
     /**
@@ -434,7 +497,7 @@ public class Race {
      * @return the current stamina value.
      */
     public int checkStamina() {
-        return Stamina;
+        return stamina;
     }
 
     /**
@@ -445,7 +508,7 @@ public class Race {
      * @return the new stamina value after reduction.
      */
     public int reduceStamina(int amount) {
-        Stamina -= amount;
+        stmaina -= amount;
         if (Stamina < 0) {
             Stamina = 0; // Ensure stamina doesn't go negative
         }
