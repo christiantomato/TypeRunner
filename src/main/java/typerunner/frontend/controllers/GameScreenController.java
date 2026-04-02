@@ -135,13 +135,6 @@ public class GameScreenController implements Initializable {
             //get the key that has been typed
             String inputCharAsString = e.getCharacter();
             System.out.println(inputCharAsString);
-            
-            //check for backspace character on windows machines, and ignore
-            if(inputCharAsString.charAt(0) == '\b'){
-                System.out.println("backspace detected in checkInput, should be handled in onKeyPressed");
-                return;
-            
-            }
 
             //boolean for if they typed correct char
             boolean correctCharTyped = false;
@@ -149,6 +142,13 @@ public class GameScreenController implements Initializable {
             //safety check 
             if(!inputCharAsString.isEmpty()) {
                 char inputChar = inputCharAsString.charAt(0);
+
+                //check for backspace character on windows machines, and ignore
+                if(inputChar == '\b'){
+                    System.out.println("backspace detected in checkInput, should be handled in onKeyPressed");
+                    return;
+                }
+
                 //check the input in the backend and return bool
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
                 System.out.println("correct input? " + correctCharTyped);
@@ -157,6 +157,9 @@ public class GameScreenController implements Initializable {
 
                 //based on the result, update paragraph text
                 updateParagraphText();
+            }
+            else {
+                System.out.println("nothing inputted (mac)");
             }
         }
         else {

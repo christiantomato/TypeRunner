@@ -1,18 +1,15 @@
 [
   {
-    "playersManaging": [
-      "babytomato"
-    ],
+    "playersManaging": [],
     "username": "christomato",
-    "password": "darealpassword",
+    "password": "iloveduffy",
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
+      "accuracyPercentage": 0.0,
       "level": 0,
       "errorCount": 0,
       "totalTimePlayed": 0,
-      "highestscore": 0,
       "totalWordsTyped": 0
     },
     "isAdmin": true
@@ -24,11 +21,10 @@
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
+      "accuracyPercentage": 0.0,
       "level": 0,
       "errorCount": 0,
       "totalTimePlayed": 0,
-      "highestscore": 0,
       "totalWordsTyped": 0
     },
     "isAdmin": true
@@ -40,11 +36,10 @@
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
+      "accuracyPercentage": 0.0,
       "level": 0,
       "errorCount": 0,
       "totalTimePlayed": 0,
-      "highestscore": 0,
       "totalWordsTyped": 0
     },
     "isAdmin": true
@@ -55,11 +50,10 @@
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
-      "accuracypercentage": 0.0,
+      "accuracyPercentage": 0.0,
       "level": 0,
       "errorCount": 0,
       "totalTimePlayed": 0,
-      "highestscore": 0,
       "totalWordsTyped": 0
     },
     "isAdmin": true
