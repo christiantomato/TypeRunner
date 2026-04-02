@@ -78,7 +78,7 @@ public class Race {
         //fullText.append(list.get(0).getFullText());
 
 
-        for (int i = 1; i < numWords; i++) {
+        for (int i = 0; i < numWords; i++) {
             int randomIndex = random.nextInt(5460);
             String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
             
@@ -181,6 +181,8 @@ public class Race {
      */
 
     public void handleBackspace() {
+        System.out.println("handling backspace start");
+
         //Get the word the player is currently supposed to type from the wordList
         Word currentWord = wordList.get(this.currentWordIndex);
 
