@@ -390,10 +390,11 @@ public class Race {
             reducestamina(10); // Reduce stamina by 20 for each incorrect word
             System.out.println("REDUCED STAMINA " + stamina);
             currentWordStreak = 0; // Reset consecutive words count on incorrect word 3
+
         }
 
         int stams = getStamina();
-        if (stams <= 50 && currentWordStreak > 0) {
+        if (stams <= 50 && currentWordStreak >- 5) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
                 stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
