@@ -13,11 +13,10 @@ public class GameEngine {
 
     private Player currentPlayer;
     private Race currentRace;
+    private Level currentLevel;
     private boolean isGameRunning;
 
-    private GameEngine( ){
-        
-    }
+    private GameEngine( ){}
 
     public static GameEngine getInstance(){
         if (instance == null){
@@ -47,11 +46,11 @@ public class GameEngine {
     }
 
     public void setLevel(Level level){
-        this.currentRace.setLevel(level);
+        this.currentLevel = level;
     }
 
     public Level getLevel(){
-        return this.currentRace.getLevel();
+        return this.currentLevel;
     }
 
     // 
