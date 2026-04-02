@@ -15,7 +15,9 @@ public class GameEngine {
     private Race currentRace;
     private boolean isGameRunning;
 
-    private GameEngine(){}
+    private GameEngine( ){
+        
+    }
 
     public static GameEngine getInstance(){
         if (instance == null){
