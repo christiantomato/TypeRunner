@@ -1,80 +1,86 @@
 package typerunner.backend;
 
 /**
+ * Score Data Model
+ * 
  * Represents a player's score entry in the TypeRunner game.
- * This class stores the player's name, their achieved score, and the level they reached.
+ * Determined by the factors:
+ * 
+ * 1. level 
+ * 2. wpm achieved
+ * 3. accuracy achieved
+ * 
+ * Their values are then added together to give a numeric value of the score.
+ * 
  * @author Olorunfemi Martins
+ * @author Christian Tamayo
  */
+
 public class Score {
-    private String name;
-    private int score;
-    private int level;
+    /** what the level difficult was */
+    private Level level;
+    /** what their wpm achieved was */
+    private double wpm;
+    /** what their accuracy achieved was */
+    private double accuracy;
 
     /**
-     * Constructs a new scores object with the specified name, score, and level.
+     * Score Constructor 
+     * 
+     * Constructs a new scores object with the necessary parameters.
      *
-     * @param name  the name of the player
-     * @param score the score achieved by the player
-     * @param level the level reached by the player
+     * @param level the level difficulty they were playing (1, 2, 3)
+     * @param wpm the wpm achieved
+     * @param accuracy the accuracy achieved
      */
-    public Score(String name, int score, int level) {
-        this.name = name;
-        this.score = score;
+
+    public Score(Level level, double wpm, double accuracy) {
         this.level = level;
+        this.wpm = wpm;
+        this.accuracy = accuracy;
     }
 
     /**
-     * Gets the level reached by the player.
+     * Getter for Level
      *
      * @return the player's level
      */
-    public int getLevel() {
-        return level;
+
+    public Level getLevel() {
+        return this.level;
     }
 
     /**
-     * Gets the name of the player.
+     * Getter for WPM
      *
-     * @return the player's name
+     * @return the wpm int
      */
-    public String getName() {
-        return name;
+
+    public double getWPM() {
+        return this.wpm;
     }
 
     /**
-     * Gets the score achieved by the player.
+     * Getter for accuracy
+     * 
+     * Gets the accuracy achieved by the player
      *
-     * @return the player's score
+     * @return the accuracy int
      */
-    public int getScore() {
-        return score;
+
+    public double getAccuracy() {
+        return this.accuracy;
     }
 
     /**
-     * Sets the name of the player.
-     *
-     * @param name the new name to set
+     * Calculate Score
+     * 
+     * Calculates the score value based on the fields
+     * 
+     * @return the score value
      */
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    /**
-     * Sets the score achieved by the player.
-     *
-     * @param score the new score to set
-     */
-    public void setScore(int score) {
-        this.score = score;
+    public int calculateScore() {
+        return (int)(this.level.getDifficulty() + wpm + accuracy);
     }
-
-    /**
-     * Sets the level reached by the player.
-     *
-     * @param level the new level to set
-     */
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
 }

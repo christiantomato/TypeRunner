@@ -33,7 +33,7 @@ public class Player {
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
-        this.statistics = new PlayerStatistics(0,0,0,0,0,0,0, 0);
+        this.statistics = new PlayerStatistics(0,0,0,0,0,0,null, 0);
     }
 
     /** 
@@ -95,39 +95,4 @@ public class Player {
     public void setPassword(String newPassword) {
         this.password = newPassword;
     } 
-
-    /** 
-     * Get user best score
-     * @return player's best score
-     */
-
-    public int getBestScore() {
-        return this.statistics.getHighestscore();
-    }
-
-    /** 
-     * Get highest unlocked level
-     * @return highest unlocked level
-     */
-
-    public int getUnlockedLevel() { 
-        return this.statistics.getLevel();
-    }
-
-    /** 
-     * Set the player's unlocked level
-     * @param unlockedLevel
-     */
-
-    public void setUnlockedLevel(int unlockedLevel) {
-        this.statistics.setLevel(unlockedLevel);
-    }
-
-    /** 
-     * Reset all stats back to default
-     */
-
-    public void resetStats() {
-        this.statistics.resetActualStats();
-    }
 }

@@ -216,14 +216,14 @@ public class PlayerStatistics {
      * Resets all the statistics
      */
 
-    public void resetActualStats() {
+    public void resetStats() {
         this.averageWPM =  0.0;
         this.peakWPM = 0.0;
         this.accuracyPercentage = 0.0;
         this.level = 1;
         this.errorCount = 0;
         this.totalTimePlayed = 0;
-        this.highscore.setScore(0);
+        this.highscore = null;
         this.totalWordsTyped = 0;
     }
 
