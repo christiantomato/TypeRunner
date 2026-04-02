@@ -131,6 +131,10 @@ public class Race {
         return this.currentRaceIndex;
     }
 
+
+
+    
+
     /**
      * Processes a single character input.
      *
@@ -164,6 +168,24 @@ public class Race {
 
         this.currentRaceIndex+=1;
         return isCorrect;
+    }
+
+
+    //when backsapce is pressed move the index back by 1;
+    public void handleBackspace() {
+
+        //Get the word the player is currently supposed to type from the wordList
+        Word currentWord = wordList.get(currentWordIndex);
+
+        if(currentWord.getTypeIndex() == 0){
+                this.currentWordIndex -= 1;
+                currentWord = wordList.get(currentWordIndex-1);
+        }
+        currentWord.decrementTypeIndex();
+
+        if (currentRaceIndex > 0) {
+            currentRaceIndex--;
+        }
     }
 
 
