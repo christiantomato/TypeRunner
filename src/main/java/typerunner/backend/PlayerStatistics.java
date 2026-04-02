@@ -28,7 +28,7 @@ public class PlayerStatistics {
     /** the high score object for highest score */
     private Score highscore;
     /** total amount of correctly typed words */
-    private int totalCorrectWordsTyped;
+    private int totalWordsTyped;
 
     /**
      * Constructs a new PlayerStatistics object with the specified initial values.
@@ -41,10 +41,10 @@ public class PlayerStatistics {
      * @param errorCount                the total number of typing errors made
      * @param totalTimePlayed           the total time the player has spent playing
      * @param highscore                 the highest score achieved by the player
-     * @param totalCorrectWordsTyped    the total number of words correclty typed by the player
+     * @param totalWordsTyped    the total number of words correclty typed by the player
      */
 
-    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, int level, int errorCount, int totalTimePlayed, Score highscore, int totalCorrectWordsTyped) {
+    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, int level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
         this.gamesPlayed = gamesPlayed;
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
@@ -53,7 +53,7 @@ public class PlayerStatistics {
         this.errorCount = errorCount;
         this.totalTimePlayed = totalTimePlayed;
         this.highscore = highscore;
-        this.totalCorrectWordsTyped = totalCorrectWordsTyped;
+        this.totalWordsTyped = totalWordsTyped;
     }
 
     /**
@@ -143,8 +143,8 @@ public class PlayerStatistics {
      * @return the total words typed
      */
 
-    public int gettotalCorrectWordsTyped() {
-        return totalCorrectWordsTyped;
+    public int gettotalWordsTyped() {
+        return totalWordsTyped;
     }
 
     /**
@@ -154,7 +154,7 @@ public class PlayerStatistics {
      * 
      */
 
-    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, int mostRecentTime, int mostRecentScore, int mostRecentCorrectWordsTyped) {
+    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, int mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
         //update the average wpm
         this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / this.gamesPlayed + 1;
 
@@ -173,7 +173,7 @@ public class PlayerStatistics {
         this.totalTimePlayed += mostRecentTime;
 
         //update total correct words typed
-        this.totalCorrectWordsTyped += mostRecentCorrectWordsTyped;
+        this.totalWordsTyped += mostRecentWordsTyped;
 
         //update highscore
         if(this.highscore.getScoreValue() < mostRecentScore) {
@@ -199,6 +199,6 @@ public class PlayerStatistics {
         this.errorCount = 0;
         this.totalTimePlayed = 0;
         this.highscore = null;
-        this.totalCorrectWordsTyped = 0;
+        this.totalWordsTyped = 0;
     }
 }
