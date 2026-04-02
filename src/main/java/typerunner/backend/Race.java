@@ -12,8 +12,10 @@ import java.util.Random;
  * @author Olorunfemi Martins
  * @author Noh Woldetinsae
  * @author Tanya Sahota
+ * @author Christian Tamayo
  * @version 1.0
  */
+
 public class Race {
 
     /** The total number of words in the race text.*/
