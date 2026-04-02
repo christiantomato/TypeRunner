@@ -34,7 +34,9 @@
     "isAdmin": true
   },
   {
-    "playersManaging": [],
+    "playersManaging": [
+      "Femi"
+    ],
     "username": "noh",
     "password": "123",
     "statistics": {
@@ -50,8 +52,8 @@
     "isAdmin": true
   },
   {
-    "username": "babytomato",
-    "password": "ilovetomatoes",
+    "username": "Femi",
+    "password": "123",
     "statistics": {
       "averageWPM": 0.0,
       "peakWPM": 0.0,
