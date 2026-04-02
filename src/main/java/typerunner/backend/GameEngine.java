@@ -79,6 +79,29 @@ public class GameEngine {
     }
 
     /**
+     * Set Current Race
+     * 
+     * Setter for the current race.
+     */
+
+    public void setCurrentRace(Race newRace) {
+        this.currentRace = newRace;
+    }
+
+    /**
+     * Get Current Race
+     * 
+     * Getter for the current race. 
+     * 
+     * @return the current race
+     */
+
+    public Race getCurrentRace() {
+        return this.currentRace;
+    }
+
+
+    /**
      * Set Level
      * 
      * Setter for the level of the game.
