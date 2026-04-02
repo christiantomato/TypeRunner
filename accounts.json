@@ -1,0 +1,24 @@
+[
+  {
+    "playersManaging": [],
+    "username": "noh",
+    "password": "123",
+    "statistics": {
+      "gamesPlayed": 1,
+      "averageWPM": 26.0,
+      "peakWPM": 60.0,
+      "accuracyPercentage": 0.0,
+      "level": 1,
+      "errorCount": 22,
+      "totalTimePlayed": 0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 0,
+        "accuracy": 0.0,
+        "scoreValue": 27
+      },
+      "totalWordsTyped": 15
+    },
+    "isAdmin": true
+  }
+]

@@ -156,10 +156,10 @@ public class PlayerStatistics {
 
     public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, int mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
         //update the average wpm
-        this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / this.gamesPlayed + 1;
+        this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
 
         //update the average accuracy
-        this.accuracyPercentage = ((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / this.gamesPlayed + 1;
+        this.accuracyPercentage = ((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / (this.gamesPlayed + 1);
 
         //update the peak wpm
         if(this.peakWPM < mostRecentPeakWpm) {
