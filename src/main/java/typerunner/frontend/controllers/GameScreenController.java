@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -133,18 +132,16 @@ public class GameScreenController implements Initializable {
     @FXML
     private void getKeyInput(KeyEvent e) {
         if(gameIsSetup) {
-            //get the text from the texfield
-            String textAreaString = inputField.getText();
-        
             //get the key that has been typed
             String inputCharAsString = e.getCharacter();
+            System.out.println(inputCharAsString);
             
-
+            //check for backspace character on windows machines, and ignore
             if(inputCharAsString.charAt(0) == '\b'){
                 System.out.println("backspace detected in checkInput, should be handled in onKeyPressed");
                 return;
-        }
-            System.out.println(inputCharAsString);
+            
+            }
 
             //boolean for if they typed correct char
             boolean correctCharTyped = false;
