@@ -24,7 +24,7 @@ public class PlayerStatistics {
     /** total incorrect keystrokes typed */
     private int errorCount;
     /** total time that they have played */
-    private int totalTimePlayed;
+    private double totalTimePlayed;
     /** the high score object for highest score */
     private Score highscore;
     /** total amount of correctly typed words */
@@ -44,7 +44,7 @@ public class PlayerStatistics {
      * @param totalWordsTyped    the total number of words correclty typed by the player
      */
 
-    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, Level level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
+    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, Level level, int errorCount, double totalTimePlayed, Score highscore, int totalWordsTyped) {
         this.gamesPlayed = gamesPlayed;
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
@@ -123,7 +123,7 @@ public class PlayerStatistics {
      * @return the total time played
      */
 
-    public int getTotalTimePlayed() {
+    public double getTotalTimePlayed() {
         return totalTimePlayed;
     }
 
@@ -155,7 +155,7 @@ public class PlayerStatistics {
      * 
      */
 
-    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, int mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
+    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
         //update the average wpm
         this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
 
