@@ -68,6 +68,8 @@ public class GameScreenController implements Initializable {
     @FXML
     private void backButton(ActionEvent e) throws IOException{
         try {
+            //kill anything if there is a game in progress!
+            GameEngine.getInstance().endGame();
             System.out.println("going back to player screen");
             ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
         } 
