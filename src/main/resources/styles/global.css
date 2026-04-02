@@ -9,6 +9,10 @@
     -fx-font-family: "Press Start 2P";
     -fx-text-fill: black;
 }
+.login-title{
+    -fx-font-family: "Press Start 2P";
+    -fx-text-fill: black;
+}
 
 .button{
     -fx-font-family: "Press Start 2P";
@@ -23,11 +27,23 @@
 
 .button:hover{
     -fx-font-size: 15px;
+    -fx-text-fill: white;
 }
 
-.menu-screen {
+.back-button{
+    -fx-font-size: 15px;
+}
+
+.back-button:hover{
+    -fx-font-size: 12px;
+}
+
+.root{
     -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
+    -fx-font-family: "Press Start 2P";
+    -fx-text-fill: black;
 }
+
