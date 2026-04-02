@@ -198,7 +198,7 @@ public class PlayerStatistics {
     /**
      * Reset Statistics
      * 
-     * Resets all the statistics
+     * Resets all the statistics with default values.
      */
 
     public void resetStats() {
@@ -209,7 +209,7 @@ public class PlayerStatistics {
         this.level = Level.HIGHSCHOOL;
         this.errorCount = 0;
         this.totalTimePlayed = 0;
-        this.highscore = null;
+        this.highscore = new Score(Level.HIGHSCHOOL);
         this.totalWordsTyped = 0;
     }
 }
