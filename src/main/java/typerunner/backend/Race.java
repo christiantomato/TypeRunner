@@ -142,7 +142,6 @@ public class Race {
      * @return true if the character was correct, false otherwise.
      */
     public boolean checkInput(char input) {
-
         if (currentWordIndex >= wordList.size()) {
             return false; // prevent indexOutofBounds exception if all words are completed
         }
@@ -154,10 +153,13 @@ public class Race {
         // calls the checkCharacterMatch method in Word.java to see if the char inputted matches the next char in the word
         boolean isCorrect = currentWord.checkCharacterMatch(input);
 
+        System.out.println("current word: " + currentWord);
+        System.out.println("current word index now: " + currentWord.getTypeIndex());
+
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
             if(currentWord.isComplete()) {
-
+                System.out.println("going to next word.");
                 //wordsTypedIncrement(currentWord); 
                 currentWordIndex++;
             }
@@ -189,11 +191,18 @@ public class Race {
             }
             //go back a word
             this.currentWordIndex--;
+            //set the new current word
+            currentWord = wordList.get(this.currentWordIndex);
+            //decrement index
+            currentWord.decrementTypeIndex();
         }
         else {
             //otherwise, go back a letter in the word
             currentWord.decrementTypeIndex();
         }
+
+        System.out.println("the current word: " + currentWord);
+        System.out.println("the index for the current word now: " + currentWord.getTypeIndex());
 
         //decrement it for the entire race text
         if(this.currentRaceIndex > 0) {
