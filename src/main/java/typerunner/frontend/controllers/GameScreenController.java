@@ -46,7 +46,7 @@ public class GameScreenController implements Initializable {
     /** live display of peak wpm */
     @FXML private Text peakWpm;
     /** live display of health or "stamina" */
-    @FXML private Text heatlh;
+    @FXML private Text health;
 
     /** the actual string of text they are typing */
     private String targetText;
@@ -235,7 +235,7 @@ public class GameScreenController implements Initializable {
         time.setText(String.valueOf(race.getTimeInSeconds()));
         score.setText(String.valueOf(race.getScore()));
         peakWpm.setText(String.valueOf(race.getPeakWPM()));
-        //heatlh.setText(String.valueOf(race.getHealth()));
+        health.setText(String.valueOf(race.getStamina()));
 
         if(!GameEngine.getInstance().isGameRunning()) {
             gameLoop.stop();
