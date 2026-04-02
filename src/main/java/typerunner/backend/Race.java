@@ -62,6 +62,10 @@ public class Race {
     /*Speed of the bot  i.e. duration of translation */
     private int botSpeed;
 
+    private int currentRaceIndex = 0;
+
+     
+
     public Race() {
         //this.level = GameEngine.getInstance().getLevel();
         //this.wordList = selectedWords;
@@ -120,6 +124,10 @@ public class Race {
         return this.raceText;
     }
 
+    public int getCurrentRaceIndex() {
+        return this.currentRaceIndex;
+    }
+
     /**
      * Processes a single character input.
      *
@@ -151,8 +159,12 @@ public class Race {
             reduceStamina(5);
         }
 
+        this.currentRaceIndex+=1;
         return isCorrect;
     }
+
+
+    
 
     /**
      * Starts the race timer.
@@ -160,7 +172,7 @@ public class Race {
     public void startRaceTime() {
         startTime = System.currentTimeMillis();
     }
-    
+
     /**
      * Ends the race timer.
      */
@@ -345,7 +357,13 @@ public class Race {
      * Updates the player's words per minute (WPM).
      */
     public void updateWpm() {
-        //TODO: implement WPM calculation based on words typed and time
+        
+        int elapsedTimeInSeconds = getTimeInSeconds();
+        if (elapsedTimeInSeconds > 0) {
+            this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
+        } else {
+            this.wpm = 0; // Avoid division by zero
+        }
     }
 
     /**
