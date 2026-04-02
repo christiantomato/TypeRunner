@@ -47,8 +47,8 @@ public class Race {
 
 
 
-    public Race(Level level) {
-        this.level = level;
+    public Race() {
+        this.level = GameEngine.getInstance().getLevel();
         //this.wordList = selectedWords;
         // Initialize starting values
         this.currentWordIndex = 0;
