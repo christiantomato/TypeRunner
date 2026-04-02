@@ -36,13 +36,13 @@ public class StaminaRefill implements PowerUp {
     public int getStaminaBonus(int Levelnum) {
         switch (Levelnum) {
             case 1:
-                staminaBonus = 40;
-                break;
-            case 2:
                 staminaBonus = 20;
                 break;
-            case 3:
+            case 2:
                 staminaBonus = 10;
+                break;
+            case 3:
+                staminaBonus = 5;
                 break;
             default:
                 staminaBonus = 0; // Default case if Levelnum is out of expected range

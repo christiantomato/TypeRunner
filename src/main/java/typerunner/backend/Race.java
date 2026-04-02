@@ -394,13 +394,14 @@ public class Race {
         }
 
         int stams = getStamina();
-        if (stams <= 50 && currentWordStreak >- 5) {
+        if (stams <= 50 && currentWordStreak >=5) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
                 stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
                 if (stamina > 100) {
                     stamina = 100; // Cap stamina at 100
                 }
+                System.out.println("Stamina refill triggered! New stamina: " + stamina);
             }
         }
 
