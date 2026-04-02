@@ -20,7 +20,7 @@ public class PlayerStatistics {
     /** their total accuracy */
     private double accuracyPercentage;
     /** the highest level unlocked */
-    private int level;
+    private Level level;
     /** total incorrect keystrokes typed */
     private int errorCount;
     /** total time that they have played */
@@ -44,7 +44,7 @@ public class PlayerStatistics {
      * @param totalWordsTyped    the total number of words correclty typed by the player
      */
 
-    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, int level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
+    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, Level level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
         this.gamesPlayed = gamesPlayed;
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
@@ -104,7 +104,7 @@ public class PlayerStatistics {
      * @return the level
      */
 
-    public int getLevel() {
+    public Level getLevel() {
         return level;
     }
 
@@ -150,7 +150,8 @@ public class PlayerStatistics {
     /**
      * Update Statistics
      * 
-     * Updates the statistics for a player after a game is finished. 
+     * Updates the statistics for a player.
+     * This is called after a game is finished. 
      * 
      */
 
@@ -182,6 +183,14 @@ public class PlayerStatistics {
             this.highscore.setWpm(mostRecentWpm);
         }
 
+        //update their current unlocked level based on if they're wpm has become high enough
+        if(mostRecentWpm > 40) {
+            this.level = Level.COLLEGE;
+        }
+        if(mostRecentWpm > 60) {
+            this.level = Level.OLYMPICS;
+        }
+
         //add to the total games played
         this.gamesPlayed++;
     }
@@ -197,7 +206,7 @@ public class PlayerStatistics {
         this.averageWPM =  0.0;
         this.peakWPM = 0.0;
         this.accuracyPercentage = 0.0;
-        this.level = 1;
+        this.level = Level.HIGHSCHOOL;
         this.errorCount = 0;
         this.totalTimePlayed = 0;
         this.highscore = null;
