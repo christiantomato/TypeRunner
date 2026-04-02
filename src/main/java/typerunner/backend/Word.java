@@ -47,7 +47,7 @@ public class Word {
      */
 
     public void decrementTypeIndex() {
-        this.typeIndex -= 1; 
+        this.typeIndex--; 
     }
 
 
