@@ -344,8 +344,8 @@ public class Race {
      * Gets the elapsed time of the race
      * @return elapsed time in minutes
      */
-    public int getTimeInMinutes() {
-        return (int) (this.time/ 60);
+    public double getTimeInMinutes() {
+        return (double) (this.time/ 60);
     }
 
     /**
