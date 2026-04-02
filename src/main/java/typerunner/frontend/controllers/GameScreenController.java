@@ -93,15 +93,12 @@ public class GameScreenController implements Initializable {
         paragraph.getChildren().clear();
         System.out.println("starting game");
 
-        //every 100 mills, update stats
-        gameLoop = new Timeline(new KeyFrame(Duration.millis(100), event -> updateStats()));
-        //update indefinitely
-        gameLoop.setCycleCount(Timeline.INDEFINITE);
-        gameLoop.play();
-
         //create a new race and set it to the game engine
         Race newRace = new Race();
         GameEngine.getInstance().setCurrentRace(newRace);
+
+        //initalize correctness array
+        this.correctness = new ArrayList<>();
 
         targetText = newRace.getRaceText();
 
@@ -113,6 +110,12 @@ public class GameScreenController implements Initializable {
         System.out.println(targetText);
 
         gameIsSetup = true;
+
+        //every 100 mills, update stats
+        gameLoop = new Timeline(new KeyFrame(Duration.millis(100), event -> updateStats()));
+        //update indefinitely
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        gameLoop.play();
     }
 
     /**
@@ -220,6 +223,7 @@ public class GameScreenController implements Initializable {
      */
 
     private void updateStats() {
+        //get the race that is happening
         Race race = GameEngine.getInstance().getCurrentRace();
          
         //set the stats
@@ -229,7 +233,7 @@ public class GameScreenController implements Initializable {
         peakWpm.setText(String.valueOf(race.getPeakWPM()));
         //heatlh.setText(String.valueOf(race.getHealth()));
 
-        if(GameEngine.getInstance().get) {
+        if(!GameEngine.getInstance().isGameRunning()) {
             gameLoop.stop();
         }
     }
