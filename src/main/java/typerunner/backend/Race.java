@@ -16,40 +16,28 @@ import java.util.Random;
  */
 public class Race {
 
-    /**
-     * The total number of words in the race text.
-     */
+    /*The total number of words in the race text.*/
     private int totalWords;
-    /**
-     * The elapsed time in the race.
-     */
+    
+    /**The elapsed time in the race.*/
     private int time;
-    /**
-     * The number of consecutively typed correct words.
-     */
+
+    /**The number of consecutively typed correct words.*/
     private int wordsTyped;
-    /**
-     * The player's current words per minute (WPM).
-     */
+
+    /*** The player's current words per minute (WPM).*/
     private int wpm;
-    /**
-     * The player's current speed or progress metric. 
-     * Will be used to determine how far the player goes in the screen
-     */
+
+    /**The player's current speed or progress metric. Will be used to determine how far the player goes in the screen*/
     private int playerSpeed;
-    /**
-     * The player's current stamina, ranging from 0 to 100.
-     */
+
+    /** The player's current stamina, ranging from 0 to 100.*/
     private int Stamina = 100;
 
-    /**
-     * The word list used for this specific race
-     */
+    /**The word list used for this specific race*/
     private ArrayList<Word> wordList;
 
-    /**
-     * the actual string of words that the frontend will use
-     */
+    /**The actual string of words that the frontend will use*/
     private String raceText;
 
     /* Track the current word the player is typing from wordList */
@@ -86,14 +74,22 @@ public class Race {
         //build the target text along with the words list
         StringBuilder fullText = new StringBuilder();
 
-        int randomIndex = random.nextInt(5460);
-        list.add(dictionary.getWordList().get(randomIndex));
-        fullText.append(list.get(0).getFullText());
+        //int randomIndex = random.nextInt(5460);
+        //list.add(dictionary.getWordList().get(randomIndex));
+        //fullText.append(list.get(0).getFullText());
+
 
         for (int i = 1; i < numWords; i++) {
-            randomIndex = random.nextInt(5460);
-            list.add(dictionary.getWordList().get(randomIndex));
-            fullText.append(" ").append(list.get(i).getFullText());
+            int randomIndex = random.nextInt(5460);
+            String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
+            
+            //add a space after each word except for the last one
+            if(i<numWords -1){
+                wordToAdd += " ";
+            }
+
+            list.add(new Word(wordToAdd));
+            fullText.append(wordToAdd);
         }
 
         //set the string of text to be typed
