@@ -1,18 +1,31 @@
 package typerunner.backend;
 
 /**
+ * Player Statistics Data Model
+ * 
  * Represents the statistics of a player in the TypeRunner game.
  * Tracks metrics such as words per minute (WPM), accuracy, level, errors, time played, and highest score.
+ * 
  * @author Olorunfemi Martins
+ * @author Christian Tamayo
  */
+
 public class PlayerStatistics {
+    /** average wpm */
     private double averageWPM;
+    /** highest wpm reached */
     private double peakWPM;
-    private double accuracypercentage;
+    /** their total accuracy */
+    private double accuracyPercentage;
+    /** the highest level unlocked */
     private int level;
+    /** total incorrect keystrokes typed */
     private int errorCount;
+    /** total time that they have played */
     private int totalTimePlayed;
-    private int highestscore;
+    /** the high score object for highest score */
+    private Score highscore;
+    /** total amount of correctly typed words */
     private int totalWordsTyped;
 
     /**
@@ -20,21 +33,22 @@ public class PlayerStatistics {
      *
      * @param averageWPM         the player's average words per minute
      * @param peakWPM            the player's peak words per minute
-     * @param accuracypercentage the player's typing accuracy percentage
+     * @param accuracyPercentage the player's typing accuracy percentage
      * @param level              the current level of the player
      * @param errorCount         the total number of typing errors made
      * @param totalTimePlayed    the total time the player has spent playing
-     * @param highestscore       the highest score achieved by the player
-     * @param totalWordsTyped    the total number of words typed by the player
+     * @param highscore          the highest score achieved by the player
+     * @param totalWordsTyped    the total number of words correclty typed by the player
      */
-    public PlayerStatistics(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
+
+    public PlayerStatistics(double averageWPM, double peakWPM, double accuracyPercentage, int level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
-        this.accuracypercentage = accuracypercentage;
+        this.accuracyPercentage = accuracyPercentage;
         this.level = level;
         this.errorCount = errorCount;
         this.totalTimePlayed = totalTimePlayed;
-        this.highestscore = highestscore;
+        this.highscore = highscore;
         this.totalWordsTyped = totalWordsTyped;
     }
 
@@ -43,6 +57,7 @@ public class PlayerStatistics {
      *
      * @return the average WPM
      */
+
     public double getAverageWPM() {
         return averageWPM;
     }
@@ -52,6 +67,7 @@ public class PlayerStatistics {
      *
      * @param averageWPM the new average WPM
      */
+
     public void setAverageWPM(double averageWPM) {
         this.averageWPM = averageWPM;
     }
@@ -61,6 +77,7 @@ public class PlayerStatistics {
      *
      * @return the peak WPM
      */
+
     public double getPeakWPM() {
         return peakWPM;
     }
@@ -71,10 +88,9 @@ public class PlayerStatistics {
      *
      * @param peakWPM the new peak WPM
      */
+
     public void setPeakWPM(double peakWPM) {
-        if (peakWPM > this.peakWPM) { 
-            this.peakWPM = peakWPM;
-        }
+        this.peakWPM = peakWPM;
     }
 
     /**
@@ -82,19 +98,19 @@ public class PlayerStatistics {
      *
      * @return the accuracy percentage
      */
-    public double getAccuracypercentage() {
-        return accuracypercentage;
+
+    public double getaccuracyPercentage() {
+        return accuracyPercentage;
     }
 
     /**
      * Sets the player's typing accuracy percentage.
      * Check if their new accuracy percentage is higher than their current accuracy percentage before updating.
-     * @param accuracypercentage the new accuracy percentage
+     * @param accuracyPercentage the new accuracy percentage
      */
-    public void setAccuracypercentage(double accuracypercentage) {
-        if(accuracypercentage >= this.accuracypercentage) {
-            this.accuracypercentage = accuracypercentage;
-        }
+
+    public void setaccuracyPercentage(double accuracyPercentage) {
+        this.accuracyPercentage = accuracyPercentage;
     }
 
     /**
@@ -102,6 +118,7 @@ public class PlayerStatistics {
      *
      * @return the level
      */
+
     public int getLevel() {
         return level;
     }
@@ -138,6 +155,7 @@ public class PlayerStatistics {
      *
      * @return the total time played
      */
+
     public int getTotalTimePlayed() {
         return totalTimePlayed;
     }
@@ -147,6 +165,7 @@ public class PlayerStatistics {
      *
      * @param totalTimePlayed the new total time played
      */
+
     public void setTotalTimePlayed(int totalTimePlayed) {
         this.totalTimePlayed = totalTimePlayed;
     }
@@ -156,17 +175,19 @@ public class PlayerStatistics {
      *
      * @return the highest score
      */
-    public int getHighestscore() {
-        return highestscore;
+
+    public Score getHighscore() {
+        return this.highscore;
     }
 
     /**
      * Sets the highest score achieved by the player.
      *
-     * @param highestscore the new highest score
+     * @param highscore the new highest score
      */
-    public void setHighestscore(int highestscore) {
-        this.highestscore = highestscore;
+
+    public void setHighscore(Score highscore) {
+        this.highscore = highscore;
     }
 
     /**
@@ -174,6 +195,7 @@ public class PlayerStatistics {
      *
      * @return the total words typed
      */
+
     public int getTotalWordsTyped() {
         return totalWordsTyped;
     }
@@ -183,31 +205,49 @@ public class PlayerStatistics {
      *
      * @param totalWordsTyped the new total words typed
      */
+
     public void setTotalWordsTyped(int totalWordsTyped) {
         this.totalWordsTyped = totalWordsTyped;
     }
 
+    /**
+     * Reset Statistics
+     * 
+     * Resets all the statistics
+     */
+
     public void resetActualStats() {
         this.averageWPM =  0.0;
         this.peakWPM = 0.0;
-        this.accuracypercentage = 0.0;
+        this.accuracyPercentage = 0.0;
         this.level = 1;
         this.errorCount = 0;
         this.totalTimePlayed = 0;
-        this.highestscore = 0;
+        this.highscore.setScore(0);
         this.totalWordsTyped = 0;
     }
 
-    public void insertStats(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
+    /**
+     * Master Setter? 
+     * 
+     * @param averageWPM
+     * @param peakWPM
+     * @param accuracyPercentage
+     * @param level
+     * @param errorCount
+     * @param totalTimePlayed
+     * @param highscore
+     * @param totalWordsTyped
+     */
+
+    public void insertStats(double averageWPM, double peakWPM, double accuracyPercentage, int level, int errorCount, int totalTimePlayed, Score highscore, int totalWordsTyped) {
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
-        this.accuracypercentage = accuracypercentage;
+        this.accuracyPercentage = accuracyPercentage;
         this.level = level;
         this.errorCount = errorCount;
         this.totalTimePlayed = totalTimePlayed;
-        this.highestscore = highestscore;
+        this.highscore = highscore;
         this.totalWordsTyped = totalWordsTyped;
     }
-
-
 }
