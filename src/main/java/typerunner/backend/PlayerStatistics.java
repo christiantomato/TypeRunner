@@ -67,11 +67,14 @@ public class PlayerStatistics {
 
     /**
      * Sets the player's peak words per minute.
+     * Checks if their new WPM is higher than their current peak WPM before updating.
      *
      * @param peakWPM the new peak WPM
      */
     public void setPeakWPM(double peakWPM) {
-        this.peakWPM = peakWPM;
+        if (peakWPM > this.peakWPM) { 
+            this.peakWPM = peakWPM;
+        }
     }
 
     /**
@@ -85,11 +88,13 @@ public class PlayerStatistics {
 
     /**
      * Sets the player's typing accuracy percentage.
-     *
+     * Check if their new accuracy percentage is higher than their current accuracy percentage before updating.
      * @param accuracypercentage the new accuracy percentage
      */
     public void setAccuracypercentage(double accuracypercentage) {
-        this.accuracypercentage = accuracypercentage;
+        if(accuracypercentage >= this.accuracypercentage) {
+            this.accuracypercentage = accuracypercentage;
+        }
     }
 
     /**
@@ -193,7 +198,7 @@ public class PlayerStatistics {
         this.totalWordsTyped = 0;
     }
 
-    public void InsertStats(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
+    public void insertStats(double averageWPM, double peakWPM, double accuracypercentage, int level, int errorCount, int totalTimePlayed, int highestscore, int totalWordsTyped) {
         this.averageWPM = averageWPM;
         this.peakWPM = peakWPM;
         this.accuracypercentage = accuracypercentage;

@@ -63,6 +63,6 @@ public class PlayerScreenController {
         LoginManager loginManager = LoginManager.getInstance();
         loginManager.logout();
 
-        ScreenNavigator.switchScene(e, "/fxml/login.fxml");
+        ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
     }
 }

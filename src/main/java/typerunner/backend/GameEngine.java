@@ -1,14 +1,45 @@
 package typerunner.backend;
 
+/**
+ * Game Engine
+ * 
+ * Responsible for managing the overall game state and logic of the TypeRunner game.
+ * 
+ * @author Christian Tamayo
+ * @author Noh Woldetinsae
+ * @author Olorunfemi Martins
+ * @author Sahej Sethi
+*/
+
 public class GameEngine {
 
+    /** the single instance of the game engine */
     private static GameEngine instance;
-
-    private Player currentPlayer;
+    /** the current race being played out */
     private Race currentRace;
+    /** the level of the current race */
+    private Level currentLevel = Level.HIGHSCHOOL;
+    /** flag for game running */
     private boolean isGameRunning;
 
-    private GameEngine(){}
+    /**
+     * Game Engine Constructor
+     * 
+     * Private constructor to construct a single instance of the game engine. 
+     */
+
+    private GameEngine(){
+        this.currentRace = null;
+        this.isGameRunning = false;
+    }
+
+    /**
+     * Get Instance
+     * 
+     * Gets the singular instance, and creates it if not initalized yet. 
+     * 
+     * @return the singular instance
+     */
 
     public static GameEngine getInstance(){
         if (instance == null){
@@ -17,32 +48,80 @@ public class GameEngine {
         return instance;
     }
 
-    public void init(Player player) {
-        this.currentPlayer = player;
-        this.currentRace = new  Race();
-        this.isGameRunning = true;
-    }
+    /**
+     * Start Game
+     * 
+     * Starts the game. 
+     */
 
     public void startGame() {
-
-        // Initialize game stat
         isGameRunning = true;
     }
+
+    /**
+     * Update Game
+     * 
+     * Called constantly to update stats
+     */
+
     public void updateGame() {
         // Update game state, check for win/loss conditions, etc.
     }
 
+    /**
+     * End Game
+     * 
+     * Ends the game. 
+     */
+
     public void endGame() {
-        // Handle end of game logic, such as displaying results, saving stats, etc.
         isGameRunning = false;
     }
 
-    public void setLevel(Level level){
-        this.currentRace.setLevel(level);
+    /**
+     * Set Current Race
+     * 
+     * Setter for the current race.
+     */
+
+    public void setCurrentRace(Race newRace) {
+        this.currentRace = newRace;
     }
+
+    /**
+     * Get Current Race
+     * 
+     * Getter for the current race. 
+     * 
+     * @return the current race
+     */
+
+    public Race getCurrentRace() {
+        return this.currentRace;
+    }
+
+
+    /**
+     * Set Level
+     * 
+     * Setter for the level of the game.
+     * 
+     * @param level the level of the game
+     */
+
+    public void setLevel(Level level){
+        this.currentLevel = level;
+    }
+
+    /**
+     * Get Level
+     * 
+     * Getter for the level of the game.
+     * 
+     * @return the current level
+     */
 
     public Level getLevel(){
-        return this.currentRace.getLevel();
+        return this.currentLevel;
     }
-
 }

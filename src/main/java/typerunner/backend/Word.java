@@ -35,9 +35,22 @@ public class Word {
      * Returns the current index of the character being typed.
      * @return The current index of the character being typed.
      */ 
+
     public int getTypeIndex() {
         return typeIndex;
     }
+
+    /**
+     * Decrement Type Index
+     * 
+     * Called when we need to move back in a word for backspace 
+     */
+
+    public void decrementTypeIndex() {
+        this.typeIndex--; 
+    }
+
+
     /**
      * Returns the points value of the word.
      * @return The points value of the word.
@@ -52,11 +65,16 @@ public class Word {
      * @param input The character input by the player.
      * @return True if the input character matches the next character in the word, false otherwise.
      */
+
     public boolean checkCharacterMatch(char input) {
+        //check if it matches
         if(!isComplete() && input == fullText.charAt(typeIndex)) {
+            //increase the type index
             typeIndex++;
             return true;
         }
+        //increase even if wrong, will handle with backspace
+        typeIndex++;
         return false;
     }
 
