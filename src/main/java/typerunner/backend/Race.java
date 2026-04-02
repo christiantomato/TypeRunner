@@ -21,14 +21,6 @@ public class Race {
      */
     private int totalWords;
     /**
-     * The difficulty level of the current race.
-     */
-    private Level level = Level.HIGHSCHOOL;
-    /**
-     * The speed of the bot opponent.
-     */
-    private int botSpeed;
-    /**
      * The elapsed time in the race.
      */
     private int time;
@@ -41,7 +33,8 @@ public class Race {
      */
     private int wpm;
     /**
-     * The player's current speed or progress metric.
+     * The player's current speed or progress metric. 
+     * Will be used to determine how far the player goes in the screen
      */
     private int playerSpeed;
     /**
@@ -55,11 +48,11 @@ public class Race {
     private ArrayList<Word> wordList;
 
     /**
-     * the actual string of words
+     * the actual string of words that the frontend will use
      */
     private String raceText;
 
-    /* Track the current word the player is typing */
+    /* Track the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
     /* Track the start and end times of the race */
@@ -103,14 +96,20 @@ public class Race {
         this.wordList = list;
 
         // Set total words for tracking progress
-        //this.totalWords = selectedWords.size();
+        //this.totalWords = wordList.size();
+
+
+        /* Commented out for now will deal with bot logic later*/
         // Set bot speed based on the level's difficulty
-        this.botSpeed = level.getDifficulty() * 10;
+
+        //this.botSpeed = level.getDifficulty() * 10; 
         
     }
 
-    /*
-    * Return the full race text
+    /**
+     * Returns the full race text for the frontend to display.
+     *
+     * @return the race text.
      */
     public String getRaceText() {
         return this.raceText;
@@ -119,23 +118,26 @@ public class Race {
     /**
      * Processes a single character input.
      *
-     * @param input The character typed by the user.
+     * @param input The character typed by the user get that
      * @return true if the character was correct, false otherwise.
      */
     public boolean checkInput(char input) {
+
         if (currentWordIndex >= wordList.size()) {
             return false; // prevent indexOutofBounds exception if all words are completed
         }
-        // Get the word the player is currently supposed to type
+
+        // Get the word the player is currently supposed to type from the wordList
         Word currentWord = wordList.get(currentWordIndex);
 
         // Check if the character matches the next character in that word
+        // calls the checkCharacterMatch method in Word.java to see if the char inputted matches the next char in the word
         boolean isCorrect = currentWord.checkCharacterMatch(input);
 
+        //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
-            // If the word is finished, move to the next one
             if (currentWord.isComplete()) {
-                wordsTypedIncrement(currentWord); // Trigger your stamina/boost logic
+                wordsTypedIncrement(currentWord); // racing
                 currentWordIndex++;
             }
         } else {
