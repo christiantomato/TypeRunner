@@ -86,12 +86,12 @@ public class Race {
         //build the target text along with the words list
         StringBuilder fullText = new StringBuilder();
 
-        int randomIndex = random.nextInt(5640);
+        int randomIndex = random.nextInt(5460);
         list.add(dictionary.getWordList().get(randomIndex));
         fullText.append(list.get(0).getFullText());
 
         for (int i = 1; i < numWords; i++) {
-            randomIndex = random.nextInt(5640);
+            randomIndex = random.nextInt(5460);
             list.add(dictionary.getWordList().get(randomIndex));
             fullText.append(" ").append(list.get(i).getFullText());
         }
