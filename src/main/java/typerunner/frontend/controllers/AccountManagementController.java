@@ -116,7 +116,7 @@ public class AccountManagementController {
     /**
      * Select Player
      * 
-     * updates the player menu to show the user the player
+     * Updates the player menu to show the user the player
      * that has been selected to manage. 
      * 
      * @param e the selection event
@@ -178,7 +178,21 @@ public class AccountManagementController {
 
         System.out.println(newPassword);
         
-        //TODO: pass in the new password to backend function.
+        //get the account manager
+        AccountManager accountManager = AccountManager.getInstance();
+        //find the player we are reseting the password for
+        Player player = accountManager.findPlayer(selectedPlayer);
+        //reset the password
+        boolean success = accountManager.resetPassword(player, newPassword);
+
+        //TODO: give feedback?
+
+        if(success) {
+            System.out.println("success resetting password");
+        }
+        else {
+            System.out.println("didn't work");
+        }
     }
 
     /**
