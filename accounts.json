@@ -1,6 +1,8 @@
 [
   {
-    "playersManaging": [],
+    "playersManaging": [
+      "babytomato"
+    ],
     "username": "christomato",
     "password": "mypassword",
     "statistics": {
@@ -46,5 +48,20 @@
       "totalWordsTyped": 0
     },
     "isAdmin": true
+  },
+  {
+    "username": "babytomato",
+    "password": "ilovetomatoes",
+    "statistics": {
+      "averageWPM": 0.0,
+      "peakWPM": 0.0,
+      "accuracypercentage": 0.0,
+      "level": 0,
+      "errorCount": 0,
+      "totalTimePlayed": 0,
+      "highestscore": 0,
+      "totalWordsTyped": 0
+    },
+    "isAdmin": false
   }
 ]
