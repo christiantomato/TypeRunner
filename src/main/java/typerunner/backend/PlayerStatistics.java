@@ -178,6 +178,8 @@ public class PlayerStatistics {
         //update highscore
         if(this.highscore.getScoreValue() < mostRecentScore) {
             this.highscore.setScoreValue(mostRecentScore);
+            this.highscore.setAccuracy(mostRecentAccuracy);
+            this.highscore.setWpm(mostRecentWpm);
         }
 
         //add to the total games played

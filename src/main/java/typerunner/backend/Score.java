@@ -62,10 +62,22 @@ public class Score {
         return this.wpm;
     }
 
+     /**
+     * Setter for WPM
+     * 
+     * Sets the new wpm.
+     * 
+     * @param newWpm the new wom
+     */
+
+    public void setWpm(int newWpm) {
+        this.wpm = newWpm;
+    }
+
     /**
      * Getter for accuracy
      * 
-     * Gets the accuracy achieved by the player
+     * Gets the accuracy achieved by the player. 
      *
      * @return the accuracy int
      */
@@ -75,22 +87,21 @@ public class Score {
     }
 
     /**
-     * Calculate Score
+     * Setter for Accuracy
      * 
-     * Calculates the score value based on the fields
+     * Sets the new accuracy. 
      * 
-     * @return the score value
+     * @param newAccuracy the new accuracy 
      */
 
-    public int calculateScore(Level level, int wpm, double accuracy) {
-        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
-        return this.scoreValue;
+    public void setAccuracy(double newAccuracy) {
+        this.accuracy = newAccuracy;
     }
 
     /**
      * Get Score Value
      * 
-     * Gets the value of the score
+     * Gets the value of the score.
      * 
      * @return the score value
      */
@@ -102,12 +113,25 @@ public class Score {
     /**
      * Set Score Value
      * 
-     * Sets a new score value
+     * Sets a new score value.
      * 
      * @param newScore new score
      */
 
     public void setScoreValue(int newScore) {
         this.scoreValue = newScore;
+    }
+
+    /**
+     * Calculate Score
+     * 
+     * Calculates the score value based on the fields.
+     * 
+     * @return the score value
+     */
+
+    public int calculateScore(Level level, int wpm, double accuracy) {
+        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
+        return this.scoreValue;
     }
 }
