@@ -180,6 +180,7 @@ public class Race {
         System.out.println("current word: " + currentWord);
         System.out.println("current word index now: " + currentWord.getTypeIndex());
         System.out.println("Elapsed time in seconds: " + getTimeInSeconds() + "s");
+        System.out.println("Current stamina: " + getstamina());
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
@@ -194,7 +195,8 @@ public class Race {
             reducestamina(5);
 
             // If what they tpyed is wrong, increase errorCount
-            this.errorCount++;
+             this.errorCount++;
+           
         }
 
         this.currentRaceIndex += 1;
@@ -211,7 +213,7 @@ public class Race {
      * Calculate Accuracy */
 
     public void updateAccuracy() {
-        this.accuracy = (correctCounter/raceText.length()) * 100;
+        this.accuracy = ((double) correctCounter/raceText.length()) * 100;
     }
 
     /**
@@ -391,11 +393,12 @@ public class Race {
         if (word.isComplete()) {
             wordsTyped++;
         } else {
-            reducestamina(20); // Reduce stamina by 20 for each incorrect word
-            wordsTyped = 0; // Reset consecutive words count on incorrect word 
+            reducestamina(10); // Reduce stamina by 20 for each incorrect word
+            System.out.println("REDUCED STAMINA " + stamina);
+            wordsTyped = 0; // Reset consecutive words count on incorrect word 3
         }
 
-        int stams = checkstamina();
+        int stams = getstamina();
         if (stams <= 50 && wordsTyped > 0) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
@@ -481,14 +484,6 @@ public class Race {
         return stamina;
     }
 
-    /**
-     * Checks the player's current stamina.
-     *
-     * @return the current stamina value.
-     */
-    public int checkstamina() {
-        return stamina;
-    }
 
     /**
      * Reduces the player's stamina by a specified amount. stamina will not drop
