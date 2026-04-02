@@ -139,7 +139,7 @@ public class GameScreenController implements Initializable {
                 System.out.println("correct input? " + correctCharTyped);
 
                 //based on the result, update paragraph text
-                updateParagraphText(correctCharTyped, GameEngine.getInstance().getCurrentRace().getCurrentRaceIndex());
+                updateParagraphText(correctCharTyped, GameEngine.getInstance().getCurrentRace().getCurrentRaceIndex() - 1);
             }
         }
         else {
@@ -154,7 +154,20 @@ public class GameScreenController implements Initializable {
      */
 
     public void updateParagraphText(boolean correct, int index) {
+        paragraph.getChildren().clear();
 
+        //correct part (everything before current index)
+        Text correctText = new Text(targetText.substring(0, index));
+        correctText.setStyle("-fx-fill: green;");
+
+        //current character
+        Text currentChar = new Text(String.valueOf(targetText.charAt(index)));
+        currentChar.setStyle(correct ? "-fx-fill: green;" : "-fx-fill: red;");
+
+        //remaining text
+        Text remaining = new Text(targetText.substring(index + 1));
+
+        paragraph.getChildren().addAll(correctText, currentChar, remaining);
     }
 
     /**

@@ -141,6 +141,7 @@ public class Race {
      * @param input The character typed by the user get that
      * @return true if the character was correct, false otherwise.
      */
+    
     public boolean checkInput(char input) {
         if (currentWordIndex >= wordList.size()) {
             return false; // prevent indexOutofBounds exception if all words are completed
@@ -209,9 +210,6 @@ public class Race {
             this.currentRaceIndex--;
         }
     }
-
-
-    
 
     /**
      * Starts the race timer.
