@@ -77,6 +77,7 @@ public class GameEngine {
      */
 
     public void endGame() {
+        
         //write all the statistics
         Player player = LoginManager.getInstance().getCurrentUser();
 
