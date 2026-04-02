@@ -25,7 +25,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        playMusic("/audio/menu-music-loop.m4a");
         
         //create our FXML loader and initalize it with the main menu fxml file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
@@ -53,6 +52,8 @@ public class Main extends Application {
         //make sure it is visible
         primaryStage.show();
 
+        //play menu theme
+        playMusic("/audio/menu-music-loop.m4a");
         
     }
 
@@ -64,7 +65,7 @@ public class Main extends Application {
         Media song = new Media(getClass().getResource(path).toExternalForm());
         mediaPlayer = new MediaPlayer(song);
         mediaPlayer.setCycleCount(-1);
-        mediaPlayer.setVolume(0.5);
+        mediaPlayer.setVolume(0.2);
         mediaPlayer.play();
     }
 

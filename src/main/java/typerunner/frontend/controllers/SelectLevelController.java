@@ -3,6 +3,7 @@ package typerunner.frontend.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Level;
@@ -11,7 +12,19 @@ import typerunner.frontend.ScreenNavigator;
 public class SelectLevelController {
     /*message text field */
     @FXML private Text message;
+    @FXML private Circle highschoolCircle;
+    @FXML private Circle collegeCircle;
+    @FXML private Circle olympicsCircle;
+
+    private void removeColour(){
+        highschoolCircle.getStyleClass().remove("clicked");
+        collegeCircle.getStyleClass().remove("clicked");
+        olympicsCircle.getStyleClass().remove("clicked");
+    }
+
     public void highSchool(ActionEvent e){
+        removeColour();
+
         System.out.println("high school");
         GameEngine.getInstance().setLevel(Level.HIGHSCHOOL);
         if(GameEngine.getInstance().getLevel() == Level.HIGHSCHOOL){
@@ -19,10 +32,12 @@ public class SelectLevelController {
         }else{
             message.setText("The level did not change.");
         }
-        
+        highschoolCircle.getStyleClass().add("clicked");
     }
 
     public void college(ActionEvent e){
+        removeColour();
+
         System.out.println("college");
         GameEngine.getInstance().setLevel(Level.COLLEGE);
         if(GameEngine.getInstance().getLevel() == Level.COLLEGE){
@@ -30,9 +45,13 @@ public class SelectLevelController {
         }else{
             message.setText("The level did not change.");
         }
+
+        collegeCircle.getStyleClass().add("clicked");
     }
 
     public void olympics(ActionEvent e){
+        removeColour();
+
         System.out.println("olympics");
         GameEngine.getInstance().setLevel(Level.OLYMPICS);
         if(GameEngine.getInstance().getLevel() == Level.OLYMPICS){
@@ -40,9 +59,13 @@ public class SelectLevelController {
         }else{
             message.setText("The level did not change.");
         }
+
+        olympicsCircle.getStyleClass().add("clicked");
     }
 
-    public void backButton(ActionEvent e) throws IOException{
+    public void returnToMenu(ActionEvent e) throws IOException{
+        removeColour();
+
         System.out.println("back");
         ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
     }

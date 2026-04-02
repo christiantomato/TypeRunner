@@ -26,7 +26,6 @@
 }
 
 .button:hover{
-    
     -fx-text-fill: white;
 }
 
@@ -46,4 +45,17 @@
     -fx-font-family: "Press Start 2P";
     -fx-text-fill: black;
 }
+
+.highschool-circle.clicked{
+    -fx-fill: red;
+}
+
+.college-circle.clicked{
+    -fx-fill: yellow;
+}
+
+.olympics-circle.clicked{
+    -fx-fill: green;
+}
+
 
