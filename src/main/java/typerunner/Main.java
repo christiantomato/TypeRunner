@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         //create our FXML loader and initalize it with the main menu fxml file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
-        
+
         //set the root node as the main menu fxml
         Parent root = loader.load();
 
@@ -40,6 +40,9 @@ public class Main extends Application {
         // primaryStage.setFullScreen(true);
         // primaryStage.setFullScreenExitHint("");
         // primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+
+        //make stage non-resizeable
+        primaryStage.setResizable(false);
         
         //make sure it is visible
         primaryStage.show();

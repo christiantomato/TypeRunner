@@ -1,10 +1,32 @@
+/* load font */
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("/fonts/PressStart2P-Regular.ttf");
+}
+
 /* Global Styles */
-.label{
-    
+.title-text{
+    -fx-font-family: "Press Start 2P";
+    -fx-text-fill: black;
+}
+
+.button{
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 20px;
+    -fx-background-color: #2F3071 /*dark blue that matches background */;
+    -fx-text-fill: black;
+    -fx-background-radius: 13px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+}
+
+.button:hover{
+    -fx-font-size: 15px;
 }
 
 .menu-screen {
-    -fx-background-image: url('../images/main-screen-background.jpg');
+    -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
