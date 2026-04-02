@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import typerunner.backend.GameEngine;
+import typerunner.backend.Race;
 import typerunner.backend.Word;
 import typerunner.frontend.ScreenNavigator;
 import typerunner.backend.Dictionary;
@@ -80,29 +81,7 @@ public class GameScreenController implements Initializable {
         paragraph.getChildren().clear();
         System.out.println("start");
 
-        //get difficulty and num words
-        ArrayList<Word> list = new ArrayList<>();
-        int multiplier = GameEngine.getInstance().getLevel().getDifficulty();
-        int numWords = BASE_WORDS * multiplier;
-
-        Dictionary dictionary = new Dictionary();
-        Random random = new Random();
-
-        //build the target text along with the words list
-        StringBuilder fullText = new StringBuilder();
-
-        int randomIndex = random.nextInt(MAX);
-        list.add(dictionary.getWordList().get(randomIndex));
-        fullText.append(list.get(0).getFullText());
-
-        for(int i = 1; i < numWords; i++) {
-            randomIndex = random.nextInt(MAX);
-            list.add(dictionary.getWordList().get(randomIndex));
-            fullText.append(" ").append(list.get(i).getFullText());
-        }
-
-        //set the target text
-        targetText = fullText.toString();
+        Race newRace = new Race(null)
 
         //add it to the text flow
         Text textNode = new Text(targetText);
