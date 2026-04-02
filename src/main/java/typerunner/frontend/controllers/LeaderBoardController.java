@@ -6,7 +6,7 @@ import typerunner.frontend.ScreenNavigator;
 
 public class LeaderBoardController {
     
-    public void mainMenu(ActionEvent e) throws IOException {
+    public void returnToMenu(ActionEvent e) throws IOException {
         System.out.println("Back");
         ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
     }

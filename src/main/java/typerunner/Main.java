@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 //to do
 
@@ -20,11 +22,14 @@ public class Main extends Application {
      * @throws Exception if something goes wrong
      */
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
         //create our FXML loader and initalize it with the main menu fxml file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
-        
+
         //set the root node as the main menu fxml
         Parent root = loader.load();
 
@@ -41,11 +46,28 @@ public class Main extends Application {
         // primaryStage.setFullScreen(true);
         // primaryStage.setFullScreenExitHint("");
         // primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+
+        //make stage non-resizeable
+        primaryStage.setResizable(false);
         
         //make sure it is visible
         primaryStage.show();
 
+        //play menu theme
+        playMusic("/audio/menu-music-loop.m4a");
         
+    }
+
+    public void playMusic(String path){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
+
+        Media song = new Media(getClass().getResource(path).toExternalForm());
+        mediaPlayer = new MediaPlayer(song);
+        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.setVolume(0.2);
+        mediaPlayer.play();
     }
 
     public static void main(String[] args) {

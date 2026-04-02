@@ -1,11 +1,61 @@
-/* Global Styles */
-.label{
-    
+/* load font */
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("/fonts/PressStart2P-Regular.ttf");
 }
 
-.menu-screen {
-    -fx-background-image: url('../images/main-screen-background.jpg');
+/* Global Styles */
+
+.titles{
+    -fx-font-family: "Press Start 2P";
+    -fx-text-fill: black;
+    -fx-font-size: 70px;
+    -fx-stroke: white;
+    -fx-stroke-width: 3px;
+}
+
+.button{
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 20px;
+    -fx-background-color: #2F3071 /*dark blue that matches background */;
+    -fx-text-fill: black;
+    -fx-background-radius: 13px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+}
+
+.button:hover{
+    -fx-text-fill: white;
+}
+
+.back-button{
+    -fx-font-size: 15px;
+}
+
+.back-button:hover{
+    -fx-font-size: 12px;
+}
+
+.root{
+    -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
+    -fx-font-family: "Press Start 2P";
+    -fx-text-fill: black;
 }
+
+.highschool-circle.clicked{
+    -fx-fill: red;
+}
+
+.college-circle.clicked{
+    -fx-fill: yellow;
+}
+
+.olympics-circle.clicked{
+    -fx-fill: green;
+}
+
+

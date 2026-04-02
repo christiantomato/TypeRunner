@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
@@ -34,10 +35,13 @@
       </VBox>
    </center>
    <top>
-      <Text fx:id="currentPlayer" strokeType="OUTSIDE" strokeWidth="0.0" text="Player Name" BorderPane.alignment="CENTER">
+      <Text fx:id="currentPlayer" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titles" text="Player Name" BorderPane.alignment="CENTER">
          <font>
             <Font size="50.0" />
          </font>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
       </Text>
    </top>
 </BorderPane>
