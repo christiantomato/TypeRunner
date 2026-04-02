@@ -93,9 +93,10 @@ public class GameScreenController implements Initializable {
         paragraph.getChildren().clear();
         System.out.println("starting game");
 
-        //create a new race and set it to the game engine
+        //create a new race and set it to the game engine, and start the game
         Race newRace = new Race();
         GameEngine.getInstance().setCurrentRace(newRace);
+        GameEngine.getInstance().startGame();
 
         //initalize correctness array
         this.correctness = new ArrayList<>();
@@ -223,6 +224,7 @@ public class GameScreenController implements Initializable {
      */
 
     private void updateStats() {
+        System.out.println("UPDATING STATS");
         //get the race that is happening
         Race race = GameEngine.getInstance().getCurrentRace();
          
