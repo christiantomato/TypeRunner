@@ -57,8 +57,6 @@ public class LoginController {
 
             if(successful) {
                 System.out.println("successful login");
-                //initilize game engine with the player information -- Sahej
-                GameEngine.getInstance().init(loginManager.getCurrentUser());
                 ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
             }
             else {
