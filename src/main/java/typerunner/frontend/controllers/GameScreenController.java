@@ -145,7 +145,7 @@ public class GameScreenController implements Initializable {
 
                 //check for backspace character on windows machines, and ignore
                 if(inputChar == '\b'){
-                    System.out.println("backspace detected in checkInput, should be handled in onKeyPressed");
+                    System.out.println("backspace detected, ignoring input char (for windows)");
                     return;
                 }
 
@@ -159,7 +159,7 @@ public class GameScreenController implements Initializable {
                 updateParagraphText();
             }
             else {
-                System.out.println("nothing inputted (mac)");
+                System.out.println("nothing inputted (for mac)");
             }
         }
         else {
