@@ -107,6 +107,7 @@ public class GameScreenController implements Initializable {
         if(e.getCode() == KeyCode.BACK_SPACE) {
             System.out.println("BACKSPACE pressed");
             //TODO: pass to back end to update word index!
+            GameEngine.getInstance().getCurrentRace().
 
             return;
         }
