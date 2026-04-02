@@ -1,5 +1,7 @@
 package typerunner.backend;
 
+import java.util.ArrayList;
+
 /**
  * Manages the state and logic for a single race in the TypeRunner game.
  * This class tracks the player's progress, speed, stamina, and handles the
@@ -27,6 +29,71 @@ public class Race {
     private int playerSpeed;
     /** The player's current stamina, ranging from 0 to 100. */
     private int Stamina = 100;
+
+    /*The word list used for this specific race */
+    private ArrayList<Word> wordList;
+
+    /* Track the current word the player is typing */
+    private int currentWordIndex = 0;
+
+    /* Track the start and end times of the race */
+    private long startTime;
+    private long endTime;
+
+
+
+    public Race(Level level) {
+        this.level = level;
+        //this.wordList = selectedWords;
+        // Initialize starting values
+        this.currentWordIndex = 0;
+        this.wordsTyped = 0;
+        this.Stamina = 100;
+        this.time = 0;
+
+        // Set total words for tracking progress
+        //this.totalWords = selectedWords.size();
+    
+        // Set bot speed based on the level's difficulty
+        this.botSpeed = level.getDifficulty() * 10;
+    }
+    /**
+     * Processes a single character input.
+     * @param input The character typed by the user.
+     * @return true if the character was correct, false otherwise.
+     */
+    public boolean checkInput(char input) {
+        if (currentWordIndex >= wordList.size()) return false; // prevent indexOutofBounds exception if all words are completed
+
+        // Get the word the player is currently supposed to type
+        Word currentWord = wordList.get(currentWordIndex);
+        
+        // Check if the character matches the next character in that word
+        boolean isCorrect = currentWord.checkCharacterMatch(input);
+
+        if (isCorrect) {
+            // If the word is finished, move to the next one
+            if (currentWord.isComplete()) {
+                wordsTypedIncrement(currentWord); // Trigger your stamina/boost logic
+                currentWordIndex++;
+            }
+        } else {
+            // Handle a typo: reduce stamina directly
+            reduceStamina(5);
+        }
+        
+        return isCorrect;
+    }
+
+
+    public void startRaceTime(){
+        startTime = System.currentTimeMillis();
+    }
+
+    public void endRaceTime(){
+        endTime = System.currentTimeMillis();
+    }
+    
 
     /**
      * Gets the total number of words for the race.
@@ -80,10 +147,10 @@ public class Race {
 
     /**
      * Gets the elapsed time of the race.
-     * @return the current time.
+     * @return elapsed time
      */
-    public int getTime() {
-        return time;
+    public int getTimeInSeconds() {
+        return (int) ((endTime - startTime) / 1000);
     }   
 
     /**
@@ -202,9 +269,10 @@ public class Race {
 
     /**
      * Updates the player's words per minute (WPM).
-     * Note: This method is currently a placeholder and has no implementation.
      */
     public void updateWpm() {
+        
+
     }
 
     /**

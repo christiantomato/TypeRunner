@@ -1,5 +1,12 @@
 package typerunner.backend;
-
+/* 
+import javax.lang.System;
+import java.text.DecimalFormat;
+*/
+/**
+ * The GameEngine class is responsible for managing the overall game state and logic of the TypeRunner game.
+ * 
+*/
 public class GameEngine {
 
     private static GameEngine instance;
@@ -19,7 +26,7 @@ public class GameEngine {
 
     public void init(Player player) {
         this.currentPlayer = player;
-        this.currentRace = new  Race();
+        //this.currentRace = new  Race();
         this.isGameRunning = true;
     }
 
@@ -45,4 +52,13 @@ public class GameEngine {
         return this.currentRace.getLevel();
     }
 
+    // 
+    public void processKey(char input){
+
+    }
+
+
+
+
+    
 }
