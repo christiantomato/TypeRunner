@@ -47,9 +47,10 @@ public class StaminaRefill implements PowerUp {
             default:
                 staminaBonus = 0; // Default case if Levelnum is out of expected range
         }
+
         return staminaBonus;
     }
-
+          
     /**
      * Triggers the stamina refill effect.
      * @return {@code true} unconditionally in its current state.
