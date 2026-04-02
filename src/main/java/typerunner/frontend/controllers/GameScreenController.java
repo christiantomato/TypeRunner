@@ -106,9 +106,8 @@ public class GameScreenController implements Initializable {
         //listen for backspaces
         if(e.getCode() == KeyCode.BACK_SPACE) {
             System.out.println("BACKSPACE pressed");
-            //TODO: pass to back end to update word index!
-            GameEngine.getInstance().getCurrentRace().
-
+            //get the back end to handle logic for backspace pressed
+            GameEngine.getInstance().getCurrentRace().handleBackspace();
             return;
         }
     }

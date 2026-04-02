@@ -171,20 +171,33 @@ public class Race {
     }
 
 
-    //when backsapce is pressed move the index back by 1;
+    /**
+     * Handle Backspace
+     * 
+     * Decrements indices when backspace is pressed.
+     */
+
     public void handleBackspace() {
-
         //Get the word the player is currently supposed to type from the wordList
-        Word currentWord = wordList.get(currentWordIndex);
+        Word currentWord = wordList.get(this.currentWordIndex);
 
+        //if we are on the first letter of the word
         if(currentWord.getTypeIndex() == 0){
-                this.currentWordIndex -= 1;
-                currentWord = wordList.get(currentWordIndex-1);
+            //go back a word unless we are on the very first word
+            if(this.currentWordIndex == 0) {
+                return;
+            }
+            //go back a word
+            this.currentWordIndex--;
         }
-        currentWord.decrementTypeIndex();
+        else {
+            //otherwise, go back a letter in the word
+            currentWord.decrementTypeIndex();
+        }
 
-        if (currentRaceIndex > 0) {
-            currentRaceIndex--;
+        //decrement it for the entire race text
+        if(this.currentRaceIndex > 0) {
+            this.currentRaceIndex--;
         }
     }
 

@@ -65,11 +65,16 @@ public class Word {
      * @param input The character input by the player.
      * @return True if the input character matches the next character in the word, false otherwise.
      */
+
     public boolean checkCharacterMatch(char input) {
+        //check if it matches
         if(!isComplete() && input == fullText.charAt(typeIndex)) {
+            //increase the type index
             typeIndex++;
             return true;
         }
+        //increase even if wrong, will handle with backspace
+        typeIndex++;
         return false;
     }
 
