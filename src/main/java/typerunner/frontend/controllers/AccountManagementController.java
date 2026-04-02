@@ -185,7 +185,7 @@ public class AccountManagementController {
         //reset the password
         boolean success = accountManager.resetPassword(player, newPassword);
 
-        //TODO: give feedback?
+        //TODO: give ui feedback?
 
         if(success) {
             System.out.println("success resetting password");
