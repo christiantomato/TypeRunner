@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -93,6 +94,25 @@ public class GameScreenController implements Initializable {
     }
 
     /**
+     * On Key Pressed
+     * 
+     * Listens for specific keys pressed like backspaces, so we can update index accordingly
+     * 
+     * @param e the key event
+     */
+
+    @FXML
+    private void onKeyPressed(KeyEvent e) {
+        //listen for backspaces
+        if(e.getCode() == KeyCode.BACK_SPACE) {
+            System.out.println("BACKSPACE pressed");
+            //TODO: pass to back end to update word index!
+
+            return;
+        }
+    }
+
+    /**
      * Get Key Input
      * 
      * Gets the key that was pressed inside the text area
@@ -103,7 +123,7 @@ public class GameScreenController implements Initializable {
         if(gameIsSetup) {
             //get the text from the texfield
             String textAreaString = inputField.getText();
-
+        
             //get the key that has been typed
             String inputCharAsString = e.getCharacter();
             System.out.println(inputCharAsString);
@@ -119,14 +139,12 @@ public class GameScreenController implements Initializable {
                 System.out.println("correct input? " + correctCharTyped);
 
                 //based on the result, update paragraph text
-                //updateParagraphText(correctCharTyped, );
-
+                updateParagraphText(correctCharTyped, GameEngine.getInstance().getCurrentRace().getCurrentRaceIndex());
             }
-            else {
-                System.out.println("idk its empty");
-            }
-        
-        }   
+        }
+        else {
+            System.out.println("idk its empty");
+        }  
     }
 
     /**
