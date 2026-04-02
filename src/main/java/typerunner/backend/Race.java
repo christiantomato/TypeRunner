@@ -64,7 +64,7 @@ public class Race {
     //constants
 
     /** base words constant */
-    public static final int BASE_WORDS = 25;
+    public static final int BASE_WORDS = 15;
     /** max words list constant */
     public static final int MAX = 5460;
 

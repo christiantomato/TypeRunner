@@ -33,7 +33,8 @@ public class Player {
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
-        this.statistics = new PlayerStatistics(0, 0,0,0,0,0,0,null, 0);
+        //initalize the statistics object with default values
+        this.statistics = new PlayerStatistics(0, 0,0,0,1,0,0,new Score(Level.HIGHSCHOOL), 0);
     }
 
     /** 

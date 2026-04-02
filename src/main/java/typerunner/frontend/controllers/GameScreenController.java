@@ -226,7 +226,7 @@ public class GameScreenController implements Initializable {
      */
 
     private void updateStats() {
-        System.out.println("UPDATING STATS");
+        //System.out.println("UPDATING STATS");
         //get the race that is happening
         Race race = GameEngine.getInstance().getCurrentRace();
          
