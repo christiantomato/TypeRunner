@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Manages the state and logic for a single race in the TypeRunner game. This
  * class tracks the player's progress, speed, stamina, and handles the
- * activation of power-ups like SpeedBoost and StaminaRefill based on game
+ * activation of power-ups like SpeedBoost and staminaRefill based on game
  * events.
  *
  * @author Olorunfemi Martins
@@ -48,25 +48,29 @@ public class Race {
     /** The player's current stamina, ranging from 0 to 100.*/
     private int stamina = 100;
 
-    /*The word list used for this specific race*/
+    /** The word list used for this specific race*/
     private ArrayList<Word> wordList;
 
     /**The actual string of words that the frontend will use*/
     private String raceText;
 
-    /**The index for the race text*/
+    /** The index for the race text*/
     private int currentRaceIndex = 0;
 
-    /* *Track the current word the player is typing from wordList */
+    /** Track the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
-    /* Track the start and end times of the race */
+    /** Track the start and end times of the race */
     private long startTime;
     private long endTime;
 
-    /*Speed of the bot i.e. duration of translation */
+    /** Speed of the bot i.e. duration of translation */
     private int botSpeed;
 
+    /** the base words */
+    public static final int BASE_WORDS = 25;
+    /** the max amount */
+    public static final int MAX = 5460;
 
     public Race() {
         // Initialize starting values
@@ -81,7 +85,7 @@ public class Race {
         //get difficulty and num words
         ArrayList<Word> list = new ArrayList<>();
         int multiplier = GameEngine.getInstance().getLevel().getDifficulty();
-        int numWords = 25 * multiplier;
+        int numWords = BASE_WORDS * multiplier;
 
         Dictionary dictionary = new Dictionary();
         Random random = new Random();
@@ -93,7 +97,7 @@ public class Race {
         //list.add(dictionary.getWordList().get(randomIndex));
         //fullText.append(list.get(0).getFullText());
         for (int i = 0; i < numWords; i++) {
-            int randomIndex = random.nextInt(5460);
+            int randomIndex = random.nextInt(MAX);
             String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
 
             //add a space after each word except for the last one
@@ -184,7 +188,7 @@ public class Race {
             }
         } else {
             // Handle a typo: reduce stamina directly
-            reduceStamina(5);
+            reducestamina(5);
 
             // If what they tpyed is wrong, increase errorCount
             this.errorCount++;
@@ -320,24 +324,6 @@ public class Race {
     }
 
     /**
-     * Gets the player's current speed.
-     *
-     * @return the player's speed.
-     */
-    public int getPlayerSpeed() {
-        return playerSpeed;
-    }
-
-    /**
-     * Sets the player's current speed.
-     *
-     * @param playerSpeed the player's new speed.
-     */
-    public void setPlayerSpeed(int playerSpeed) {
-        this.playerSpeed = playerSpeed;
-    }
-
-    /**
      * Applies a speed boost to the player based on the current level. This
      * method creates a {@link SpeedBoost} power-up and increases the player's
      * speed.
@@ -400,11 +386,11 @@ public class Race {
         if (word.isComplete()) {
             wordsTyped++;
         } else {
-            reduceStamina(20); // Reduce stamina by 20 for each incorrect word
+            reducestamina(20); // Reduce stamina by 20 for each incorrect word
             wordsTyped = 0; // Reset consecutive words count on incorrect word 
         }
 
-        int stams = checkStamina();
+        int stams = checkstamina();
         if (stams <= 50 && wordsTyped > 0) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
@@ -463,7 +449,7 @@ public class Race {
      */
     public int getScore() {
         
-        return this.score.calculateScore(GameEngine.getInstance().getLevel().getDifficulty(),this.wpm, this.accuracy);
+        return this.score.calculateScore(GameEngine.getInstance().getLevel(),this.wpm, this.accuracy);
     }
 
 
@@ -487,7 +473,7 @@ public class Race {
      *
      * @return the current stamina value.
      */
-    public int getStamina() {
+    public int getstamina() {
         return stamina;
     }
 
@@ -496,23 +482,23 @@ public class Race {
      *
      * @return the current stamina value.
      */
-    public int checkStamina() {
+    public int checkstamina() {
         return stamina;
     }
 
     /**
-     * Reduces the player's stamina by a specified amount. Stamina will not drop
+     * Reduces the player's stamina by a specified amount. stamina will not drop
      * below 0.
      *
      * @param amount the amount to reduce stamina by.
      * @return the new stamina value after reduction.
      */
-    public int reduceStamina(int amount) {
-        stmaina -= amount;
-        if (Stamina < 0) {
-            Stamina = 0; // Ensure stamina doesn't go negative
+    public int reducestamina(int amount) {
+        stamina -= amount;
+        if (stamina < 0) {
+            stamina = 0; // Ensure stamina doesn't go negative
         }
-        return Stamina;
+        return stamina;
     }
 
 }

@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,17 +37,25 @@ public class GameScreenController implements Initializable {
     @FXML private TextFlow paragraph;
     /** the text area where they type out the words */
     @FXML private TextArea inputField;
+    /** live display of wpm */
+    @FXML private Text wpm;
+    /** live display of time */
+    @FXML private Text time;
+    /** live display of score */
+    @FXML private Text score;
+    /** live display of peak wpm */
+    @FXML private Text peakWpm;
+    /** live display of health or "stamina" */
+    @FXML private Text heatlh;
+
     /** the actual string of text they are typing */
     private String targetText;
     /** a list storing which letters are correct */
     private ArrayList<Boolean> correctness; 
+    /** timeline to constantly update stats */
+    private Timeline gameLoop;
     /** boolean to make sure game has been setup before user starts typing */
     private boolean gameIsSetup;
-
-    /** the base words */
-    public static final int BASE_WORDS = 25;
-    /** the max amount */
-    public static final int MAX = 5460;
 
     /**
      * Back to Player Screen
@@ -79,10 +91,13 @@ public class GameScreenController implements Initializable {
     private void setupGame(ActionEvent e) {
         //clear before setting up
         paragraph.getChildren().clear();
-        System.out.println("start");
+        System.out.println("starting game");
 
-        //initalize the correctness list
-        correctness = new ArrayList<>();
+        //every 100 mills, update stats
+        gameLoop = new Timeline(new KeyFrame(Duration.millis(100), event -> updateStats()));
+        //update indefinitely
+        gameLoop.setCycleCount(Timeline.INDEFINITE);
+        gameLoop.play();
 
         //create a new race and set it to the game engine
         Race newRace = new Race();
@@ -173,7 +188,7 @@ public class GameScreenController implements Initializable {
      * Gives feedback on characters that are being correctly or incorrectly typed
      */
 
-    public void updateParagraphText() {
+    private void updateParagraphText() {
         //clear old
         paragraph.getChildren().clear();
 
@@ -196,6 +211,29 @@ public class GameScreenController implements Initializable {
             //add it to the flow
             paragraph.getChildren().add(t);
         }
+    }
+
+    /**
+     * Update Statistics
+     * 
+     * Gets the current statistics from the backend to display on the frontend
+     */
+
+    private void updateStats() {
+        Race race = GameEngine.getInstance().getCurrentRace();
+
+        /*
+         
+        wpm.setText(String.valueOf(race.getWPM()));
+        time.setText(String.valueOf(race.getTime()));
+        score.setText(String.valueOf(race.getScore()));
+        peakWpm.setText(String.valueOf(race.getPeakWPM()));
+        heatlh.setText(String.valueOf(race.getHealth()));
+
+        if (race.isFinished()) {
+            gameLoop.stop();
+        }
+        */
     }
 
     /**
