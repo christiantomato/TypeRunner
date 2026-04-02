@@ -59,7 +59,7 @@ public class Race {
     private long startTime;
     private long endTime;
 
-    /*Speed of the bot */
+    /*Speed of the bot  i.e. duration of translation */
     private int botSpeed;
 
     public Race() {
@@ -99,13 +99,15 @@ public class Race {
         this.wordList = list;
 
         // Set total words for tracking progress
-        //this.totalWords = wordList.size();
+        this.totalWords = wordList.size();
 
 
-        /* Commented out for now will deal with bot logic later*/
-        // Set bot speed based on the level's difficulty
+        /* 
+        * Commented out for now will deal with bot logic later
+        * Set bot speed based on the level's difficulty
 
-        //this.botSpeed = level.getDifficulty() * 10; 
+        this.botSpeed = level.getDifficulty() * 10; 
+        */
         
     }
 
@@ -152,10 +154,16 @@ public class Race {
         return isCorrect;
     }
 
+    /**
+     * Starts the race timer.
+     */
     public void startRaceTime() {
         startTime = System.currentTimeMillis();
     }
-
+    
+    /**
+     * Ends the race timer.
+     */
     public void endRaceTime() {
         endTime = System.currentTimeMillis();
     }
