@@ -13,7 +13,7 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" styleClass="menu-screen" stylesheets="/styles/global.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.MenuController">
    <top>
-      <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="3.0" styleClass="title-text" text="TypeRunner" textAlignment="CENTER" BorderPane.alignment="CENTER">
+      <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="3.0" styleClass="titles" text="TypeRunner" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font size="70.0" />
          </font>
@@ -27,7 +27,7 @@
          <children>
             <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" styleClass="menu-image-view">
                <image>
-                  <Image url="@/images/logo.png"/>
+                  <Image url="@/images/logo.png" />
                </image>
             </ImageView>
             <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#goToLogin" text="Login" textAlignment="CENTER" VBox.vgrow="ALWAYS">

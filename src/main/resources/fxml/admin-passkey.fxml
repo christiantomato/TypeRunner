@@ -19,7 +19,7 @@
          <children>
             <Region maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" />
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Passkey">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titles" text="Passkey">
                <font>
                   <Font size="70.0" />
                </font>

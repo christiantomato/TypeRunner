@@ -5,13 +5,13 @@
 }
 
 /* Global Styles */
-.title-text{
+
+.titles{
     -fx-font-family: "Press Start 2P";
     -fx-text-fill: black;
-}
-.login-title{
-    -fx-font-family: "Press Start 2P";
-    -fx-text-fill: black;
+    -fx-font-size: 70px;
+    -fx-stroke: white;
+    -fx-stroke-width: 3px;
 }
 
 .button{

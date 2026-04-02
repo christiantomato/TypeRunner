@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 
@@ -19,8 +21,12 @@ public class Main extends Application {
      * @throws Exception if something goes wrong
      */
 
+    private MediaPlayer mediaPlayer;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
+        playMusic("/audio/menu-music-loop.m4a");
+        
         //create our FXML loader and initalize it with the main menu fxml file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menu.fxml"));
 
@@ -48,6 +54,18 @@ public class Main extends Application {
         primaryStage.show();
 
         
+    }
+
+    public void playMusic(String path){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
+
+        Media song = new Media(getClass().getResource(path).toExternalForm());
+        mediaPlayer = new MediaPlayer(song);
+        mediaPlayer.setCycleCount(-1);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
     }
 
     public static void main(String[] args) {

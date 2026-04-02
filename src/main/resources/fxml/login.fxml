@@ -34,7 +34,7 @@
          <children>
             <Region maxHeight="50.0" maxWidth="65.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="65.0" />
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="3.0" styleClass="login-title" text="Login " textAlignment="CENTER">
+            <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="3.0" styleClass="titles" text="Login " textAlignment="CENTER">
                <font>
                   <Font size="70.0" />
                </font>
