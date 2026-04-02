@@ -77,6 +77,7 @@ public class GameEngine {
      */
 
     public void endGame() {
+        System.out.println("WRITING DA STATS!!!");
         //write all the statistics
         Player player = LoginManager.getInstance().getCurrentUser();
 
@@ -116,7 +117,6 @@ public class GameEngine {
         return this.currentRace;
     }
 
-
     /**
      * Set Level
      * 
@@ -149,5 +149,17 @@ public class GameEngine {
 
     public boolean isGameRunning() {
         return this.isGameRunning;
+    }
+
+    /**
+     * Setter for Game Running
+     * 
+     * Sets the boolean
+     * 
+     * @param bool value
+     */
+
+    public void setGameRunning(boolean bool) {
+        this.isGameRunning = bool;
     }
 }

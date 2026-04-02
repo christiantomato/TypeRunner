@@ -8,9 +8,8 @@
       "averageWPM": 26.0,
       "peakWPM": 60.0,
       "accuracyPercentage": 0.0,
-      "level": 1,
       "errorCount": 22,
-      "totalTimePlayed": 0,
+      "totalTimePlayed": 0.0,
       "highscore": {
         "level": "HIGHSCHOOL",
         "wpm": 0,
@@ -18,6 +17,28 @@
         "scoreValue": 27
       },
       "totalWordsTyped": 15
+    },
+    "isAdmin": true
+  },
+  {
+    "playersManaging": [],
+    "username": "christomato",
+    "password": "mypassword",
+    "statistics": {
+      "gamesPlayed": 2,
+      "averageWPM": 30.0,
+      "peakWPM": 60.0,
+      "accuracyPercentage": 0.0,
+      "level": "HIGHSCHOOL",
+      "errorCount": 6,
+      "totalTimePlayed": 0.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 30,
+        "accuracy": 0.0,
+        "scoreValue": 31
+      },
+      "totalWordsTyped": 30
     },
     "isAdmin": true
   }
