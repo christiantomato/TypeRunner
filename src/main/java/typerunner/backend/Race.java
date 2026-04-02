@@ -31,6 +31,9 @@ public class Race {
     /** The index for the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
+    /** The number of words they correctly typed */
+    private int correctlyTypedWords = 0;
+
     //race variables
 
     /** The elapsed time in the race.*/
@@ -183,6 +186,7 @@ public class Race {
                 System.out.println("going to next word.");
                 currentWordStreakIncrement(currentWord); 
                 currentWordIndex++;
+                correctlyTypedWords++;
             }
         } else {
             // Handle a typo: reduce stamina directly
@@ -298,6 +302,16 @@ public class Race {
     }
 
     /**
+     * Error Count 
+     * @return error count
+     */
+    public int getErrorCount() {
+        return this.errorCount;
+    }
+
+    
+
+    /**
      * Sets the speed of the bot opponent. This will be used to set the
      * translation duration of the bot in the frontend and will be based on the
      * level difficulty and if the speedboost powerup is triggered or not
@@ -321,7 +335,18 @@ public class Race {
         if (this.endTime > 0) {
             now = endTime;
         }
-        return (int) ((now - startTime) / 1000);
+
+        this.time = (int) ((now - startTime) / 1000);
+        return time;
+    }
+
+
+    /**
+     * Gets the elapsed time of the race
+     * @return elapsed time in minutes
+     */
+    public int getTimeInMinutes() {
+        return this.time/ 60;
     }
 
     /**
@@ -455,10 +480,6 @@ public class Race {
         return this.score.calculateScore(GameEngine.getInstance().getLevel(),this.wpm, this.accuracy);
     }
 
-
-
-    
-
     /**
      * Get Peak WPM
      * 
@@ -469,7 +490,10 @@ public class Race {
         return this.peakWPM;
     }
 
-
+    /** Getter for the number of correctly typed words */
+    public int getCorrectlyTypedWords() {
+        return correctlyTypedWords;
+    }
 
     /**
      * Gets the player's current stamina.
