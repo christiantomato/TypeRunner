@@ -42,7 +42,7 @@ public class Race {
     private int correctCounter = 0;
     /** Error count */
     private int errorCount = 0;
-    
+
      /** Speed of the bot i.e. duration of translation */
     private int botSpeed;
 
@@ -194,11 +194,14 @@ public class Race {
         }
 
         this.currentRaceIndex += 1;
+
+        //GAME END
         if (this.currentRaceIndex >= raceText.length()) {
             System.out.println("ending timer");
-            endRaceTime(); // End the timer when the last character is typed
-
-            GameEngine.getInstance().endGame();  // when the player finishes a race, call the endGame method in GameEngine
+            //End the timer when the last character is typed
+            endRaceTime(); 
+            // when the player finishes a race, call the endGame method in GameEngine
+            GameEngine.getInstance().endGame(); 
         }
         return isCorrect;
     }
