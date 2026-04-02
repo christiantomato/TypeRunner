@@ -34,7 +34,7 @@ public class Player {
         this.username = username;
         this.password = password;
         //initalize the statistics object with default values
-        this.statistics = new PlayerStatistics(0, 0,0,0,1,0,0,new Score(Level.HIGHSCHOOL), 0);
+        this.statistics = new PlayerStatistics(0, 0,0,0,Level.HIGHSCHOOL,0,0,new Score(Level.HIGHSCHOOL), 0);
     }
 
     /** 
