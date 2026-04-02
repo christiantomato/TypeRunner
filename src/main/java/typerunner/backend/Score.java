@@ -20,7 +20,7 @@ public class Score {
     /** what the level difficult was */
     private Level level;
     /** what their wpm achieved was */
-    private double wpm;
+    private int wpm;
     /** what their accuracy achieved was */
     private double accuracy;
 
@@ -34,10 +34,10 @@ public class Score {
      * @param accuracy the accuracy achieved
      */
 
-    public Score(Level level, double wpm, double accuracy) {
+    public Score(Level level) {
         this.level = level;
-        this.wpm = wpm;
-        this.accuracy = accuracy;
+        this.wpm = 0;
+        this.accuracy = 0;
     }
 
     /**
@@ -56,7 +56,7 @@ public class Score {
      * @return the wpm int
      */
 
-    public double getWPM() {
+    public int getWPM() {
         return this.wpm;
     }
 
@@ -80,7 +80,7 @@ public class Score {
      * @return the score value
      */
 
-    public int calculateScore() {
+    public int calculateScore(Level level, int wpm, double accuracy) {
         return (int)(this.level.getDifficulty() + wpm + accuracy);
     }
 }

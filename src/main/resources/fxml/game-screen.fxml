@@ -83,7 +83,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak:" />
-                  <Text fx:id="highScore" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text fx:id="peakWpm" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
@@ -102,7 +102,7 @@
             <VBox prefHeight="200.0" prefWidth="369.0">
                <children>
                   <TextFlow fx:id="paragraph" prefHeight="9.0" prefWidth="313.0" />
-                  <TextArea fx:id="inputField" onKeyTyped="#getKeyInput" onKeyPressed="#onKeyPressed" prefHeight="68.0" prefWidth="499.0" promptText="type here..." wrapText="true" />
+                  <TextArea fx:id="inputField" onKeyPressed="#onKeyPressed" onKeyTyped="#getKeyInput" prefHeight="68.0" prefWidth="499.0" promptText="type here..." wrapText="true" />
                </children>
             </VBox>
             <Region prefHeight="200.0" prefWidth="200.0" />
