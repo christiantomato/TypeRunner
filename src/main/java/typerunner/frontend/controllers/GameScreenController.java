@@ -2,6 +2,7 @@ package typerunner.frontend.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +35,8 @@ public class GameScreenController implements Initializable {
     @FXML private TextArea inputField;
     /** the actual string of text they are typing */
     private String targetText;
+    /** a list storing which letters are correct */
+    private ArrayList<Boolean> correctness; 
     /** boolean to make sure game has been setup before user starts typing */
     private boolean gameIsSetup;
 
@@ -78,6 +81,9 @@ public class GameScreenController implements Initializable {
         paragraph.getChildren().clear();
         System.out.println("start");
 
+        //initalize the correctness list
+        correctness = new ArrayList<>();
+
         //create a new race and set it to the game engine
         Race newRace = new Race();
         GameEngine.getInstance().setCurrentRace(newRace);
@@ -88,6 +94,7 @@ public class GameScreenController implements Initializable {
         Text textNode = new Text(targetText);
         paragraph.getChildren().add(textNode);
 
+        //for debugging
         System.out.println(targetText);
 
         gameIsSetup = true;
@@ -108,6 +115,10 @@ public class GameScreenController implements Initializable {
             System.out.println("BACKSPACE pressed");
             //get the back end to handle logic for backspace pressed
             GameEngine.getInstance().getCurrentRace().handleBackspace();
+            //update the frontend
+            if (!correctness.isEmpty()) {
+                correctness.remove(correctness.size() - 1);
+            }
             return;
         }
     }
@@ -137,9 +148,11 @@ public class GameScreenController implements Initializable {
                 //check the input in the backend and return bool
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
                 System.out.println("correct input? " + correctCharTyped);
+                //add it to our correct ness list
+                correctness.add(correctCharTyped);
 
                 //based on the result, update paragraph text
-                updateParagraphText(correctCharTyped, GameEngine.getInstance().getCurrentRace().getCurrentRaceIndex() - 1);
+                updateParagraphText();
             }
         }
         else {
@@ -153,21 +166,29 @@ public class GameScreenController implements Initializable {
      * Gives feedback on characters that are being correctly or incorrectly typed
      */
 
-    public void updateParagraphText(boolean correct, int index) {
+    public void updateParagraphText() {
+        //clear old
         paragraph.getChildren().clear();
 
-        //correct part (everything before current index)
-        Text correctText = new Text(targetText.substring(0, index));
-        correctText.setStyle("-fx-fill: green;");
+        //build charcter by character based on if its correct or not
+        for(int i = 0; i < targetText.length(); i++) {
+            //get the char at the index
+            Text t = new Text(String.valueOf(targetText.charAt(i)));
 
-        //current character
-        Text currentChar = new Text(String.valueOf(targetText.charAt(index)));
-        currentChar.setStyle(correct ? "-fx-fill: green;" : "-fx-fill: red;");
+            if(i < correctness.size()) {
+                //if correct
+                if(correctness.get(i)) {
+                    t.setStyle("-fx-fill: green;");
+                } 
+                //if wrong
+                else {
+                    t.setStyle("-fx-fill: red;");
+                }
+            }
 
-        //remaining text
-        Text remaining = new Text(targetText.substring(index + 1));
-
-        paragraph.getChildren().addAll(correctText, currentChar, remaining);
+            //add it to the flow
+            paragraph.getChildren().add(t);
+        }
     }
 
     /**
