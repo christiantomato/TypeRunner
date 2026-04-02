@@ -40,6 +40,9 @@ public class Race {
     /**The actual string of words that the frontend will use*/
     private String raceText;
 
+    /** the index for the race text */
+    private int currentRaceIndex = 0;
+
     /* Track the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
@@ -47,12 +50,8 @@ public class Race {
     private long startTime;
     private long endTime;
 
-    /*Speed of the bot  i.e. duration of translation */
+    /*Speed of the bot i.e. duration of translation */
     private int botSpeed;
-
-    private int currentRaceIndex = 0;
-
-     
 
     public Race() {
         //this.level = GameEngine.getInstance().getLevel();
@@ -120,6 +119,14 @@ public class Race {
         return this.raceText;
     }
 
+    /**
+     * Get Current Race Index
+     * 
+     * Getter for the index in the race text
+     * 
+     * @return the current index in the race text
+     */
+
     public int getCurrentRaceIndex() {
         return this.currentRaceIndex;
     }
@@ -145,7 +152,7 @@ public class Race {
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
-            if (currentWord.isComplete()) {
+            if(currentWord.isComplete()) {
 
                 //wordsTypedIncrement(currentWord); 
                 currentWordIndex++;
