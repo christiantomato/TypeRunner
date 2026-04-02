@@ -156,7 +156,7 @@ public class GameScreenController implements Initializable {
             }
         }
         else {
-            System.out.println("idk its empty");
+            System.out.println("game not setup yet.");
         }  
     }
 
