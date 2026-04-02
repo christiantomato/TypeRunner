@@ -13,124 +13,54 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="1024.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="1.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="2.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="3.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="4.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="5.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="6.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="7.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="8.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="9.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#individualStats">
-               <graphic>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10. xxx" textAlignment="CENTER">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Text>
-               </graphic>
+            <Button mnemonicParsing="false" onAction="#individualStats" text="10.xxx">
                <font>
-                  <Font size="5.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
          </children>

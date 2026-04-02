@@ -125,7 +125,7 @@ public class AccountCreationController {
      * @param e the button event
      */
 
-    public void returnToAdminControls(ActionEvent e) {
+    public void returnToMenu(ActionEvent e) {
         try {
             System.out.println("returning to admin controls");
             ScreenNavigator.switchScene(e, "/fxml/admin-controls.fxml");
