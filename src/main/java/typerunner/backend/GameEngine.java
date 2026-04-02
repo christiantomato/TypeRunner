@@ -68,7 +68,6 @@ public class GameEngine {
         // Update game state, check for win/loss conditions, etc.
         currentRace.updateAccuracy();
         currentRace.updateWpm();
-        //currentRace.updateStamina();
     }
 
     /**
@@ -81,15 +80,9 @@ public class GameEngine {
         //write all the statistics
         Player player = LoginManager.getInstance().getCurrentUser();
 
-
-
-
-
-
-        //player.getStatistics().insertStats(0, 0, 0, 0, 0, 0, 0, null, 0);
-
-
-
+        //Getting the race stats to update with recent stats
+        player.getStatistics().updateStats(currentRace.getWpm(), currentRace.getPeakWPM(), currentRace.getAccuracy(), currentRace.getErrorCount(), currentRace.getTimeInMinutes(), currentRace.getScore(), currentRace.getCorrectlyTypedWords());
+        AccountManager.getInstance().saveAccounts(); // save the statstiics to the user's account
 
         this.isGameRunning = false;
     }
@@ -140,6 +133,12 @@ public class GameEngine {
     public Level getLevel(){
         return this.currentLevel;
     }
+
+    /**
+     * Is Game Running 
+     * 
+     * @return true if the game is running, false otherwise
+     */
 
     public boolean isGameRunning() {
         return this.isGameRunning;

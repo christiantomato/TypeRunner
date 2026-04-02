@@ -31,9 +31,6 @@ public class Race {
     /** The index for the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
-    /** The number of words they correctly typed */
-    private int correctlyTypedWords = 0;
-
     //race variables
 
     /** The elapsed time in the race.*/
@@ -186,7 +183,6 @@ public class Race {
                 System.out.println("going to next word.");
                 currentWordStreakIncrement(currentWord); 
                 currentWordIndex++;
-                correctlyTypedWords++;
             }
         } else {
             // Handle a typo: reduce stamina directly
@@ -349,7 +345,7 @@ public class Race {
      * @return elapsed time in minutes
      */
     public int getTimeInMinutes() {
-        return this.time/ 60;
+        return (int) (this.time/ 60);
     }
 
     /**
@@ -493,9 +489,13 @@ public class Race {
         return this.peakWPM;
     }
 
-    /** Getter for the number of correctly typed words */
+    /** 
+     * Getter for the number of correctly typed words after game ends
+     * 
+     * @return correctly typed words    
+     */
     public int getCorrectlyTypedWords() {
-        return correctlyTypedWords;
+        return wordList.size(); 
     }
 
     /**
