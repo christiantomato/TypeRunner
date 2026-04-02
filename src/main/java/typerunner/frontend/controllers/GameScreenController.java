@@ -116,6 +116,7 @@ public class GameScreenController implements Initializable {
                 char inputChar = inputCharAsString.charAt(0);
                 //check the input in the backend and return bool
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
+                System.out.println("we are here, bool is: " + correctCharTyped);
 
                 //based on the result, update paragraph text
                 //TODO: index? 
