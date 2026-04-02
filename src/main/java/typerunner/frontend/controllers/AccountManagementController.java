@@ -73,7 +73,7 @@ public class AccountManagementController {
             //cast
             Admin admin = (Admin) p;
             ArrayList<String> players = admin.getPlayers();
-            populatePlayerMenu(players);
+            populatePlayerMenu(admin, players);
         }
         else {
             System.out.println("not an admin.");
@@ -86,14 +86,21 @@ public class AccountManagementController {
      * After identifying the administrator, populate the menu with the 
      * corresponding players under them. Each created menu item is set with an action so that
      * if it is selected, it updates visually on the GUI. 
+     * Make sure we also put the admin under the player menu!
      * 
+     * @param admin the administrator to add in the list too
      * @param players the list of players the admin manages    
      * @see selectPlayer
      */
 
-    private void populatePlayerMenu(ArrayList<String> players) {
+    private void populatePlayerMenu(Admin admin, ArrayList<String> players) {
         //clear before populating
-        playerMenu.getItems().clear();
+        this.playerMenu.getItems().clear();
+
+        //firstly, put the admin account itself under the menu
+        MenuItem adminItem = new MenuItem(admin.getUsername());
+        adminItem.setOnAction(this::selectPlayer);
+        this.playerMenu.getItems().add(adminItem);
 
         //go through all the players
         for(String username : players) {
@@ -102,14 +109,14 @@ public class AccountManagementController {
             //set each menu button with an action to update the menu value if it is selected
             item.setOnAction(this::selectPlayer);
             //add it to the menu 
-            playerMenu.getItems().add(item);
+            this.playerMenu.getItems().add(item);
         }
     }
 
     /**
      * Select Player
      * 
-     * updates the player menu to show the user the player
+     * Updates the player menu to show the user the player
      * that has been selected to manage. 
      * 
      * @param e the selection event
@@ -118,7 +125,7 @@ public class AccountManagementController {
     @FXML
     private void selectPlayer(ActionEvent e) {
         MenuItem clicked = (MenuItem) e.getSource();
-        playerMenu.setText(clicked.getText());
+        this.playerMenu.setText(clicked.getText());
         selectedPlayer = clicked.getText();
     }
 
@@ -171,7 +178,21 @@ public class AccountManagementController {
 
         System.out.println(newPassword);
         
-        //TODO: pass in the new password to backend function.
+        //get the account manager
+        AccountManager accountManager = AccountManager.getInstance();
+        //find the player we are reseting the password for
+        Player player = accountManager.findPlayer(selectedPlayer);
+        //reset the password
+        boolean success = accountManager.resetPassword(player, newPassword);
+
+        //TODO: give ui feedback?
+
+        if(success) {
+            System.out.println("success resetting password");
+        }
+        else {
+            System.out.println("didn't work");
+        }
     }
 
     /**

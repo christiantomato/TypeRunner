@@ -98,7 +98,7 @@ public class AccountManager {
 
     public boolean resetStats(Player player) {
         if(player != null) {
-            player.resetStats();
+            player.getStatistics().resetStats();;
             saveAccounts();
             return true;
         }
