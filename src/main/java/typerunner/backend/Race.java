@@ -59,6 +59,9 @@ public class Race {
     private long startTime;
     private long endTime;
 
+    /*Speed of the bot */
+    private int botSpeed;
+
     public Race() {
         //this.level = GameEngine.getInstance().getLevel();
         //this.wordList = selectedWords;
@@ -137,7 +140,8 @@ public class Race {
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
             if (currentWord.isComplete()) {
-                wordsTypedIncrement(currentWord); // racing
+
+                //wordsTypedIncrement(currentWord); 
                 currentWordIndex++;
             }
         } else {
@@ -174,23 +178,7 @@ public class Race {
         this.totalWords = totalWords;
     }
 
-    /**
-     * Gets the difficulty level of the race.
-     *
-     * @return the race {@link Level}.
-     */
-    public Level getLevel() {
-        return this.level;
-    }
 
-    /**
-     * Sets the difficulty level for the race.
-     *
-     * @param level the race {@link Level}.
-     */
-    public void setLevel(Level level) {
-        this.level = level;
-    }
 
     /**
      * Gets the speed of the bot opponent.
@@ -198,11 +186,12 @@ public class Race {
      * @return the bot's speed.
      */
     public int getBotSpeed() {
-        return botSpeed;
+        return this.botSpeed;
     }
 
     /**
      * Sets the speed of the bot opponent.
+     * This will be used to set the translation duration of the bot in the frontend and will be based on the level difficulty and if the speedboost powerup is triggered or not
      *
      * @param botSpeed the bot's new speed.
      * @return the bot's updated speed.
@@ -247,7 +236,11 @@ public class Race {
      * @param level the current game level, used to determine the boost amount.
      */
     public void triggerSpeedBoost(int level) {
+        // let's first get the player moving
+        // and logic should be changed so that the bots are the ones that move back
 
+
+        /*
         switch (level) {
             case 1:
                 SpeedBoost speedBoost = new SpeedBoost(level, 10, 5);
@@ -271,8 +264,9 @@ public class Race {
             default:
                 // Handle default case if needed
                 break;
-
         }
+        */
+
     }
 
     /**
@@ -306,13 +300,15 @@ public class Race {
         if (stams <= 50 && wordsTyped > 0) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
-                Stamina += staminaRefill.getStaminaBonus(level.getDifficulty());
+                Stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
                 if (Stamina > 100) {
                     Stamina = 100; // Cap stamina at 100
                 }
             }
         }
 
+        /*Old logic for speedboost */
+        /* 
         int levelnum = level.getDifficulty();
         if (levelnum == 1 && wordsTyped == 5) {
             triggerSpeedBoost(levelnum);
@@ -324,6 +320,7 @@ public class Race {
             triggerSpeedBoost(levelnum);
             wordsTyped = 0; // Reset consecutive words count after triggering boost
         }
+        */
 
     }
 
@@ -340,7 +337,7 @@ public class Race {
      * Updates the player's words per minute (WPM).
      */
     public void updateWpm() {
-
+        //TODO: implement WPM calculation based on words typed and time
     }
 
     /**
@@ -360,6 +357,7 @@ public class Race {
     public int checkStamina() {
         return Stamina;
     }
+
 
     /**
      * Reduces the player's stamina by a specified amount. Stamina will not drop
