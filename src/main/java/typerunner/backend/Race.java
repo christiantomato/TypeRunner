@@ -1,6 +1,7 @@
 package typerunner.backend;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Manages the state and logic for a single race in the TypeRunner game.
@@ -8,6 +9,7 @@ import java.util.ArrayList;
  * activation of power-ups like SpeedBoost and StaminaRefill based on game events.
  *
  * @author Olorunfemi Martins
+ * @author Noh Woldetinsae
  * @author Tanya Sahota
  * @version 1.0
  */
@@ -51,12 +53,33 @@ public class Race {
         this.Stamina = 100;
         this.time = 0;
 
+        //get difficulty and num words
+        ArrayList<Word> list = new ArrayList<>();
+        int multiplier = GameEngine.getInstance().getLevel().getDifficulty();
+        int numWords = 25 * multiplier;
+
+        Dictionary dictionary = new Dictionary();
+        Random random = new Random();
+
+        int randomIndex = random.nextInt(5460);
+        list.add(dictionary.getWordList().get(randomIndex));
+
+        //build the random words
+        for(int i = 1; i < numWords; i++) {
+            randomIndex = random.nextInt(5460);
+            list.add(dictionary.getWordList().get(randomIndex));
+        }
+
+        //set the created word list
+        this.wordList = list;
+
         // Set total words for tracking progress
         //this.totalWords = selectedWords.size();
     
         // Set bot speed based on the level's difficulty
         this.botSpeed = level.getDifficulty() * 10;
     }
+    
     /**
      * Processes a single character input.
      * @param input The character typed by the user.
