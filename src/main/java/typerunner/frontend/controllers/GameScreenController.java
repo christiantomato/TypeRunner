@@ -2,8 +2,6 @@ package typerunner.frontend.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,9 +12,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Race;
-import typerunner.backend.Word;
 import typerunner.frontend.ScreenNavigator;
-import typerunner.backend.Dictionary;
 
 /**
  * Game Screen Controller
@@ -80,8 +76,10 @@ public class GameScreenController implements Initializable {
         //clear before setting up
         paragraph.getChildren().clear();
         System.out.println("start");
-        
+
+        //create a new race and set it to the game engine
         Race newRace = new Race();
+        GameEngine.getInstance().setCurrentRace(newRace);
 
         targetText = newRace.getRaceText();
 
@@ -107,10 +105,26 @@ public class GameScreenController implements Initializable {
             String textAreaString = inputField.getText();
 
             //get the key that has been typed
-            String inputChar = e.getCharacter();
-            System.out.println(inputChar);
+            String inputCharAsString = e.getCharacter();
+            System.out.println(inputCharAsString);
 
-            
+            //boolean for if they typed correct char
+            boolean correctCharTyped = false;
+
+            //safety check 
+            if(!inputCharAsString.isEmpty()) {
+                char inputChar = inputCharAsString.charAt(0);
+                //check the input in the backend and return bool
+                correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
+
+                //based on the result, update paragraph text
+                //TODO: index? 
+                //updateParagraphText(correctCharTyped, );
+            }
+            else {
+                System.out.println("idk its empty");
+            }
+        
         }   
     }
 
@@ -125,13 +139,13 @@ public class GameScreenController implements Initializable {
     }
 
     /**
-     * Sahejs Method
+     * Initalize Method
      * 
-     * 
+     * idk what this really is yet ill look into it gang
      */
 
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
+        //set the level title 
         currLevel.setText(GameEngine.getInstance().getLevel().name());
     }
 }
