@@ -58,4 +58,7 @@
     -fx-fill: green;
 }
 
+.passkey-toggle{
+    -fx-text-fill: white;
+}
 

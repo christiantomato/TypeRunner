@@ -46,7 +46,7 @@
                               <TextField focusTraversable="false" maxWidth="300.0" minHeight="50.0" minWidth="300.0" promptText="enter admin passkey..." visible="false" />
                            </children>
                         </StackPane>
-                        <CheckBox mnemonicParsing="false" onAction="#togglePasskey" text="Show Passkey" />
+                        <CheckBox mnemonicParsing="false" onAction="#togglePasskey" styleClass="passkey-toggle" text="Show Passkey" />
                      </children>
                   </HBox>
                   <Button minHeight="40.0" minWidth="300.0" mnemonicParsing="false" onAction="#validatePasskey" text="Validate">
