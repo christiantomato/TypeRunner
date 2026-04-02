@@ -221,19 +221,17 @@ public class GameScreenController implements Initializable {
 
     private void updateStats() {
         Race race = GameEngine.getInstance().getCurrentRace();
-
-        /*
          
-        wpm.setText(String.valueOf(race.getWPM()));
-        time.setText(String.valueOf(race.getTime()));
+        //set the stats
+        wpm.setText(String.valueOf(race.getWpm()));
+        time.setText(String.valueOf(race.getTimeInSeconds()));
         score.setText(String.valueOf(race.getScore()));
         peakWpm.setText(String.valueOf(race.getPeakWPM()));
-        heatlh.setText(String.valueOf(race.getHealth()));
+        //heatlh.setText(String.valueOf(race.getHealth()));
 
-        if (race.isFinished()) {
+        if(GameEngine.getInstance().get) {
             gameLoop.stop();
         }
-        */
     }
 
     /**
