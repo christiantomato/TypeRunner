@@ -23,6 +23,8 @@ public class Score {
     private int wpm;
     /** what their accuracy achieved was */
     private double accuracy;
+    /** the integer which stores the score */
+    private int scoreValue;
 
     /**
      * Score Constructor 
@@ -81,6 +83,31 @@ public class Score {
      */
 
     public int calculateScore(Level level, int wpm, double accuracy) {
-        return (int)(this.level.getDifficulty() + wpm + accuracy);
+        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
+        return this.scoreValue;
+    }
+
+    /**
+     * Get Score Value
+     * 
+     * Gets the value of the score
+     * 
+     * @return the score value
+     */
+
+    public int getScoreValue() {
+        return this.scoreValue;
+    }
+
+    /**
+     * Set Score Value
+     * 
+     * Sets a new score value
+     * 
+     * @param newScore new score
+     */
+
+    public void setScoreValue(int newScore) {
+        this.scoreValue = newScore;
     }
 }
