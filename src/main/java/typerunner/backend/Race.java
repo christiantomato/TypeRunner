@@ -32,8 +32,11 @@ public class Race {
     /** The player's current stamina, ranging from 0 to 100. */
     private int Stamina = 100;
 
-    /*The word list used for this specific race */
+    /** The word list used for this specific race */
     private ArrayList<Word> wordList;
+
+    /** the actual string of words */
+    private String raceText;
 
     /* Track the current word the player is typing */
     private int currentWordIndex = 0;
@@ -61,14 +64,21 @@ public class Race {
         Dictionary dictionary = new Dictionary();
         Random random = new Random();
 
-        int randomIndex = random.nextInt(5460);
-        list.add(dictionary.getWordList().get(randomIndex));
+        //build the target text along with the words list
+        StringBuilder fullText = new StringBuilder();
 
-        //build the random words
+        int randomIndex = random.nextInt(5640);
+        list.add(dictionary.getWordList().get(randomIndex));
+        fullText.append(list.get(0).getFullText());
+
         for(int i = 1; i < numWords; i++) {
-            randomIndex = random.nextInt(5460);
+            randomIndex = random.nextInt(5640);
             list.add(dictionary.getWordList().get(randomIndex));
+            fullText.append(" ").append(list.get(i).getFullText());
         }
+
+        //set the string of text to be typed
+        this.raceText = fullText.toString();
 
         //set the created word list
         this.wordList = list;
@@ -79,7 +89,7 @@ public class Race {
         // Set bot speed based on the level's difficulty
         this.botSpeed = level.getDifficulty() * 10;
     }
-    
+
     /**
      * Processes a single character input.
      * @param input The character typed by the user.
