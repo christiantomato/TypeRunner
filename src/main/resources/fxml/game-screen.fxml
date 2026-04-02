@@ -48,7 +48,7 @@
             </HBox>
             <VBox alignment="BOTTOM_RIGHT" prefHeight="60.0" prefWidth="186.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#startGame" text="Start" />
+                  <Button mnemonicParsing="false" onAction="#setupGame" text="Start" />
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#backButton" text="Exit Level" />
                </children>
                <opaqueInsets>
@@ -101,7 +101,7 @@
             <VBox prefHeight="200.0" prefWidth="369.0">
                <children>
                   <Text fx:id="paragraph" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="411.0" />
-                  <TextArea fx:id="input" prefHeight="68.0" prefWidth="499.0" promptText="Paragraph goes here" wrapText="true" />
+                  <TextArea fx:id="inputField" onKeyTyped="#getKeyInput" prefHeight="68.0" prefWidth="499.0" promptText="type here..." wrapText="true" />
                </children>
             </VBox>
             <Region prefHeight="200.0" prefWidth="200.0" />
