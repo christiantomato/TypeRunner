@@ -70,20 +70,20 @@
     "username": "christomato",
     "password": "tomatopassword",
     "statistics": {
-      "gamesPlayed": 2,
-      "averageWPM": 51.0,
-      "peakWPM": 120.0,
-      "accuracyPercentage": 95.91892312480547,
-      "level": "COLLEGE",
-      "errorCount": 9,
-      "totalTimePlayed": 35.0,
+      "gamesPlayed": 6,
+      "averageWPM": 61.833333333333336,
+      "peakWPM": 180.0,
+      "accuracyPercentage": 98.11145744900705,
+      "level": "OLYMPICS",
+      "errorCount": 14,
+      "totalTimePlayed": 104.0,
       "highscore": {
         "level": "HIGHSCHOOL",
-        "wpm": 50,
-        "accuracy": 98.31932773109243,
-        "scoreValue": 149
+        "wpm": 81,
+        "accuracy": 100.0,
+        "scoreValue": 182
       },
-      "totalWordsTyped": 30
+      "totalWordsTyped": 105
     },
     "isAdmin": true
   }
