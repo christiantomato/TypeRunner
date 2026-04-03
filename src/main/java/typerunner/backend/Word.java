@@ -8,18 +8,20 @@ package typerunner.backend;
 */
 public class Word {
 
+    /** the full string of the word, including last space */
     private String fullText;
+    /** the index of where we are in the word */
     private int typeIndex;
-    private int pointsValue;
+    /** keeps track if we ever made a mistake in this word */
+    private boolean perfectlyTyped = true;
 
     /**
      * Constructor for the Word class. It uses the full text of the word and its points value to initialize the object.
      * @param fullText The full text of the word that the player needs to type.
-     * @param pointsValue The points value of the word, which determines how many points the player earns for typing it correctly.
      */
+
     public Word(String fullText) {
         this.fullText = fullText;
-        //this.pointsValue = pointsValue;
         this.typeIndex = 0;
     }
 
@@ -50,13 +52,16 @@ public class Word {
         this.typeIndex--; 
     }
 
-
     /**
-     * Returns the points value of the word.
-     * @return The points value of the word.
-     */ 
-    public int getPointsValue() {
-        return pointsValue;
+     * Is Perfectly Typed
+     * 
+     * Returns if no mistakes were made while typing this word
+     * 
+     * @return true if perfectly typed, false otherwise
+     */
+
+    public boolean isPerfectlyTyped() {
+        return this.perfectlyTyped;
     }
     
     /**
@@ -73,9 +78,13 @@ public class Word {
             typeIndex++;
             return true;
         }
-        //increase even if wrong, will handle with backspace
-        typeIndex++;
-        return false;
+        else {
+            //made an error, not a correctly typed word
+            this.perfectlyTyped = false;
+            //increase even if wrong, will handle with backspace
+            typeIndex++;
+            return false;
+        }
     }
 
     /**
@@ -101,6 +110,4 @@ public class Word {
     public String toString(){
         return fullText;
     }
-
-
 }
