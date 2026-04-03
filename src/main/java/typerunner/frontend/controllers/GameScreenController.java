@@ -3,206 +3,250 @@ package typerunner.frontend.controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.util.Duration;
+
+import typerunner.backend.Bot;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Race;
 import typerunner.frontend.ScreenNavigator;
 
 /**
  * Game Screen Controller
- * 
  * Controlls the GUI logic for the game screen
- * 
- * @author Sahej Sethi
+ * * @author Sahej Sethi
  * @author Christian Tamayo
  */
 
 public class GameScreenController implements Initializable {
 
-    /** the current level user is on (high school, college, olympics) */
     @FXML private Text currLevel;
-    /** the paragraph text that they need to type out */
     @FXML private TextFlow paragraph;
-    /** the text area where they type out the words */
     @FXML private TextArea inputField;
-    /** the actual string of text they are typing */
+    
+    // --- FXML INJECTIONS FOR MOVEMENT AND UI ---
+    @FXML private Rectangle player1; // Human Player
+    @FXML private Rectangle player2; // Bot 1
+    @FXML private Rectangle player3; // Bot 2 
+    @FXML private Rectangle player4; // Bot 3
+    @FXML private Rectangle player5; // Bot 4
+    
+    @FXML private Text wpm;
+    @FXML private Text time;
+    @FXML private Text score;
+    @FXML private Text highScore;
+    @FXML private Text health;
+
     private String targetText;
-    /** a list storing which letters are correct */
     private ArrayList<Boolean> correctness; 
-    /** boolean to make sure game has been setup before user starts typing */
     private boolean gameIsSetup;
 
-    /** the base words */
     public static final int BASE_WORDS = 25;
-    /** the max amount */
     public static final int MAX = 5460;
 
-    /**
-     * Back to Player Screen
-     * 
-     * Takes the user back to the player screen. 
-     * 
-     * @param e the button event
-     */
+    // --- VARIABLES FOR MOVEMENT & BOT LOGIC ---
+    // Expanded track length to reach the checkered boxes
+    private double trackLength = 400.0; 
+    private double distancePerChar;
+    private AnimationTimer uiUpdater;
+    
+    // List to keep track of all bot timelines
+    private List<Timeline> botTimelines = new ArrayList<>();
 
     @FXML
-    private void backButton(ActionEvent e) throws IOException{
+    private void backButton(ActionEvent e) throws IOException {
+        if (uiUpdater != null) uiUpdater.stop();
+        stopAllBots();
+
         try {
             System.out.println("going back to player screen");
             ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
-        } 
-
-        catch(Exception exception) {
+        } catch(Exception exception) {
             System.out.println("exception going back to player screen:\n" + exception);
         }
     }
 
-    /**
-     * Setup Game
-     * 
-     * Sets the game with the initial conditions.
-     * 
-     * *String Builder Parsing with help of ChatGPT*
-     * 
-     * @param e the button event
-     */
-
     @FXML
     private void setupGame(ActionEvent e) {
-        //clear before setting up
         paragraph.getChildren().clear();
-        System.out.println("start");
-
-        //initalize the correctness list
         correctness = new ArrayList<>();
 
-        //create a new race and set it to the game engine
         Race newRace = new Race();
         GameEngine.getInstance().setCurrentRace(newRace);
 
         targetText = newRace.getRaceText();
 
-        //add it to the text flow
         Text textNode = new Text(targetText);
         paragraph.getChildren().add(textNode);
-
-        //for debugging
-        System.out.println(targetText);
-
         gameIsSetup = true;
-    }
 
-    /**
-     * On Key Pressed
-     * 
-     * Listens for specific keys pressed like backspaces, so we can update index accordingly
-     * 
-     * @param e the key event
-     */
+        // --- STARTUP LOGIC FOR MOVEMENT ---
+        // Calculate how much the player moves per correct keystroke
+        distancePerChar = trackLength / targetText.length();
+
+        // Clear any old timelines
+        botTimelines.clear();
+
+        // Create all 4 bots
+        Bot bot1 = new Bot("Robo 1");
+        Bot bot2 = new Bot("Robo 2");
+        Bot bot3 = new Bot("Robo 3");
+        Bot bot4 = new Bot("Robo 4");
+
+        // Start them all moving
+        startBotMovement(bot1, player2);
+        startBotMovement(bot2, player3);
+        startBotMovement(bot3, player4);
+        startBotMovement(bot4, player5);
+
+        // Start background UI tasks
+        startLiveUIUpdate();
+        
+        inputField.requestFocus();
+    }
 
     @FXML
     private void onKeyPressed(KeyEvent e) {
-        //listen for backspaces
         if(e.getCode() == KeyCode.BACK_SPACE) {
-            System.out.println("BACKSPACE pressed");
-            //get the back end to handle logic for backspace pressed
             GameEngine.getInstance().getCurrentRace().handleBackspace();
-            //update the frontend
             if (!correctness.isEmpty()) {
                 correctness.remove(correctness.size() - 1);
             }
+
+            // Move the player backwards visually (prevent them from going past the start line)
+            player1.setTranslateX(Math.max(0, player1.getTranslateX() - distancePerChar));
             return;
         }
     }
 
-    /**
-     * Get Key Input
-     * 
-     * Gets the key that was pressed inside the text area
-     */
-
     @FXML
     private void getKeyInput(KeyEvent e) {
         if(gameIsSetup) {
-            //get the key that has been typed
             String inputCharAsString = e.getCharacter();
-            System.out.println(inputCharAsString);
             
-            //check for backspace character on windows machines, and ignore
-            if(inputCharAsString.charAt(0) == '\b'){
-                System.out.println("backspace detected in checkInput, should be handled in onKeyPressed");
-                return;
-            
-            }
+            if(inputCharAsString.charAt(0) == '\b') return;
 
-            //boolean for if they typed correct char
             boolean correctCharTyped = false;
 
-            //safety check 
             if(!inputCharAsString.isEmpty()) {
                 char inputChar = inputCharAsString.charAt(0);
-                //check the input in the backend and return bool
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
-                System.out.println("correct input? " + correctCharTyped);
-                //add it to our correct ness list
                 correctness.add(correctCharTyped);
-
-                //based on the result, update paragraph text
                 updateParagraphText();
+
+                // Move the player forward if they typed correctly
+                if (correctCharTyped) {
+                    player1.setTranslateX(player1.getTranslateX() + distancePerChar);
+                }
             }
         }
-        else {
-            System.out.println("game not setup yet.");
-        }  
     }
 
-    /**
-     * Update Paragraph Text
-     * 
-     * Gives feedback on characters that are being correctly or incorrectly typed
-     */
-
     public void updateParagraphText() {
-        //clear old
         paragraph.getChildren().clear();
-
-        //build charcter by character based on if its correct or not
         for(int i = 0; i < targetText.length(); i++) {
-            //get the char at the index
             Text t = new Text(String.valueOf(targetText.charAt(i)));
-
             if(i < correctness.size()) {
-                //if correct
                 if(correctness.get(i)) {
                     t.setStyle("-fx-fill: green;");
-                } 
-                //if wrong
-                else {
+                } else {
                     t.setStyle("-fx-fill: red;");
                 }
             }
-
-            //add it to the flow
             paragraph.getChildren().add(t);
         }
     }
 
     /**
-     * Initalize Method
-     * 
-     * idk what this really is yet ill look into it gang
+     * Start Bot Movement
+     * Handles sliding the bot racer forward based on the difficulty level
      */
+    private void startBotMovement(Bot bot, Rectangle botShape) {
+        int difficulty = GameEngine.getInstance().getLevel().getDifficulty();
+        int baseWpm = 40 - (difficulty * 1); 
+        
+        // Add random variance so they don't all tie (+/- 5 WPM)
+        double botWpm = baseWpm + (Math.random() * 10 - 5);
+
+        double charsPerSecond = (botWpm * 5.0) / 60.0;
+        double distancePerSecond = charsPerSecond * distancePerChar;
+        double distancePerTick = distancePerSecond / 10.0; // 10 ticks a second
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+            botShape.setTranslateX(botShape.getTranslateX() + distancePerTick);
+            
+            // Check if the bot crossed the exact finish line
+            if (botShape.getTranslateX() >= trackLength) {
+                botShape.setTranslateX(trackLength); // Snap exactly to the finish line
+            }
+        }));
+
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+        botTimelines.add(timeline);
+    }
+
+    /**
+     * Start Live UI Update
+     * Background timer to constantly refresh WPM, time, and stamina text
+     */
+    private void startLiveUIUpdate() {
+        uiUpdater = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                Race currentRace = GameEngine.getInstance().getCurrentRace();
+                if (currentRace == null) return;
+
+                wpm.setText(String.valueOf(currentRace.getWpm()));
+                time.setText(currentRace.getTimeInSeconds() + "s");
+                health.setText(String.valueOf(currentRace.getStamina()));
+                
+                // Game Over
+                if (currentRace.getStamina() <= 0) {
+                    this.stop();
+                    stopAllBots(); 
+                    System.out.println("Game Over! Stamina depleted.");
+                    inputField.setDisable(true);
+                }
+                
+                // Player Wins
+                if (currentRace.getCurrentRaceIndex() >= currentRace.getRaceText().length()) {
+                    this.stop();
+                    stopAllBots(); 
+                    System.out.println("You finished the race!");
+                    inputField.setDisable(true);
+                }
+            }
+        };
+        uiUpdater.start();
+    }
+    
+    private void stopAllBots() {
+        for (Timeline t : botTimelines) {
+            if (t != null) {
+                t.stop();
+            }
+        }
+    }
 
     public void initialize(URL arg0, ResourceBundle arg1) {
-        //set the level title 
-        currLevel.setText(GameEngine.getInstance().getLevel().name());
+        if(GameEngine.getInstance().getLevel() != null) {
+            currLevel.setText(GameEngine.getInstance().getLevel().name());
+        }
     }
 }
+
