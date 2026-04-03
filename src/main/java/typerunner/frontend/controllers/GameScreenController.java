@@ -66,9 +66,6 @@ public class GameScreenController implements Initializable {
     private Timeline gameLoop;
     private boolean gameIsSetup;
 
-    public static final int BASE_WORDS = 25;
-    public static final int MAX = 5460;
-
     // --- VARIABLES FOR MOVEMENT & BOT LOGIC ---
     // Expanded track length to reach the checkered boxes
     private double trackLength = 400.0; 
