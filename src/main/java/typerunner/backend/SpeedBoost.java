@@ -8,7 +8,9 @@ package typerunner.backend;
  * can be configured based on the game level.
  *
  * @author Olorunfemi Martins
+ * @author Christian Tamayo
  */
+
 public class SpeedBoost implements PowerUp {
 
     /** The distance or advantage gained from the speed boost. */
@@ -28,6 +30,7 @@ public class SpeedBoost implements PowerUp {
      *                                 <b>Note:</b> This value is currently ignored by {@link #getBoostDistance(int)}.
      * @param requiredConsecutiveWords The number of consecutive correct words needed to trigger this boost.
      */
+
     public SpeedBoost(int levelnum, int boostDistance, int requiredConsecutiveWords) {
         this.boostDistance = boostDistance;
         this.levelnum = levelnum;
@@ -44,6 +47,7 @@ public class SpeedBoost implements PowerUp {
      * @param levelnum The level number used to determine the boost amount.
      * @return The hardcoded boost distance for the given level, or 0 if the level is not recognized.
      */
+
     public int getBoostDistance(int levelnum) {
         switch (levelnum) {
             case 1:
@@ -58,17 +62,12 @@ public class SpeedBoost implements PowerUp {
     }
 
     /**
-     * Checks if the conditions to trigger the power-up have been met.
-     * <p>
-     * <b>Note:</b> This is a placeholder and currently always returns {@code true}.
-     * A complete implementation would check if the player's consecutive correct
-     * word count has reached the {@code requiredConsecutiveWords} for this boost.
-     *
-     * @return {@code true} unconditionally in its current state.
+     * Trigger
+     * 
+     * Triggers the Speed Boost Power Up. 
      */
     @Override
-    public boolean isTriggered() {
-        return true;
-    }
+    public void trigger() {
 
+    }
 }
