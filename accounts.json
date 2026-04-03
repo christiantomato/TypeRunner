@@ -48,20 +48,20 @@
     "username": "admin",
     "password": "password",
     "statistics": {
-      "gamesPlayed": 3,
-      "averageWPM": 39.666666666666664,
+      "gamesPlayed": 4,
+      "averageWPM": 41.0,
       "peakWPM": 60.0,
-      "accuracyPercentage": 97.56353528477422,
+      "accuracyPercentage": 97.94537873630793,
       "level": "COLLEGE",
-      "errorCount": 8,
-      "totalTimePlayed": 67.0,
+      "errorCount": 9,
+      "totalTimePlayed": 87.0,
       "highscore": {
         "level": "HIGHSCHOOL",
-        "wpm": 42,
-        "accuracy": 100.0,
-        "scoreValue": 143
+        "wpm": 45,
+        "accuracy": 99.0909090909091,
+        "scoreValue": 145
       },
-      "totalWordsTyped": 45
+      "totalWordsTyped": 60
     },
     "isAdmin": true
   },
