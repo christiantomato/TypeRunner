@@ -21,7 +21,7 @@ the user can keep track of their typing progress, and a competitiive aspect with
 
 To run this project, ensure you have the following installed:
 
-* **Java Development Kit (JDK) ** (version 23 or newer)
+* **Java Development Kit (JDK)** (version 23 or newer)
 * **JavaFX SDK** (latest version)
 * **Apache Maven**
 
