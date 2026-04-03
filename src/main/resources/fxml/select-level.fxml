@@ -35,7 +35,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#college" styleClass="college-button">
+                  <Button fx:id="collegeButton" mnemonicParsing="false" onAction="#college" styleClass="college-button">
                      <graphic>
                         <Circle fx:id="collegeCircle" fill="WHITE" radius="25.0" stroke="BLACK" strokeType="INSIDE" styleClass="college-circle" />
                      </graphic>
@@ -49,7 +49,7 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" onAction="#olympics" styleClass="olympics-button">
+                  <Button fx:id="olympicsButton" mnemonicParsing="false" onAction="#olympics" styleClass="olympics-button">
                      <graphic>
                         <Circle fx:id="olympicsCircle" fill="WHITE" radius="25.0" stroke="BLACK" strokeType="INSIDE" styleClass="olympics-circle" />
                      </graphic>
