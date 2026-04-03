@@ -73,10 +73,14 @@ public class Race {
         this.currentWordIndex = 0;
         this.currentWordStreak = 0;
         this.wpm = 0;
-        this.stamina = 100;
         this.time = 0;
         this.score = new Score(GameEngine.getInstance().getLevel());
-        
+
+        //set health for instant death
+        if(GameEngine.getInstance().getInstantDeath()) {
+            this.stamina = 1;
+        }
+        else this.stamina = 100;
 
         //get difficulty and num words
         ArrayList<Word> list = new ArrayList<>();
