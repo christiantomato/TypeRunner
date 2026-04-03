@@ -41,6 +41,21 @@
     -fx-font-size: 15px;
 }
 
+.hardcore-button{
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 15px;
+    -fx-background-color: #2F3071 /*dark blue that matches background */;
+    -fx-text-fill: black;
+    -fx-background-radius: 13px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: white;
+}
+
+.hardcore-button.clicked{
+    -fx-background-color: red;
+}
+
 .root{
     -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
