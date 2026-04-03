@@ -32,6 +32,8 @@ public class Main {
 
 
         //Testing Dicionary.java to see if the words appear in the wordList
+
+        /* 
         Dictionary dictionary = new Dictionary();
         ArrayList<Word> words = dictionary.getWordList();
         int limit = 10; // Limit the number of words printed to 10
@@ -45,8 +47,16 @@ public class Main {
             System.out.println("The word list is empty. Check your file path or words.txt content.");
         }
 
+        */
 
+        //check the sorted accounts
+        ArrayList<Player> sorted = AccountManager.getInstance().sortByHighscore();
+
+        for (Player player : sorted) {
+            System.out.println("Player " + player.getUsername() + "Their score: " + player.getStatistics().getHighscore().getScoreValue());
+        }
         
+        //works!!!
     }
 }
 
