@@ -9,7 +9,6 @@ import javafx.scene.text.Text;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Level;
 import typerunner.backend.LoginManager;
-import typerunner.backend.PlayerStatistics;
 import typerunner.frontend.ScreenNavigator;
 
 public class SelectLevelController {

@@ -3,7 +3,6 @@ package typerunner.frontend.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import typerunner.backend.GameEngine;
 import typerunner.backend.LoginManager;
 import typerunner.frontend.ScreenNavigator;
 

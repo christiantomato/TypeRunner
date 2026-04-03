@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import typerunner.backend.AccountManager;
 import typerunner.backend.Admin;
-import typerunner.backend.LoginManager;
 import typerunner.backend.Player;
 import typerunner.frontend.ScreenNavigator;
 

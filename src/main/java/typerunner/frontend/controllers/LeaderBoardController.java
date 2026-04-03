@@ -1,6 +1,5 @@
 package typerunner.frontend.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
