@@ -36,5 +36,27 @@
       "totalWordsTyped": 0
     },
     "isAdmin": true
+  },
+  {
+    "playersManaging": [],
+    "username": "newnoh",
+    "password": "1234",
+    "statistics": {
+      "gamesPlayed": 1,
+      "averageWPM": 29.0,
+      "peakWPM": 60.0,
+      "accuracyPercentage": 88.9908256880734,
+      "level": "HIGHSCHOOL",
+      "errorCount": 12,
+      "totalTimePlayed": 33.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 29,
+        "accuracy": 88.9908256880734,
+        "scoreValue": 118
+      },
+      "totalWordsTyped": 15
+    },
+    "isAdmin": true
   }
 ]
