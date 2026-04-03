@@ -44,12 +44,11 @@ public class GameScreenController implements Initializable {
     /** the actual string of text they are typing */
     private String targetText;
     private ArrayList<Boolean> correctness; 
-    /** boolean to make sure game has been setup before user starts typing */
+    /** timeline to constantly update stats */
+    private Timeline gameLoop;
     private boolean gameIsSetup;
 
-    /** the base words */
     public static final int BASE_WORDS = 25;
-    /** the max amount */
     public static final int MAX = 5460;
 
     // --- VARIABLES FOR MOVEMENT & BOT LOGIC ---
@@ -84,6 +83,8 @@ public class GameScreenController implements Initializable {
         System.out.println("starting game");
 
         //create a new race and set it to the game engine, and start the game
+        correctness = new ArrayList<>();
+
         Race newRace = new Race();
         GameEngine.getInstance().setCurrentRace(newRace);
         GameEngine.getInstance().startGame();
@@ -159,21 +160,21 @@ public class GameScreenController implements Initializable {
                     return;
                 }
 
-                //check the input in the backend and return bool
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
                 correctness.add(correctCharTyped);
                 updateParagraphText();
-
-                // Move the player forward if they typed correctly
-            else {
-                System.out.println("nothing inputted (for mac)");
-            }
-                if (correctCharTyped) {
-                    player1.setTranslateX(player1.getTranslateX() + distancePerChar);
-                }
             }
         }
+        else {
+            System.out.println("game not setup yet.");
+        }  
     }
+
+    /**
+     * Update Paragraph Text
+     * 
+     * Gives feedback on characters that are being correctly or incorrectly typed
+     */
 
     private void updateParagraphText() {
         //clear old
