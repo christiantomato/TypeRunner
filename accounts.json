@@ -58,5 +58,27 @@
       "totalWordsTyped": 15
     },
     "isAdmin": true
+  },
+  {
+    "playersManaging": [],
+    "username": "admin",
+    "password": "password",
+    "statistics": {
+      "gamesPlayed": 1,
+      "averageWPM": 40.0,
+      "peakWPM": 41.0,
+      "accuracyPercentage": 97.11538461538461,
+      "level": "HIGHSCHOOL",
+      "errorCount": 3,
+      "totalTimePlayed": 22.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 40,
+        "accuracy": 97.11538461538461,
+        "scoreValue": 138
+      },
+      "totalWordsTyped": 15
+    },
+    "isAdmin": true
   }
 ]
