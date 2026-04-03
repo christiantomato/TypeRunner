@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
@@ -15,17 +16,17 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.GameScreenController">
+<BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.GameScreenController">
    <top>
       <HBox prefHeight="70.0" prefWidth="601.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="68.0" prefWidth="178.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="70.0" prefWidth="341.0" spacing="10.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Power Ups:" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Power Ups:" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Polygon fx:id="speedUp" fill="TRANSPARENT" points="18.0, 40.0, 47.5, 29.0, 18.0, 18.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Circle fx:id="increaseStamina" fill="TRANSPARENT" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Polygon fx:id="speedUp" fill="TRANSPARENT" points="18.0, 40.0, 47.5, 29.0, 18.0, 18.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
+                        <Circle fx:id="increaseStamina" fill="TRANSPARENT" radius="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" />
                      </children>
                   </HBox>
                </children>
@@ -33,21 +34,21 @@
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="52.0" prefWidth="229.0" spacing="10.0">
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="341.0" spacing="10.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gameplay Level:">
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Gameplay Level:">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="currLevel" strokeType="OUTSIDE" strokeWidth="0.0" text="---">
+                  <Text fx:id="currLevel" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <VBox alignment="BOTTOM_RIGHT" prefHeight="60.0" prefWidth="186.0" spacing="10.0">
+            <VBox alignment="CENTER_RIGHT" prefHeight="70.0" prefWidth="341.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#setupGame" text="Start" />
                   <Button alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#backButton" text="Exit Level" />
@@ -55,53 +56,101 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
             </VBox>
          </children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
       </HBox>
    </top>
    <left>
       <VBox alignment="CENTER" prefHeight="165.0" prefWidth="69.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Statistics">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="WPM: " />
-                  <Text fx:id="wpm" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="WPM: ">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text fx:id="wpm" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time:" />
-                  <Text fx:id="time" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Time:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text fx:id="time" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" />
-                  <Text fx:id="score" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Score:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text fx:id="score" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Peak:" />
-                  <Text fx:id="peakWpm" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Peak:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text fx:id="peakWpm" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Health:" />
-                  <Text fx:id="health" strokeType="OUTSIDE" strokeWidth="0.0" text="---" />
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Health:">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
+                  <Text fx:id="health" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Text>
                </children>
             </HBox>
          </children>
+         <BorderPane.margin>
+            <Insets left="15.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
    <bottom>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <Region prefHeight="200.0" prefWidth="200.0" />
             <VBox prefHeight="200.0" prefWidth="369.0">
                <children>
-                  <TextFlow fx:id="paragraph" prefHeight="9.0" prefWidth="313.0" />
+                  <StackPane styleClass="text-background">
+                     <children>
+                        <TextFlow fx:id="paragraph" prefHeight="9.0" prefWidth="313.0" styleClass="paragraph-text" />
+                     </children>
+                  </StackPane>
                   <TextArea fx:id="inputField" onKeyPressed="#onKeyPressed" onKeyTyped="#getKeyInput" prefHeight="68.0" prefWidth="499.0" promptText="type here..." wrapText="true" />
                </children>
             </VBox>
@@ -129,61 +178,61 @@
             </VBox>
             <VBox prefHeight="237.0" prefWidth="30.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" HBox.hgrow="ALWAYS" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="17.0" prefWidth="200.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="15.0" stroke="BLACK" strokeType="INSIDE" width="15.0" />

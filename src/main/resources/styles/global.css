@@ -61,4 +61,10 @@
 .passkey-toggle{
     -fx-text-fill: white;
 }
-
+.text-background{
+    -fx-background-color: black;
+    -fx-padding: 4;
+}
+.paragraph-text Text{
+    -fx-fill: white;
+}
