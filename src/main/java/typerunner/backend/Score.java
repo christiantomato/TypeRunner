@@ -30,11 +30,8 @@ public class Score {
     /**
      * Score Constructor 
      * 
-     * Constructs a new scores object with the necessary parameters.
-     *
-     * @param level the level difficulty they were playing (1, 2, 3)
-     * @param wpm the wpm achieved
-     * @param accuracy the accuracy achieved
+     * Constructs a new scores object with default values, and a passed in level since 
+     * Game Engine can pass in what level was selected.
      */
 
     public Score(Level level) {
