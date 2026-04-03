@@ -6,8 +6,8 @@ package typerunner.backend;
  * Just an enumeration for our 3 different levels, defined from easiest to hardest:
  * 
  * HIGHSCHOOL (default)
- * COLLEGE (unlocked at a wpm of 60> achieved)
- * OLYMPICS (unlocked at a wpm of 80> achieved)
+ * COLLEGE (unlocked at a wpm of 50> achieved)
+ * OLYMPICS (unlocked at a wpm of 70> achieved)
  * 
  * @author Christian Tamayo
  * @author Olorunfemi Martins
