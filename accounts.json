@@ -23,22 +23,6 @@
   },
   {
     "playersManaging": [],
-    "username": "christomato",
-    "password": "mypassword",
-    "statistics": {
-      "gamesPlayed": 0,
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracyPercentage": 0.0,
-      "level": "HIGHSCHOOL",
-      "errorCount": 0,
-      "totalTimePlayed": 0.0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": true
-  },
-  {
-    "playersManaging": [],
     "username": "newnoh",
     "password": "1234",
     "statistics": {
