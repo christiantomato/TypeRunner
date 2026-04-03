@@ -48,20 +48,42 @@
     "username": "admin",
     "password": "password",
     "statistics": {
-      "gamesPlayed": 1,
-      "averageWPM": 40.0,
-      "peakWPM": 41.0,
-      "accuracyPercentage": 97.11538461538461,
-      "level": "HIGHSCHOOL",
-      "errorCount": 3,
-      "totalTimePlayed": 22.0,
+      "gamesPlayed": 3,
+      "averageWPM": 39.666666666666664,
+      "peakWPM": 60.0,
+      "accuracyPercentage": 97.56353528477422,
+      "level": "COLLEGE",
+      "errorCount": 8,
+      "totalTimePlayed": 67.0,
       "highscore": {
         "level": "HIGHSCHOOL",
-        "wpm": 40,
-        "accuracy": 97.11538461538461,
-        "scoreValue": 138
+        "wpm": 42,
+        "accuracy": 100.0,
+        "scoreValue": 143
       },
-      "totalWordsTyped": 15
+      "totalWordsTyped": 45
+    },
+    "isAdmin": true
+  },
+  {
+    "playersManaging": [],
+    "username": "christomato",
+    "password": "tomatopassword",
+    "statistics": {
+      "gamesPlayed": 6,
+      "averageWPM": 61.833333333333336,
+      "peakWPM": 180.0,
+      "accuracyPercentage": 98.11145744900705,
+      "level": "OLYMPICS",
+      "errorCount": 14,
+      "totalTimePlayed": 104.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 81,
+        "accuracy": 100.0,
+        "scoreValue": 182
+      },
+      "totalWordsTyped": 105
     },
     "isAdmin": true
   }

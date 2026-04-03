@@ -19,6 +19,8 @@ public class GameEngine {
     private Race currentRace;
     /** the level of the current race */
     private Level currentLevel = Level.HIGHSCHOOL;
+    /** toggle for instant death */
+    private boolean instantDeath = false; 
     /** flag for game running */
     private boolean isGameRunning;
 
@@ -118,6 +120,18 @@ public class GameEngine {
     }
 
     /**
+     * Get Level
+     * 
+     * Getter for the level of the game.
+     * 
+     * @return the current level
+     */
+
+    public Level getLevel(){
+        return this.currentLevel;
+    }
+
+    /**
      * Set Level
      * 
      * Setter for the level of the game.
@@ -129,16 +143,28 @@ public class GameEngine {
         this.currentLevel = level;
     }
 
-    /**
-     * Get Level
+     /**
+     * Get Instant Death
      * 
-     * Getter for the level of the game.
+     * Getter for instant death mode
      * 
-     * @return the current level
+     * @return the boolean
      */
 
-    public Level getLevel(){
-        return this.currentLevel;
+    public boolean getInstantDeath(){
+        return this.instantDeath;
+    }
+
+    /**
+     * Set Instant Death
+     * 
+     * Setter for the instant death mode
+     * 
+     * @param toggle true = instant death, false = normal
+     */
+
+    public void setInstantDeath(Boolean toggle){
+        this.instantDeath = toggle;
     }
 
     /**

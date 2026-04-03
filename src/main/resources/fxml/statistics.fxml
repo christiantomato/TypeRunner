@@ -5,77 +5,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="typerunner.frontend.controllers.StatisticsController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="698.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="1024.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Average WPM:" />
-                  <Text fx:id="avgWPM" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Peak WPM - HS:" />
-                  <Text fx:id="peakWPMHighSchool" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Peak WPM - College:" />
-                  <Text fx:id="peakWPMCollege" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Peal WPM - Olympics:" />
-                  <Text fx:id="peakWPMOlympics" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Accuracy %:" />
-                  <Text fx:id="accuracy" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Error Count:" />
-                  <Text fx:id="errorCount" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Time Played:" />
-                  <Text fx:id="timePlayed" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="High Score:" />
-                  <Text fx:id="highScore" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Highest Level:" />
-                  <Text fx:id="highestLevel" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="15.0">
-               <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="Words Typed Correct:" />
-                  <Text fx:id="wordsTypedCorrect" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" text="---" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
    <top>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -87,7 +20,7 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button alignment="CENTER" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToMenu" styleClass="back-button" text="←" textAlignment="CENTER">
+            <Button fx:id="returnToPlayerScreen" alignment="CENTER" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" onAction="#returnToPlayerScreen" styleClass="back-button" text="←" textAlignment="CENTER">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
@@ -95,4 +28,11 @@
          </children>
       </HBox>
    </top>
+   <center>
+      <Text fx:id="statsText" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+   </center>
 </BorderPane>

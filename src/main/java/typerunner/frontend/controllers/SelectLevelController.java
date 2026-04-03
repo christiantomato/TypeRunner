@@ -3,10 +3,13 @@ package typerunner.frontend.controllers;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Level;
+import typerunner.backend.LoginManager;
+import typerunner.backend.PlayerStatistics;
 import typerunner.frontend.ScreenNavigator;
 
 public class SelectLevelController {
@@ -15,6 +18,23 @@ public class SelectLevelController {
     @FXML private Circle highschoolCircle;
     @FXML private Circle collegeCircle;
     @FXML private Circle olympicsCircle;
+    @FXML private Button collegeButton;
+    @FXML private Button olympicsButton;
+
+    @FXML
+    public void initialize(){
+        //intitially disable buttons
+        collegeButton.setDisable(true);
+        olympicsButton.setDisable(true);
+
+        //check player level and enable buttons accordingly
+        if(LoginManager.getInstance().getCurrentUser().getStatistics().getLevel() == Level.COLLEGE){
+            collegeButton.setDisable(false);
+        }else if(LoginManager.getInstance().getCurrentUser().getStatistics().getLevel() == Level.OLYMPICS){
+            collegeButton.setDisable(false);
+            olympicsButton.setDisable(false);
+        }
+    }
 
     private void removeColour(){
         highschoolCircle.getStyleClass().remove("clicked");
