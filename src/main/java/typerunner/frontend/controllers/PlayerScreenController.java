@@ -28,7 +28,7 @@ public class PlayerScreenController {
      */
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         //get the login manager so we can see who is logged in
         LoginManager loginManager = LoginManager.getInstance();
         

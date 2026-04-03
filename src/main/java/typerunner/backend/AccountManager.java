@@ -185,6 +185,48 @@ public class AccountManager {
     }
 
     /**
+     * Sort by Highscore
+     * 
+     * Sorts all the accounts by their highscores so we can display them on the leaderboard. 
+     * 
+     * @return the list of sorted players
+     */
+
+    public ArrayList<Player> sortByHighscore() {
+        //the list where we will sort the players
+        ArrayList<Player> sortedList = new ArrayList<>();
+
+        for (Player player : this.accounts) {
+            //get the score
+            int currentScore = player.getStatistics().getHighscore().getScoreValue();
+
+            //boolean to track if we have inserted it into the list
+            boolean inserted = false;
+
+            //find correct position
+            for(int i = 0; i < sortedList.size(); i++) {
+                //get the player at i
+                Player sortedPlayer = sortedList.get(i);
+                //get the score of the player
+                int sortedScore = sortedPlayer.getStatistics().getHighscore().getScoreValue();
+
+                //descending order (highest first)
+                if(currentScore > sortedScore) {
+                    sortedList.add(i, player);
+                    inserted = true;
+                    break;
+                }
+            }
+
+            //if not inserted, goes at the end
+            if(!inserted) {
+                sortedList.add(player);
+            }
+        }
+        return sortedList;
+    }
+
+    /**
      * Load Accounts
      * 
      * Responsible for reading from the Json and updating the information.
