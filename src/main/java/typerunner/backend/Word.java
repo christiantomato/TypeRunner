@@ -13,7 +13,7 @@ public class Word {
     /** the index of where we are in the word */
     private int typeIndex;
     /** keeps track if we ever made a mistake in this word */
-    private boolean perfectlyTyped;
+    private boolean perfectlyTyped = true;
 
     /**
      * Constructor for the Word class. It uses the full text of the word and its points value to initialize the object.
