@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import typerunner.backend.AccountManager;
 import typerunner.backend.Admin;
+import typerunner.backend.LoginManager;
 import typerunner.backend.Player;
 import typerunner.frontend.ScreenNavigator;
 
@@ -145,13 +146,8 @@ public class AccountManagementController {
         //get the stage we are on
         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 
-        ScreenNavigator.informationPopup(
-            stage,
-            "Player Statistics", 
-            "Statistics for " + selectedPlayer, 
-            "WPM: 85\nAccuracy: 97%\nPeak WPM: 120");
-        
-        //TODO: implement this with the player statistics ToString
+        //put the popup with the statistics
+        ScreenNavigator.informationPopup(stage,"Player Statistics", "Statistics for " + selectedPlayer, AccountManager.getInstance().findPlayer(selectedPlayer).getStatistics().toString());
     }
 
     /**

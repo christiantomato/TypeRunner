@@ -94,6 +94,8 @@ public class ScreenNavigator {
         alert.initOwner(owner);
         //make it so that the user cannot continue until popup is closed
         alert.initModality(Modality.WINDOW_MODAL);
+        
+        //give it something
 
         //show it
         alert.showAndWait();

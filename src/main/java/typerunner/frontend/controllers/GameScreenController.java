@@ -72,8 +72,8 @@ public class GameScreenController implements Initializable {
             if(GameEngine.getInstance().isGameRunning()) {
                 GameEngine.getInstance().setGameRunning(false);
             }
-               System.out.println("going back to player screen");
-                ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
+            System.out.println("going back to player screen");
+            ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
         } 
 
         catch(Exception exception) {
