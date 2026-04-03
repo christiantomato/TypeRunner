@@ -58,10 +58,10 @@ public class PlayerStatistics {
 
     public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, Level mostRecentLevel, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
         //update the average wpm
-        this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
+        this.averageWPM = round2(((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1));
 
         //update the average accuracy
-        this.accuracyPercentage = ((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / (this.gamesPlayed + 1);
+        this.accuracyPercentage = round2(((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / (this.gamesPlayed + 1));
 
         //update the peak wpm
         if(this.peakWPM < mostRecentPeakWpm) {
@@ -77,11 +77,11 @@ public class PlayerStatistics {
         //update total correct words typed
         this.wordsTyped += mostRecentWordsTyped;
 
-        //update highscore
-        if(this.highscore.getScoreValue() < mostRecentScore) {
+        //update highscore only if there is a reasonable accuracy
+        if(this.highscore.getScoreValue() < mostRecentScore && mostRecentAccuracy > 70) {
             this.highscore.setScoreValue(mostRecentScore);
             this.highscore.setLevel(mostRecentLevel);
-            this.highscore.setAccuracy(mostRecentAccuracy);
+            this.highscore.setAccuracy(round2(mostRecentAccuracy));
             this.highscore.setWpm(mostRecentWpm);
         }
 
@@ -95,6 +95,19 @@ public class PlayerStatistics {
 
         //add to the total games played
         this.gamesPlayed++;
+    }
+
+    /**
+     * Round to 2 Decimals
+     * 
+     * Helper so display isn't disgusting
+     * 
+     * @param value to round
+     * @return the rounded value
+     */
+
+    private double round2(double value) {
+        return Math.round(value * 100.0) / 100.0;
     }
 
     //getters for each stat...
