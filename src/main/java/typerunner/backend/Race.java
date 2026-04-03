@@ -251,14 +251,16 @@ public class Race {
             this.perfectWordStreak = 0;
         }
 
-        //if below half stamina and reached a perfect word streak of 5, activite stamina refill
-        if(this.stamina <= 50 && this.perfectWordStreak == 5 ) {
+        //if below half stamina and reached a perfect word streak of 5, activite stamina refill (unless we are on instant death!)
+        if(this.stamina <= 50 && this.perfectWordStreak == 5 && !GameEngine.getInstance().getInstantDeath()) {
             StaminaRefill staminaRefill = new StaminaRefill(20);
             this.stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
             if (stamina > 100) {
                 stamina = 100; // Cap stamina at 100
             }
             System.out.println("Stamina refill triggered! New stamina: " + this.stamina);
+            //reset the perfect word streak
+            this.perfectWordStreak = 0;
         }
     }
 
@@ -274,7 +276,8 @@ public class Race {
     public void reduceStamina(int amount) {
         this.stamina -= amount;
         if(stamina <= 0) {
-            //the player died, game should end, write stats
+            //the player died, game should end, write stats, display just 0 tho
+            this.stamina = 0;
             GameEngine.getInstance().endGame();
         }
     }
