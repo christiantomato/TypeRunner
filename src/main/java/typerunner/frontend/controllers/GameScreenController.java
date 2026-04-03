@@ -41,7 +41,31 @@ public class GameScreenController implements Initializable {
     @FXML private Text currLevel;
     @FXML private TextFlow paragraph;
     @FXML private TextArea inputField;
-    /** the actual string of text they are typing */
+    /** live display of wpm */
+    @FXML private Text wpm;
+    /** live display of time */
+    @FXML private Text time;
+    /** live display of score */
+    @FXML private Text score;
+    /** live display of peak wpm */
+    @FXML private Text peakWpm;
+    /** live display of health or "stamina" */
+    @FXML private Text health;
+
+    
+    // --- FXML INJECTIONS FOR MOVEMENT AND UI ---
+    @FXML private Rectangle player1; // Human Player
+    @FXML private Rectangle player2; // Bot 1
+    @FXML private Rectangle player3; // Bot 2 
+    @FXML private Rectangle player4; // Bot 3
+    @FXML private Rectangle player5; // Bot 4
+    
+    @FXML private Text wpm;
+    @FXML private Text time;
+    @FXML private Text score;
+    @FXML private Text highScore;
+    @FXML private Text health;
+
     private String targetText;
     private ArrayList<Boolean> correctness; 
     /** timeline to constantly update stats */
