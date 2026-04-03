@@ -7,22 +7,25 @@ package typerunner.backend;
  * This class handles logging in, logging out, and tracking the currently active user.
  * Only one instance of this class is ever present, and is accessible globally. 
  * 
- * @author Olorunfemi Martins Kayode
  * @author Christian Tamayo
+ * @author Olorunfemi Martins Kayode
  */
 
 public class LoginManager {
+
     /** the instance of the login manager */
     private static LoginManager instance;
     /** the account manager */
     private AccountManager accountManager;
     /** the currently logged-in player, or null if no one is logged in. */
     private Player currentUser;
+    /** user logged in variable */
+    private boolean userLoggedIn;
 
     /**
      * Login Manager Constructor 
      * 
-     * Constructs a new LoginManager
+     * Constructs a new LoginManager and initalizes defaults for instance variables
      *
      * @param accountManager the account manager to use for credential verification
      */
@@ -30,6 +33,7 @@ public class LoginManager {
     private LoginManager() {
         this.accountManager = AccountManager.getInstance();
         this.currentUser = null;
+        this.userLoggedIn = false;
     }
 
     /**
@@ -63,40 +67,50 @@ public class LoginManager {
 
     public boolean login(String username, String password) {
         //find the player in the database
-        Player player = accountManager.findPlayer(username);
+        Player player = this.accountManager.findPlayer(username);
         
         //check password
         if(player != null && player.getPassword().equals(password)) {
             //set the current user
             this.currentUser = player;
+            //set flag
+            this.userLoggedIn = true;
             return true;
         }
         return false;
     }
 
     /**
+     * Logout
+     * 
      * Logs out the current user, clearing the active session.
      */
+
     public void logout() {
         this.currentUser = null;
     }
 
     /**
+     * Get Current User
+     * 
      * Retrieves the currently logged-in player.
      *
      * @return the current {@link Player} object, or {@code null} if no user is logged in
      */
+
     public Player getCurrentUser() {
-        return currentUser;
+        return this.currentUser;
     }
 
     /**
+     * Is Logged In
+     * 
      * Checks if a user is currently logged in.
      *
      * @return {@code true} if a user is logged in, {@code false} otherwise
      */
 
     public boolean isLoggedIn() {
-        return currentUser != null;
+        return this.userLoggedIn;
     }
 }
