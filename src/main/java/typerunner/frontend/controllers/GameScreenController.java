@@ -54,8 +54,11 @@ public class GameScreenController implements Initializable {
     @FXML private Rectangle player3; // Bot 2 
     @FXML private Rectangle player4; // Bot 3
     @FXML private Rectangle player5; // Bot 4
-    
-    
+
+    /*List of all the bots */
+    private List<Bot> bots = new ArrayList<>();
+    /*List of all the bot shapes needed for moving them */
+    private List<Rectangle> botShapes = new ArrayList<>();
 
     private String targetText;
     private ArrayList<Boolean> correctness; 
@@ -128,9 +131,24 @@ public class GameScreenController implements Initializable {
 
         // Create all 4 bots
         Bot bot1 = new Bot("Robo 1");
+        bots.add(bot1);
+        botShapes.add(player2);
+
         Bot bot2 = new Bot("Robo 2");
+        bots.add(bot2);
+        botShapes.add(player3);
+
         Bot bot3 = new Bot("Robo 3");
+        bots.add(bot3);
+        botShapes.add(player4);
+
         Bot bot4 = new Bot("Robo 4");
+        botShapes.add(player5);
+        bots.add(bot4);
+
+        for (int i = 0; i < bots.size(); i++) {
+            startBotMovement(bots.get(i), botShapes.get(i));
+        }
 
         // Start them all moving
         startBotMovement(bot1, player2);
@@ -178,16 +196,47 @@ public class GameScreenController implements Initializable {
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
                 correctness.add(correctCharTyped);
                 updateParagraphText();
-                
+
                 if(correctCharTyped) {
                     //move the player forward visually
                     player1.setTranslateX(player1.getTranslateX() + distancePerChar);
+
+                    //check if the setback powerup should be triggered
+                    Race race = GameEngine.getInstance().getCurrentRace();
+                    if(race.shouldTriggerSetback()){
+                        double setbackDistance = race.triggerSetback();
+                        System.out.println("Setback triggered! Moving bots back by " + setbackDistance + " pixels.");
+                        // Move all bots back by the setback distance (but not past the start line)
+                        for (Rectangle bot : List.of(player2, player3, player4, player5)) {
+                            bot.setTranslateX(Math.max(0, bot.getTranslateX() - setbackDistance));
+                        }
+
+                    }
                 }
             }
         }
         else {
             System.out.println("game not setup yet.");
         }  
+    }
+
+    private void checkAllBotsFinished() {
+        for (Bot bot : bots) {
+            if (!bot.isFinished()) {
+                return; // at least one bot hasn't finished, so do nothing
+            }
+        }
+        // if we get here, all bots are done
+        System.out.println("All bots finished - game over!");
+        GameEngine.getInstance().endGame();
+        stopAllBots();
+        inputField.setDisable(true);
+
+        // end the race timer wherever the player currently is
+        GameEngine.getInstance().getCurrentRace().endRaceTime();
+        // save stats just like a normal race finish
+        GameEngine.getInstance().endGame();
+        
     }
 
     /**
@@ -279,6 +328,9 @@ public class GameScreenController implements Initializable {
             // Check if the bot crossed the exact finish line
             if (botShape.getTranslateX() >= trackLength) {
                 botShape.setTranslateX(trackLength); // Snap exactly to the finish line
+                bot.setFinished(true); // mark the bot as finished so that it won't be affected by setbacks anymore
+                checkAllBotsFinished(); // if all of them finish then end the game
+
             }
         }));
 
