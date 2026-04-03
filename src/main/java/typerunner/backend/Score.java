@@ -17,13 +17,14 @@ package typerunner.backend;
  */
 
 public class Score {
-    /** what the level difficult was */
+
+    /** what the level difficulty was */
     private Level level;
     /** what their wpm achieved was */
     private int wpm;
     /** what their accuracy achieved was */
     private double accuracy;
-    /** the integer which stores the score */
+    /** the integer which stores the score, calculated with our special formula */
     private int scoreValue;
 
     /**
@@ -42,9 +43,27 @@ public class Score {
         this.accuracy = 0;
     }
 
+     /**
+     * Calculate Score
+     * 
+     * Calculates the score value based on the fields.
+     * Literally just sums each individual value. 
+     * Games with less than 70% accuracy are not logged, avoiding keyboard mashing, 
+     * ensuring scores are fair and weighted properly with this calculation.
+     * 
+     * @return the calculated score value
+     */
+
+    public int calculateScore(Level level, int wpm, double accuracy) {
+        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
+        return this.scoreValue;
+    }
+
     /**
      * Getter for Level
      *
+     * Gets the level for this score object.
+     * 
      * @return the player's level
      */
 
@@ -53,8 +72,20 @@ public class Score {
     }
 
     /**
+     * Setter for Level
+     * 
+     * Sets the level for this score. 
+     */
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    /**
      * Getter for WPM
      *
+     * Gets the wpm for this score. 
+     * 
      * @return the wpm int
      */
 
@@ -67,11 +98,11 @@ public class Score {
      * 
      * Sets the new wpm.
      * 
-     * @param newWpm the new wom
+     * @param wpm the new wom
      */
 
-    public void setWpm(int newWpm) {
-        this.wpm = newWpm;
+    public void setWpm(int wpm) {
+        this.wpm = wpm;
     }
 
     /**
@@ -91,11 +122,11 @@ public class Score {
      * 
      * Sets the new accuracy. 
      * 
-     * @param newAccuracy the new accuracy 
+     * @param accuracy the new accuracy 
      */
 
-    public void setAccuracy(double newAccuracy) {
-        this.accuracy = newAccuracy;
+    public void setAccuracy(double accuracy) {
+        this.accuracy = accuracy;
     }
 
     /**
@@ -115,23 +146,10 @@ public class Score {
      * 
      * Sets a new score value.
      * 
-     * @param newScore new score
+     * @param score new score
      */
 
-    public void setScoreValue(int newScore) {
-        this.scoreValue = newScore;
-    }
-
-    /**
-     * Calculate Score
-     * 
-     * Calculates the score value based on the fields.
-     * 
-     * @return the score value
-     */
-
-    public int calculateScore(Level level, int wpm, double accuracy) {
-        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
-        return this.scoreValue;
+    public void setScoreValue(int score) {
+        this.scoreValue = score;
     }
 }
