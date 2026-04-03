@@ -34,6 +34,14 @@ public class SelectLevelController {
             collegeButton.setDisable(false);
             olympicsButton.setDisable(false);
         }
+
+        if(GameEngine.getInstance().getLevel() == Level.HIGHSCHOOL){
+            highschoolCircle.getStyleClass().add("clicked");
+        }else if(GameEngine.getInstance().getLevel() == Level.COLLEGE){
+            collegeCircle.getStyleClass().add("clicked");
+        }else{
+            olympicsCircle.getStyleClass().add("clicked");
+        }
     }
 
     private void removeColour(){

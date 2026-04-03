@@ -78,6 +78,7 @@ public class GameScreenController implements Initializable {
 
     //hardcore mode button
     @FXML private Button hardcoreButton;
+    @FXML private Button startButton;
 
     @FXML
     private void backButton(ActionEvent e) throws IOException {
@@ -99,6 +100,9 @@ public class GameScreenController implements Initializable {
 
     @FXML
     private void setupGame(ActionEvent e) {
+        hardcoreButton.setDisable(true);
+        startButton.setDisable(true);
+
         paragraph.getChildren().clear();
         System.out.println("starting game");
 
@@ -224,6 +228,13 @@ public class GameScreenController implements Initializable {
 
     @FXML
     private void toggleInstantDeath(ActionEvent e){
+        if(GameEngine.getInstance().getInstantDeath()){
+            GameEngine.getInstance().setInstantDeath(false);
+            hardcoreButton.getStyleClass().remove("clicked");
+        }else if(!GameEngine.getInstance().getInstantDeath()){
+            GameEngine.getInstance().setInstantDeath(true);
+            hardcoreButton.getStyleClass().add("clicked");
+        }
         
     }
 
@@ -376,6 +387,8 @@ public class GameScreenController implements Initializable {
                     System.out.println("You finished the race!");
                     inputField.setDisable(true);
                 }
+
+                
             }
         };
         uiUpdater.start();
@@ -392,6 +405,10 @@ public class GameScreenController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         if(GameEngine.getInstance().getLevel() != null) {
             currLevel.setText(GameEngine.getInstance().getLevel().name());
+        }
+        if(GameEngine.getInstance().getInstantDeath()){
+            GameEngine.getInstance().setInstantDeath(false);
+            hardcoreButton.getStyleClass().remove("clicked");
         }
     }
 }
