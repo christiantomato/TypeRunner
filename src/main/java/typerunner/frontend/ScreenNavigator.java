@@ -58,6 +58,7 @@ public class ScreenNavigator {
     public static boolean confirmationPopup(Stage owner, String title, String message) {
         //create an alert and set title and messgage
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.getDialogPane().getStylesheets().add(ScreenNavigator.class.getResource("/your-stylesheet.css").toExternalForm());
         alert.setTitle(title);
         alert.setHeaderText(message);
 
