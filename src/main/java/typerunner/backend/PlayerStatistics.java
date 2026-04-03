@@ -212,4 +212,28 @@ public class PlayerStatistics {
         this.highscore = new Score(Level.HIGHSCHOOL);
         this.totalWordsTyped = 0;
     }
+
+    /**
+     * Player Statistics ToString
+     * 
+     * Returns a nicely formatted string for the player statistics
+     * 
+     * @return a nice statistics string
+     */
+
+    public String toString() {
+        String str = "";
+
+        str += "Games Played: " + this.gamesPlayed + "\n";
+        str += "Average WPM: " + this.averageWPM + "\n";
+        str += "Peak WPM: " + this.peakWPM + "\n";
+        str += "Accuracy " + this.accuracyPercentage + "\n";
+        str += "Level Unlocked: " + this.level + "\n";
+        str += "Total Error Count " + this.errorCount + "\n";
+        str += "Total Time Played (s): " + this.totalTimePlayed + "\n";
+        str += "Highscore: " + this.highscore.getScoreValue() + "\n";
+        str += "Total Words Typed: " + this.totalWordsTyped + "\n";
+
+        return str;
+    }
 }
