@@ -1,4 +1,4 @@
-# Group 1 2212 Project - TypeRunner 
+# TypeRunner - Group #1 Project for CS2212
 
 Authors:
 Christian Tamayo
