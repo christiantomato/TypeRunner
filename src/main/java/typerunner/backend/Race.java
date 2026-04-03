@@ -150,6 +150,13 @@ public class Race {
      * @return true if the character was correct, false otherwise.
      */
     public boolean checkInput(char input) {
+        // if player health/stamina is 0 then end the game
+        if(getStamina() <= 0) {
+            GameEngine.getInstance().endGame();
+            return false;
+        }
+
+
         // when the first char is typed, start the timer
         if (currentRaceIndex == 0) {
             GameEngine.getInstance().updateGame();
