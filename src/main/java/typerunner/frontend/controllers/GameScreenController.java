@@ -381,7 +381,7 @@ public class GameScreenController implements Initializable {
                 }
                 
                 // Player Wins
-                if (currentRace.getCurrentRaceIndex() >= currentRace.getRaceText().length()) {
+                if (currentRace.getcurrentStringIndex() >= currentRace.getRaceText().length()) {
                     this.stop();
                     stopAllBots(); 
                     System.out.println("You finished the race!");
