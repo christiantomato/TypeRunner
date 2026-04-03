@@ -29,7 +29,7 @@ public class PlayerStatistics {
     /** the high score object for highest score */
     private Score highscore;
     /** total amount of correctly typed words */
-    private int correctWordsTyped;
+    private int wordsTyped;
 
     /**
      * Player Statistics Constructor
@@ -46,7 +46,7 @@ public class PlayerStatistics {
         this.errorCount = 0;
         this.totalTimePlayed = 0;
         this.highscore = new Score(Level.HIGHSCHOOL);
-        this.correctWordsTyped = 0;
+        this.wordsTyped = 0;
     }
 
     /**
@@ -56,7 +56,7 @@ public class PlayerStatistics {
      * This is called after a game is finished to track stats.
      */
 
-    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, Level mostRecentLevel, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentCorrectTyped) {
+    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, Level mostRecentLevel, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
         //update the average wpm
         this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
 
@@ -75,7 +75,7 @@ public class PlayerStatistics {
         this.totalTimePlayed += mostRecentTime;
 
         //update total correct words typed
-        this.correctWordsTyped += mostRecentCorrectTyped;
+        this.wordsTyped += mostRecentWordsTyped;
 
         //update highscore
         if(this.highscore.getScoreValue() < mostRecentScore) {
@@ -137,7 +137,7 @@ public class PlayerStatistics {
      * @return the accuracy percentage
      */
 
-    public double getaccuracyPercentage() {
+    public double getAccuracyPercentage() {
         return this.accuracyPercentage;
     }
 
@@ -186,8 +186,8 @@ public class PlayerStatistics {
      * @return the total correct words typed
      */
 
-    public int getCorrectWordsTyped() {
-        return this.correctWordsTyped;
+    public int getWordsTyped() {
+        return this.wordsTyped;
     }
 
     /**
@@ -205,7 +205,7 @@ public class PlayerStatistics {
         this.errorCount = 0;
         this.totalTimePlayed = 0;
         this.highscore = new Score(Level.HIGHSCHOOL);
-        this.correctWordsTyped = 0;
+        this.wordsTyped = 0;
     }
 
     /**
@@ -227,7 +227,7 @@ public class PlayerStatistics {
         str += "Total Error Count " + this.errorCount + "\n\n";
         str += "Total Time Played (s): " + this.totalTimePlayed + "\n\n";
         str += "Highscore: " + this.highscore.getScoreValue() + "\n\n";
-        str += "Correct Words Typed: " + this.correctWordsTyped + "\n\n";
+        str += "Words Typed: " + this.wordsTyped + "\n\n";
 
         return str;
     }
