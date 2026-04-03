@@ -46,7 +46,7 @@ public class GameScreenController implements Initializable {
     /** live display of peak wpm */
     @FXML private Text peakWpm;
     /** live display of health or "stamina" */
-    @FXML private Text health;
+    @FXML private Text stamina;
 
     
     // --- FXML INJECTIONS FOR MOVEMENT AND UI ---
@@ -318,7 +318,7 @@ public class GameScreenController implements Initializable {
         time.setText(String.valueOf(race.getTimeInSeconds()));
         score.setText(String.valueOf(race.getScore()));
         peakWpm.setText(String.valueOf(race.getPeakWPM()));
-        health.setText(String.valueOf(race.getStamina()));
+        stamina.setText(String.valueOf(race.getStamina()));
 
         if(!GameEngine.getInstance().isGameRunning()) {
             gameLoop.stop();
@@ -370,7 +370,7 @@ public class GameScreenController implements Initializable {
 
                 wpm.setText(String.valueOf(currentRace.getWpm()));
                 time.setText(currentRace.getTimeInSeconds() + "s");
-                health.setText(String.valueOf(currentRace.getStamina()));
+                stamina.setText(String.valueOf(currentRace.getStamina()));
                 
                 //if the game isn't running anymore
                 if(!GameEngine.getInstance().isGameRunning()) {
