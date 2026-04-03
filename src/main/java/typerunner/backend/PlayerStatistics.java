@@ -4,13 +4,14 @@ package typerunner.backend;
  * Player Statistics Data Model
  * 
  * Represents the statistics of a player in the TypeRunner game.
- * Tracks metrics such as words per minute (WPM), accuracy, level, errors, time played, and highest score.
+ * Tracks all specified metrics in project specification, and extra like total games played. 
  * 
  * @author Christian Tamayo
  * @author Olorunfemi Martins
  */
 
 public class PlayerStatistics {
+
     /** total games player */
     private int gamesPlayed;
     /** average wpm */
@@ -28,33 +29,75 @@ public class PlayerStatistics {
     /** the high score object for highest score */
     private Score highscore;
     /** total amount of correctly typed words */
-    private int totalWordsTyped;
+    private int correctWordsTyped;
 
     /**
-     * Constructs a new PlayerStatistics object with the specified initial values.
-     *
-     * @param gamesPlayed               the total games played
-     * @param averageWPM                the player's average words per minute
-     * @param peakWPM                   the player's peak words per minute
-     * @param accuracyPercentage        the player's typing accuracy percentage
-     * @param level                     the current level of the player
-     * @param errorCount                the total number of typing errors made
-     * @param totalTimePlayed           the total time the player has spent playing
-     * @param highscore                 the highest score achieved by the player
-     * @param totalWordsTyped    the total number of words correclty typed by the player
+     * Player Statistics Constructor
+     * 
+     * Constructs a new PlayerStatistics object with default values.
      */
 
-    public PlayerStatistics(int gamesPlayed, double averageWPM, double peakWPM, double accuracyPercentage, Level level, int errorCount, double totalTimePlayed, Score highscore, int totalWordsTyped) {
-        this.gamesPlayed = gamesPlayed;
-        this.averageWPM = averageWPM;
-        this.peakWPM = peakWPM;
-        this.accuracyPercentage = accuracyPercentage;
-        this.level = level;
-        this.errorCount = errorCount;
-        this.totalTimePlayed = totalTimePlayed;
-        this.highscore = highscore;
-        this.totalWordsTyped = totalWordsTyped;
+    public PlayerStatistics() {
+        this.gamesPlayed = 0;
+        this.averageWPM = 0;
+        this.peakWPM = 0;
+        this.accuracyPercentage = 0;
+        this.level = Level.HIGHSCHOOL;
+        this.errorCount = 0;
+        this.totalTimePlayed = 0;
+        this.highscore = new Score(Level.HIGHSCHOOL);
+        this.correctWordsTyped = 0;
     }
+
+    /**
+     * Update Statistics
+     * 
+     * Updates the statistics for a player.
+     * This is called after a game is finished to track stats.
+     */
+
+    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, Level mostRecentLevel, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentCorrectTyped) {
+        //update the average wpm
+        this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
+
+        //update the average accuracy
+        this.accuracyPercentage = ((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / (this.gamesPlayed + 1);
+
+        //update the peak wpm
+        if(this.peakWPM < mostRecentPeakWpm) {
+            this.peakWPM = mostRecentPeakWpm;
+        }
+
+        //update error count
+        this.errorCount += mostRecentErrorCount;
+
+        //update time played
+        this.totalTimePlayed += mostRecentTime;
+
+        //update total correct words typed
+        this.correctWordsTyped += mostRecentCorrectTyped;
+
+        //update highscore
+        if(this.highscore.getScoreValue() < mostRecentScore) {
+            this.highscore.setScoreValue(mostRecentScore);
+            this.highscore.setLevel(mostRecentLevel);
+            this.highscore.setAccuracy(mostRecentAccuracy);
+            this.highscore.setWpm(mostRecentWpm);
+        }
+
+        //update their current unlocked level based on if their wpm has hit the required threshold
+        if(mostRecentWpm > 50) {
+            this.level = Level.COLLEGE;
+        }
+        if(mostRecentWpm > 70) {
+            this.level = Level.OLYMPICS;
+        }
+
+        //add to the total games played
+        this.gamesPlayed++;
+    }
+
+    //getters for each stat...
 
     /**
      * Getter for Games Played
@@ -75,7 +118,7 @@ public class PlayerStatistics {
      */
 
     public double getAverageWPM() {
-        return averageWPM;
+        return this.averageWPM;
     }
 
     /**
@@ -85,7 +128,7 @@ public class PlayerStatistics {
      */
 
     public double getPeakWPM() {
-        return peakWPM;
+        return this.peakWPM;
     }
 
     /**
@@ -95,7 +138,7 @@ public class PlayerStatistics {
      */
 
     public double getaccuracyPercentage() {
-        return accuracyPercentage;
+        return this.accuracyPercentage;
     }
 
     /**
@@ -105,7 +148,7 @@ public class PlayerStatistics {
      */
 
     public Level getLevel() {
-        return level;
+        return this.level;
     }
 
     /**
@@ -114,7 +157,7 @@ public class PlayerStatistics {
      * @return the error count
      */
     public int getErrorCount() {
-        return errorCount;
+        return this.errorCount;
     }
 
     /**
@@ -124,7 +167,7 @@ public class PlayerStatistics {
      */
 
     public double getTotalTimePlayed() {
-        return totalTimePlayed;
+        return this.totalTimePlayed;
     }
 
     /**
@@ -138,61 +181,13 @@ public class PlayerStatistics {
     }
 
     /**
-     * Gets the total number of words typed by the player.
+     * Gets the total number of correct words typed by the player.
      *
-     * @return the total words typed
+     * @return the total correct words typed
      */
 
-    public int gettotalWordsTyped() {
-        return totalWordsTyped;
-    }
-
-    /**
-     * Update Statistics
-     * 
-     * Updates the statistics for a player.
-     * This is called after a game is finished. 
-     * 
-     */
-
-    public void updateStats(int mostRecentWpm, int mostRecentPeakWpm, double mostRecentAccuracy, int mostRecentErrorCount, double mostRecentTime, int mostRecentScore, int mostRecentWordsTyped) {
-        //update the average wpm
-        this.averageWPM = ((this.averageWPM * this.gamesPlayed) + mostRecentWpm) / (this.gamesPlayed + 1);
-
-        //update the average accuracy
-        this.accuracyPercentage = ((this.accuracyPercentage * this.gamesPlayed) + mostRecentAccuracy) / (this.gamesPlayed + 1);
-
-        //update the peak wpm
-        if(this.peakWPM < mostRecentPeakWpm) {
-            this.peakWPM = mostRecentPeakWpm;
-        }
-
-        //update error count
-        this.errorCount += mostRecentErrorCount;
-
-        //update time played
-        this.totalTimePlayed += mostRecentTime;
-
-        //update total correct words typed
-        this.totalWordsTyped += mostRecentWordsTyped;
-
-        //update highscore
-        if(this.highscore.getScoreValue() < mostRecentScore) {
-            this.highscore.setScoreValue(mostRecentScore);
-            this.highscore.setAccuracy(mostRecentAccuracy);
-            this.highscore.setWpm(mostRecentWpm);
-        }
-
-        //update their current unlocked level based on if they're wpm has become high enough
-        if(mostRecentWpm > 40) {
-            this.level = Level.COLLEGE;
-        }
-        if(mostRecentWpm > 60) {
-            this.level = Level.OLYMPICS;
-        }
-
-        //add to the total games played
-        this.gamesPlayed++;
+    public int getCorrectWordsTyped() {
+        return this.correctWordsTyped;
     }
 
     /**
@@ -210,13 +205,13 @@ public class PlayerStatistics {
         this.errorCount = 0;
         this.totalTimePlayed = 0;
         this.highscore = new Score(Level.HIGHSCHOOL);
-        this.totalWordsTyped = 0;
+        this.correctWordsTyped = 0;
     }
 
     /**
      * Player Statistics ToString
      * 
-     * Returns a nicely formatted string for the player statistics
+     * Returns a nicely formatted string for the player statistics.
      * 
      * @return a nice statistics string
      */
@@ -232,7 +227,7 @@ public class PlayerStatistics {
         str += "Total Error Count " + this.errorCount + "\n\n";
         str += "Total Time Played (s): " + this.totalTimePlayed + "\n\n";
         str += "Highscore: " + this.highscore.getScoreValue() + "\n\n";
-        str += "Total Words Typed: " + this.totalWordsTyped + "\n\n";
+        str += "Correct Words Typed: " + this.correctWordsTyped + "\n\n";
 
         return str;
     }
