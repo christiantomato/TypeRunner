@@ -224,15 +224,15 @@ public class PlayerStatistics {
     public String toString() {
         String str = "";
 
-        str += "Games Played: " + this.gamesPlayed + "\n";
-        str += "Average WPM: " + this.averageWPM + "\n";
-        str += "Peak WPM: " + this.peakWPM + "\n";
-        str += "Accuracy " + this.accuracyPercentage + "\n";
-        str += "Level Unlocked: " + this.level + "\n";
-        str += "Total Error Count " + this.errorCount + "\n";
-        str += "Total Time Played (s): " + this.totalTimePlayed + "\n";
-        str += "Highscore: " + this.highscore.getScoreValue() + "\n";
-        str += "Total Words Typed: " + this.totalWordsTyped + "\n";
+        str += "Games Played: " + this.gamesPlayed + "\n\n";
+        str += "Average WPM: " + this.averageWPM + "\n\n";
+        str += "Peak WPM: " + this.peakWPM + "\n\n";
+        str += "Accuracy " + this.accuracyPercentage + "\n\n";
+        str += "Level Unlocked: " + this.level + "\n\n";
+        str += "Total Error Count " + this.errorCount + "\n\n";
+        str += "Total Time Played (s): " + this.totalTimePlayed + "\n\n";
+        str += "Highscore: " + this.highscore.getScoreValue() + "\n\n";
+        str += "Total Words Typed: " + this.totalWordsTyped + "\n\n";
 
         return str;
     }

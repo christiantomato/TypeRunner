@@ -68,7 +68,7 @@ public class LoginController {
             System.out.println("exception while logging in:\n" + exception);
         }
     }
-    
+
     /**
      * Return to the Main Menu
      * 
