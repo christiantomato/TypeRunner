@@ -210,7 +210,7 @@ public class Race {
      * Calculate Accuracy */
 
     public void updateAccuracy() {
-        this.accuracy = ((double) correctCounter/raceText.length()) * 100;
+        this.accuracy = ((double) (((double)this.raceText.length() - (double)this.errorCount)/(double)this.raceText.length())) * 100;
     }
 
     /**
@@ -340,13 +340,7 @@ public class Race {
     }
 
 
-    /**
-     * Gets the elapsed time of the race
-     * @return elapsed time in minutes
-     */
-    public double getTimeInMinutes() {
-        return this.time/ 60;
-    }
+    
 
     /**
      * Applies a speed boost to the player based on the current level. This
