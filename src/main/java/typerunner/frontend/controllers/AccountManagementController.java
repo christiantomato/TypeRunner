@@ -214,9 +214,9 @@ public class AccountManagementController {
         if(confirmed) {
             //get the account manager
             AccountManager accountManager = AccountManager.getInstance();
-            //find the player we are reseting the password for
+            //find the player we are reseting the stats
             Player player = accountManager.findPlayer(selectedPlayer);
-            //reset the password
+            //reset the stats
             boolean success = accountManager.resetStats(player);
 
             if(success) {
@@ -250,8 +250,19 @@ public class AccountManagementController {
         );
 
         if(confirmed) {
-            //TODO: call the backend method to reset the highscore
-            System.out.println("resetting highscore");
+            //get the account manager
+            AccountManager accountManager = AccountManager.getInstance();
+            //find the player we are reseting the highscore for
+            Player player = accountManager.findPlayer(selectedPlayer);
+            //reset the score
+            boolean success = accountManager.resetHighscore(player);
+
+            if(success) {
+                System.out.println("success reseting highscore");
+            }
+            else {
+                System.out.println("something is awry chap");
+            }
         }
     }
 

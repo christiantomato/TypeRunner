@@ -106,6 +106,24 @@ public class AccountManager {
     }
 
     /**
+     * Reset Highscore
+     * 
+     * Resets the highscore for a player, then writes the change to the file. 
+     * 
+     * @param player the player whose highscore is being reset
+     * @return true if successful, false otherwise
+     */
+
+    public boolean resetHighscore(Player player) {
+        if(player != null) {
+            player.getStatistics().getHighscore().resetScore();
+            this.saveAccounts();
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Reset Password
      * 
      * Resets the password for the selected player.

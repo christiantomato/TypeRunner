@@ -38,6 +38,7 @@ public class Score {
         this.level = level;
         this.wpm = 0;
         this.accuracy = 0;
+        this.scoreValue = 0;
     }
 
      /**
@@ -54,6 +55,19 @@ public class Score {
     public int calculateScore(Level level, int wpm, double accuracy) {
         this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
         return this.scoreValue;
+    }
+
+    /**
+     * Reset Score
+     * 
+     * Resets back to defaul values.
+     */
+
+    public void resetScore() {
+        this.level = Level.HIGHSCHOOL;
+        this.wpm = 0;
+        this.accuracy = 0;
+        this.scoreValue = 0;
     }
 
     /**
