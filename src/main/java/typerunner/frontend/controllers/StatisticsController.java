@@ -48,7 +48,7 @@ public class StatisticsController {
     private void returnToPlayerScreen(ActionEvent e) {
         try {
             System.out.println("going back to player screen");
-            ScreenNavigator.switchScene(e, "/fxml/menu.fxml");
+            ScreenNavigator.switchScene(e, "/fxml/player-screen.fxml");
         } 
 
         catch(Exception exception) {
