@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
-
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,7 +19,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
-
 import typerunner.backend.Bot;
 import typerunner.backend.GameEngine;
 import typerunner.backend.Race;
@@ -60,11 +55,7 @@ public class GameScreenController implements Initializable {
     @FXML private Rectangle player4; // Bot 3
     @FXML private Rectangle player5; // Bot 4
     
-    @FXML private Text wpm;
-    @FXML private Text time;
-    @FXML private Text score;
-    @FXML private Text highScore;
-    @FXML private Text health;
+    
 
     private String targetText;
     private ArrayList<Boolean> correctness; 
@@ -216,28 +207,28 @@ public class GameScreenController implements Initializable {
         }
     }
 
-    /**
-     * Update Statistics
-     * 
-     * Gets the current statistics from the backend to display on the frontend
-     */
+    // /**
+    //  * Update Statistics
+    //  * 
+    //  * Gets the current statistics from the backend to display on the frontend
+    //  */
 
-    private void updateStats() {
-        //System.out.println("UPDATING STATS");
-        //get the race that is happening
-        Race race = GameEngine.getInstance().getCurrentRace();
+    // private void updateStats() {
+    //     //System.out.println("UPDATING STATS");
+    //     //get the race that is happening
+    //     Race race = GameEngine.getInstance().getCurrentRace();
          
-        //set the stats
-        wpm.setText(String.valueOf(race.getWpm()));
-        time.setText(String.valueOf(race.getTimeInSeconds()));
-        score.setText(String.valueOf(race.getScore()));
-        peakWpm.setText(String.valueOf(race.getPeakWPM()));
-        health.setText(String.valueOf(race.getStamina()));
+    //     //set the stats
+    //     wpm.setText(String.valueOf(race.getWpm()));
+    //     time.setText(String.valueOf(race.getTimeInSeconds()));
+    //     score.setText(String.valueOf(race.getScore()));
+    //     peakWpm.setText(String.valueOf(race.getPeakWPM()));
+    //     health.setText(String.valueOf(race.getStamina()));
 
-        if(!GameEngine.getInstance().isGameRunning()) {
-            gameLoop.stop();
-        }
-    }
+    //     if(!GameEngine.getInstance().isGameRunning()) {
+    //         gameLoop.stop();
+    //     }
+    // }
 
     /**
      * Update Statistics
