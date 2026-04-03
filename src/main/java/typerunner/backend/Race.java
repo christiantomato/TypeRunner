@@ -30,7 +30,6 @@ public class Race {
     private int currentRaceIndex = 0;
     /** The index for the current word the player is typing from wordList */
     private int currentWordIndex = 0;
-
     /** Perfect typed words count - no mistakes */
     private int perfectWordStreak = 0;
 
@@ -59,8 +58,8 @@ public class Race {
     private double accuracy = 0.0;
     /** Current score */
     private Score score;
-    /** The number of consecutively typed correct words.*/
-    private int currentWordStreak;
+    /** The number of correctly typed words - they must be good the first time */
+    private int correctlyTypedWords;
     /** The player's current stamina, ranging from 0 to 100.*/
     private int stamina = 100;
 
@@ -74,7 +73,7 @@ public class Race {
     public Race() {
         // Initialize starting values
         this.currentWordIndex = 0;
-        this.currentWordStreak = 0;
+        this.correctlyTypedWords = 0;
         this.wpm = 0;
         this.time = 0;
         this.score = new Score(GameEngine.getInstance().getLevel());
@@ -336,7 +335,7 @@ public class Race {
     public double triggerSetback() {
         switch (GameEngine.getInstance().getLevel()) {
             case HIGHSCHOOL:
-                return 3;
+                return 30.0;
             case COLLEGE:
                 return 50.0;
             case OLYMPICS:
@@ -385,45 +384,6 @@ public class Race {
         this.time = (int) ((now - startTime) / 1000);
         return time;
     }
-
-
-    
-
-    /**
-     * Applies a speed boost to the player based on the current level. This
-     * method creates a {@link SpeedBoost} power-up and increases the player's
-     * speed.
-     *
-     * @param level the current game level, used to determine the boost amount.
-     
-    public void triggerSpeedBoost(int level) {
-        /*
-        switch (level) {
-            case 1:
-                SpeedBoost speedBoost = new SpeedBoost(level, 10, 5);
-
-                if (speedBoost.isTriggered()) {
-                    setPlayerSpeed(getPlayerSpeed() + speedBoost.getBoostDistance(level));
-                }
-                break;
-            case 2:
-                SpeedBoost speedBoost2 = new SpeedBoost(level, 20, 10);
-                if (speedBoost2.isTriggered()) {
-                    setPlayerSpeed(getPlayerSpeed() + speedBoost2.getBoostDistance(level));
-                }
-                break;
-            case 3:
-                SpeedBoost speedBoost3 = new SpeedBoost(level, 30, 15);
-                if (speedBoost3.isTriggered()) {
-                    setPlayerSpeed(getPlayerSpeed() + speedBoost3.getBoostDistance(level));
-                }
-                break;
-            default:
-                // Handle default case if needed
-                break;
-        }
-    }
-         */
     
 
     /**
@@ -436,8 +396,7 @@ public class Race {
     }
 
     /**
-     * Updates the race state after a word is typed. If the word is completed
-     * correctly, the typed word counter increases. If the word is incorrect,
+     * Updates the current word streak after a word has been completely typed. If the word is incorrect,
      * stamina is reduced and the counter resets. This method also checks
      * whether stamina refill or speed boost power-ups should be triggered based
      * on the player's current state and level.
@@ -445,20 +404,20 @@ public class Race {
      * @param word the {@link Word} object that was just attempted by the
      * player.
      */
-    public void currentWordStreakIncrement(Word word) {
-        if (word.isComplete()) {
-            this.currentWordStreak++;
-            this.perfectWordStreak++;
-        } else {
-            reducestamina(10); // Reduce stamina by 20 for each incorrect word
-            System.out.println("REDUCED STAMINA " + stamina);
-            currentWordStreak = 0; // Reset consecutive words count on incorrect word 3
 
+    public void currentWordStreakIncrement(Word word) {
+        //check if the word has been completely typed and typed perfecly
+        if(word.isPerfectlyTyped()) {
+            this.perfectWordStreak++;
+            this.correctlyTypedWords++;
+        } 
+        else {
+            this.perfectWordStreak = 0;
         }
 
-        int stams = getStamina();
-        if (stams <= 50 && currentWordStreak >=5) {
-            StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
+        //if below half stamina and reached a perfect word streak of 5, activite stamina refill
+        if(this.stamina <= 50 && this.perfectWordStreak == 5 ) {
+            StaminaRefill staminaRefill = new StaminaRefill(20);
             if (staminaRefill.isTriggered()) {
                 stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
                 if (stamina > 100) {
@@ -472,11 +431,12 @@ public class Race {
     /**
      * Updates the player's words per minute (WPM).
      */
+    
     public void updateWpm() {
 
         int elapsedTimeInSeconds = getTimeInSeconds();
         if (elapsedTimeInSeconds > 0) {
-            this.wpm = (int) ((currentWordStreak / (double) elapsedTimeInSeconds) * 60);
+            this.wpm = (int) ((this.currentWordIndex / (double) elapsedTimeInSeconds) * 60);
             if (this.wpm > this.peakWPM) {
                 this.peakWPM = this.wpm; // Update peak WPM if current WPM is higher
             }
