@@ -119,11 +119,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Health:">
+                  <Text stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="Stamina:">
                      <font>
                         <Font size="15.0" />
                      </font></Text>
-                  <Text fx:id="health" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
+                  <Text fx:id="stamina" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="---">
                      <font>
                         <Font size="15.0" />
                      </font></Text>

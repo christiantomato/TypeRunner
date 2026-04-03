@@ -51,7 +51,7 @@ public class Main extends Application {
         // primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
 
         //make stage non-resizeable
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         
         //make sure it is visible
         primaryStage.show();
