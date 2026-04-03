@@ -178,6 +178,11 @@ public class GameScreenController implements Initializable {
                 correctCharTyped = GameEngine.getInstance().getCurrentRace().checkInput(inputChar);
                 correctness.add(correctCharTyped);
                 updateParagraphText();
+                
+                if(correctCharTyped) {
+                    //move the player forward visually
+                    player1.setTranslateX(player1.getTranslateX() + distancePerChar);
+                }
             }
         }
         else {
