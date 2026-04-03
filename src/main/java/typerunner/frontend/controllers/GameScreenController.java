@@ -12,6 +12,7 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -75,6 +76,9 @@ public class GameScreenController implements Initializable {
     // List to keep track of all bot timelines
     private List<Timeline> botTimelines = new ArrayList<>();
 
+    //hardcore mode button
+    @FXML private Button hardcoreButton;
+
     @FXML
     private void backButton(ActionEvent e) throws IOException {
         if (uiUpdater != null) uiUpdater.stop();
@@ -91,6 +95,7 @@ public class GameScreenController implements Initializable {
             System.out.println("exception going back to player screen:\n" + exception);
         }
     }
+
 
     @FXML
     private void setupGame(ActionEvent e) {
@@ -215,6 +220,11 @@ public class GameScreenController implements Initializable {
         else {
             System.out.println("game not setup yet.");
         }  
+    }
+
+    @FXML
+    private void toggleInstantDeath(ActionEvent e){
+        
     }
 
     private void checkAllBotsFinished() {

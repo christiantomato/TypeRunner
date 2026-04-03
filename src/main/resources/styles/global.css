@@ -37,6 +37,10 @@
     -fx-font-size: 12px;
 }
 
+.game-button{
+    -fx-font-size: 15px;
+}
+
 .root{
     -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
