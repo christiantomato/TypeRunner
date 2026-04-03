@@ -64,5 +64,27 @@
       "totalWordsTyped": 15
     },
     "isAdmin": true
+  },
+  {
+    "playersManaging": [],
+    "username": "christomato",
+    "password": "tomatopassword",
+    "statistics": {
+      "gamesPlayed": 1,
+      "averageWPM": 52.0,
+      "peakWPM": 120.0,
+      "accuracyPercentage": 93.51851851851852,
+      "level": "COLLEGE",
+      "errorCount": 7,
+      "totalTimePlayed": 17.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 52,
+        "accuracy": 93.51851851851852,
+        "scoreValue": 146
+      },
+      "totalWordsTyped": 15
+    },
+    "isAdmin": true
   }
 ]
