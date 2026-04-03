@@ -7,23 +7,16 @@ package typerunner.backend;
  * must provide specific logic for activation and trigger conditions.
  *
  * @author Olorunfemi Martins
+ * @author Christian Tamayo
  */
+
 public interface PowerUp {
 
     /**
-     * Represents a generic level attribute for a power-up.
-     * <p>
-     * <b>Note:</b> This is a static, hardcoded value. Its purpose is not clearly
-     * defined in the context of dynamic game levels (see {@link Level}).
-     * Consider refactoring or removing if it is not used.
-     */
-    int level = 1;
-
-
-    /**
-     * Checks if the conditions required to trigger the power-up have been met.
+     * Trigger
      *
-     * @return {@code true} if the power-up's trigger conditions are met, {@code false} otherwise.
+     * Triggers the Power Up effect.
      */
-    boolean isTriggered();
+
+    void trigger();
 }

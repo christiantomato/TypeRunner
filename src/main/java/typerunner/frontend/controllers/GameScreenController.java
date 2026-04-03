@@ -372,22 +372,13 @@ public class GameScreenController implements Initializable {
                 time.setText(currentRace.getTimeInSeconds() + "s");
                 health.setText(String.valueOf(currentRace.getStamina()));
                 
-                // Game Over
-                if (currentRace.getStamina() <= 0) {
+                //if the game isn't running anymore
+                if(!GameEngine.getInstance().isGameRunning()) {
                     this.stop();
                     stopAllBots(); 
-                    System.out.println("Game Over! Stamina depleted.");
+                    System.out.println("detected race ended from frontend.");
                     inputField.setDisable(true);
                 }
-                
-                // Player Wins
-                if (currentRace.getCurrentRaceIndex() >= currentRace.getRaceText().length()) {
-                    this.stop();
-                    stopAllBots(); 
-                    System.out.println("You finished the race!");
-                    inputField.setDisable(true);
-                }
-
                 
             }
         };

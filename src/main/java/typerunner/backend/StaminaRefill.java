@@ -7,6 +7,7 @@ package typerunner.backend;
  * threshold during a race, allowing them to regain energy to continue typing effectively.
  *
  * @author Olorunfemi Martins
+ * @author Christian Tamayo
  */
 public class StaminaRefill implements PowerUp {
 
@@ -55,9 +56,10 @@ public class StaminaRefill implements PowerUp {
      * Triggers the stamina refill effect.
      * @return {@code true} unconditionally in its current state.
      */
+
     @Override
-    public boolean isTriggered() {
-        return true;
+    public void trigger() {
+
     }
 
 }

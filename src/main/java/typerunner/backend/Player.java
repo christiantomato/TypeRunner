@@ -4,9 +4,8 @@ package typerunner.backend;
  * Represents one player in the TypeRunner game
  * Stores the player's ID, username, scores, and unlocked level
  * 
- * @author Tanya Sahota
  * @author Christian Tamayo
- * @version 1.0
+ * @author Tanya Sahota
  */
 
 public class Player {
@@ -14,16 +13,16 @@ public class Player {
     private String username;
     /** user's password for authentication */
     private String password;
-    /** the statistics of the player */
+    /** the statistics data object of the player */
     private PlayerStatistics statistics;
-    /** boolean flag for the json file */
+    /** boolean flag for the json parsing! */
     protected boolean isAdmin = false;
 
     /** 
      * Player Constructor
      * 
-     * Creates a new player with the given ID and username
-     * All starting stats are set to default
+     * Creates a new player with the given ID and username.
+     * All starting stats are set to default.
      * 
      * @param username the username of the player
      * @param password the password of the player
@@ -33,8 +32,7 @@ public class Player {
     public Player(String username, String password) {
         this.username = username;
         this.password = password;
-        //initalize the statistics object with default values
-        this.statistics = new PlayerStatistics(0, 0,0,0,Level.HIGHSCHOOL,0,0,new Score(Level.HIGHSCHOOL), 0);
+        this.statistics = new PlayerStatistics();
     }
 
     /** 
@@ -61,16 +59,17 @@ public class Player {
         return password;
     }
 
-    /**
-     * Is Admin
+     /**
+     * Set Password
      * 
-     * Getter for admin flag 
+     * Sets a new password for the player. 
+     * Super helpful when reseting password. 
      * 
-     * @return true if admin, false if just regular player
+     * @param newPassword the new password
      */
 
-    public boolean isAdmin() {
-        return this.isAdmin;
+    public void setPassword(String newPassword) {
+        this.password = newPassword;
     }
 
     /**
@@ -84,16 +83,16 @@ public class Player {
     public PlayerStatistics getStatistics() {
         return this.statistics;
     }
-
+    
     /**
-     * Set Password
+     * Is Admin
      * 
-     * Sets a new password for the player. 
+     * Getter for admin flag 
      * 
-     * @param newPassword the new password
+     * @return true if admin, false if just regular player
      */
 
-    public void setPassword(String newPassword) {
-        this.password = newPassword;
-    } 
+    public boolean isAdmin() {
+        return this.isAdmin;
+    }
 }

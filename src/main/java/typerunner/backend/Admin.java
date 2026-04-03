@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 
 public class Admin extends Player {
+
     /** a list of all the players they manage */
     private ArrayList<String> playersManaging; 
 
@@ -28,20 +29,10 @@ public class Admin extends Player {
     public Admin(String username, String password) {
         //pass into super
         super(username, password);
+        //set this flag which is super helpful for Json parsing!
         this.isAdmin = true;
-
         //initalize an empty list
         this.playersManaging = new ArrayList<>();
-    }
-
-    /**
-     * Get Players Managing
-     * 
-     * Getter for the list of players under the admin,
-     */
-
-    public ArrayList<String> getPlayers() {
-        return this.playersManaging;
     }
 
     /**
@@ -54,5 +45,15 @@ public class Admin extends Player {
 
     public void addPlayer(String playerUsername) {
         playersManaging.add(playerUsername);
+    }
+
+    /**
+     * Get Players Managing
+     * 
+     * Getter for the list of players under the admin,
+     */
+
+    public ArrayList<String> getPlayers() {
+        return this.playersManaging;
     }
 }

@@ -1,11 +1,16 @@
 package typerunner.backend;
 
 /**
-    * This class represents a word that the player needs to type during the race.
-    * It keeps track of the full text of the word, the current index of the character being typed, and the points value of the word.
-    * @author Noh Woldetinsae 
+ * Word Data Model
+ * 
+ *This class represents a word that the player needs to type during the race.
+ * It keeps track of the full text of the word, the current index of the character being typed, 
+ * and if typed perfectly to build streaks. 
+ * 
+ * @author Christian Tamayo
+ * @author Noh Woldetinsae
+ */
 
-*/
 public class Word {
 
     /** the full string of the word, including last space */
@@ -16,6 +21,8 @@ public class Word {
     private boolean perfectlyTyped = true;
 
     /**
+     * Word Constructor 
+     * 
      * Constructor for the Word class. It uses the full text of the word and its points value to initialize the object.
      * @param fullText The full text of the word that the player needs to type.
      */
@@ -23,6 +30,32 @@ public class Word {
     public Word(String fullText) {
         this.fullText = fullText;
         this.typeIndex = 0;
+    }
+
+    /**
+     * Check Character Match
+     * 
+     * Checks if the input character matches the next character in the word that the player needs to type.
+     * If it matches, it advances the type index and returns true. Otherwise, it returns false.
+     * 
+     * @param input The character input by the player.
+     * @return True if the input character matches the next character in the word, false otherwise.
+     */
+
+    public boolean checkCharacterMatch(char input) {
+        //check if it matches
+        if(!isComplete() && input == fullText.charAt(typeIndex)) {
+            //increase the type index
+            typeIndex++;
+            return true;
+        }
+        else {
+            //made an error, not a correctly typed word
+            this.perfectlyTyped = false;
+            //increase even if wrong, will handle with backspace
+            typeIndex++;
+            return false;
+        }
     }
 
     /**
@@ -63,29 +96,6 @@ public class Word {
     public boolean isPerfectlyTyped() {
         return this.perfectlyTyped;
     }
-    
-    /**
-     * Checks if the input character matches the next character in the word that the player needs to type.
-     * If it matches, it advances the type index and returns true. Otherwise, it returns false.
-     * @param input The character input by the player.
-     * @return True if the input character matches the next character in the word, false otherwise.
-     */
-
-    public boolean checkCharacterMatch(char input) {
-        //check if it matches
-        if(!isComplete() && input == fullText.charAt(typeIndex)) {
-            //increase the type index
-            typeIndex++;
-            return true;
-        }
-        else {
-            //made an error, not a correctly typed word
-            this.perfectlyTyped = false;
-            //increase even if wrong, will handle with backspace
-            typeIndex++;
-            return false;
-        }
-    }
 
     /**
      * Checks if the player has completed typing the word by comparing the type index with the length of the full text.
@@ -106,6 +116,12 @@ public class Word {
         return fullText.substring(typeIndex);
     }
 
+    /**
+     * ToString
+     * 
+     * Returns the full word text.
+     */
+    
     @Override
     public String toString(){
         return fullText;

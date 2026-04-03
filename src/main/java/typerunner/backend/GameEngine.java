@@ -3,7 +3,7 @@ package typerunner.backend;
 /**
  * Game Engine
  * 
- * Responsible for managing the overall game state and logic of the TypeRunner game.
+ * Responsible for starting and stopping the game state and managing over-arching logic. 
  * 
  * @author Christian Tamayo
  * @author Noh Woldetinsae
@@ -18,20 +18,23 @@ public class GameEngine {
     /** the current race being played out */
     private Race currentRace;
     /** the level of the current race */
-    private Level currentLevel = Level.HIGHSCHOOL;
+    private Level currentLevel;
     /** toggle for instant death */
-    private boolean instantDeath = false; 
+    private boolean instantDeath;
     /** flag for game running */
     private boolean isGameRunning;
 
     /**
      * Game Engine Constructor
      * 
-     * Private constructor to construct a single instance of the game engine. 
+     * Private constructor to construct a single instance of the game engine.
+     * Initalizes default values for a race.
      */
 
     private GameEngine(){
         this.currentRace = null;
+        this.currentLevel = Level.HIGHSCHOOL;
+        this.instantDeath = false;
         this.isGameRunning = false;
     }
 
@@ -53,7 +56,7 @@ public class GameEngine {
     /**
      * Start Game
      * 
-     * Starts the game. 
+     * Starts the game by setting the boolean flag. 
      */
 
     public void startGame() {
@@ -63,11 +66,11 @@ public class GameEngine {
     /**
      * Update Game
      * 
-     * Called constantly to update stats
+     * Called constantly during a race to perform updates.  
      */
 
     public void updateGame() {
-        // Update game state, check for win/loss conditions, etc.
+        //update these stats
         currentRace.updateAccuracy();
         currentRace.updateWpm();
     }
@@ -75,25 +78,29 @@ public class GameEngine {
     /**
      * End Game
      * 
-     * Ends the game, and writes all the statistics for the player.
+     * Ends the game, and most importantly writes all the statistics for the player when called. 
      */
 
     public void endGame() {
-        System.out.println("WRITING DA STATS!!!");
-        //write all the statistics
+        System.out.println("logging game, writing statistics...");
+
+        //get the current player
         Player player = LoginManager.getInstance().getCurrentUser();
 
-        
-        currentRace.updateAccuracy();
-        currentRace.updateWpm();
+        //update the players statistics with the stats tracked from completed race
+        player.getStatistics().updateStats(
+            currentRace.getWpm(), 
+            currentRace.getPeakWPM(), 
+            currentRace.getAccuracy(), 
+            this.currentLevel,
+            currentRace.getErrorCount(), 
+            currentRace.getTimeInSeconds(), 
+            currentRace.getScore(), 
+            currentRace.getTypedWords());
+        //write the changes
+        AccountManager.getInstance().saveAccounts(); 
 
-        //dummy 
-        currentRace.getTimeInSeconds();
-
-        //Getting the race stats to update with recent stats
-        player.getStatistics().updateStats(currentRace.getWpm(), currentRace.getPeakWPM(), currentRace.getAccuracy(), currentRace.getErrorCount(), currentRace.getTimeInSeconds(), currentRace.getScore(), currentRace.getCorrectlyTypedWords());
-        AccountManager.getInstance().saveAccounts(); // save the statstiics to the user's account
-
+        //update flag
         this.isGameRunning = false;
     }
 
@@ -146,7 +153,7 @@ public class GameEngine {
      /**
      * Get Instant Death
      * 
-     * Getter for instant death mode
+     * Getter for instant death mode.
      * 
      * @return the boolean
      */
@@ -158,7 +165,7 @@ public class GameEngine {
     /**
      * Set Instant Death
      * 
-     * Setter for the instant death mode
+     * Setter for the instant death mode.
      * 
      * @param toggle true = instant death, false = normal
      */
@@ -170,6 +177,8 @@ public class GameEngine {
     /**
      * Is Game Running 
      * 
+     * Getter for game running flag. 
+     * 
      * @return true if the game is running, false otherwise
      */
 
@@ -180,7 +189,8 @@ public class GameEngine {
     /**
      * Setter for Game Running
      * 
-     * Sets the boolean
+     * Sets the boolean.
+     * Important when we want to end the game, but not write the statistics!
      * 
      * @param bool value
      */

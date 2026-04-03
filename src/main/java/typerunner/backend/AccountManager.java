@@ -20,9 +20,9 @@ import com.google.gson.JsonParser;
  * This class handles all the logic with reading and writing from the player
  * database. There is only ever one instance of this class, accessible globally. 
  *
+ * @author Christian Tamayo
  * @author Olorunfemi Martins Kayode
  * @author Noh Woldetinsae
- * @author Christian Tamayo
  */
 
 public class AccountManager {
@@ -54,7 +54,7 @@ public class AccountManager {
         //init the accounts list
         this.accounts = new ArrayList<>();
         //load any data that has been written already
-        loadAccounts();
+        this.loadAccounts();
     }
 
     /**
@@ -99,7 +99,7 @@ public class AccountManager {
     public boolean resetStats(Player player) {
         if(player != null) {
             player.getStatistics().resetStats();;
-            saveAccounts();
+            this.saveAccounts();
             return true;
         }
         return false;
@@ -118,7 +118,7 @@ public class AccountManager {
     public boolean resetPassword(Player player, String newPassword) {
         if (player != null && newPassword != null) {
             player.setPassword(newPassword);
-            saveAccounts();
+            this.saveAccounts();
             return true;
         }
         return false;
@@ -137,28 +137,30 @@ public class AccountManager {
 
     public boolean createAccount(String username, String password, boolean isAdmin, String adminstrator) {
         //make sure a player with that username does not already exist
-        if (findPlayer(username) == null) {
+        if(findPlayer(username) == null) {
             //create admin account
-            if (isAdmin) {
+            if(isAdmin) {
                 Admin newAdmin = new Admin(username, password);
                 accounts.add(newAdmin);
-                saveAccounts();
+                this.saveAccounts();
                 return true;
-            } //create a regular player account
+            } 
+            //create a regular player account
             else {
                 //create new player
                 Player newPlayer = new Player(username, password);
                 //add it to the accounts
-                accounts.add(newPlayer);
+                this.accounts.add(newPlayer);
                 //get the admin of the player
                 Admin adminOfPlayer = (Admin) findPlayer(adminstrator);
                 //add the player under the administrator
                 adminOfPlayer.addPlayer(newPlayer.getUsername());
                 //write everything
-                saveAccounts();
+                this.saveAccounts();
                 return true;
             }
         }
+        //if player with that username already exists
         return false;
     }
 
@@ -176,7 +178,7 @@ public class AccountManager {
             return null;
         }
 
-        for (Player p : accounts) {
+        for (Player p : this.accounts) {
             if (p.getUsername().equals(username)) {
                 return p;
             }
@@ -230,6 +232,7 @@ public class AccountManager {
      * Load Accounts
      * 
      * Responsible for reading from the Json and updating the information.
+     * (This method used ChatGPT for help, as we did not know how to write using JSon.)
      */
 
     public void loadAccounts() {
@@ -272,7 +275,8 @@ public class AccountManager {
             Writer writer = new FileWriter(databaseFile);
             gson.toJson(accounts, writer);
             writer.close();
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             System.err.println("Error saving JSON: " + e);
         }
     }
@@ -286,6 +290,6 @@ public class AccountManager {
      */
 
     public ArrayList<Player> getAccounts() {
-        return accounts;
+        return this.accounts;
     }
 }
