@@ -519,7 +519,7 @@ public class Race {
      * @return correctly typed words    
      */
     public int getCorrectlyTypedWords() {
-        return wordList.size(); 
+        return currentWordIndex;
     }
 
     /**

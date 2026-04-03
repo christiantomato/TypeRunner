@@ -232,7 +232,7 @@ public class GameScreenController implements Initializable {
         // end the race timer wherever the player currently is
         GameEngine.getInstance().getCurrentRace().endRaceTime();
         // save stats just like a normal race finish
-        GameEngine.getInstance().endGame();
+        GameEngine.getInstance().setGameRunning(false);
         
     }
 
