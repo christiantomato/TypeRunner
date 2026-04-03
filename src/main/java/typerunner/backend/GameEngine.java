@@ -92,6 +92,7 @@ public class GameEngine {
             currentRace.getWpm(), 
             currentRace.getPeakWPM(), 
             currentRace.getAccuracy(), 
+            this.currentLevel,
             currentRace.getErrorCount(), 
             currentRace.getTimeInSeconds(), 
             currentRace.getScore(), 
