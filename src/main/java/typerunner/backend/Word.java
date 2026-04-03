@@ -62,7 +62,6 @@ public class Word {
      * Returns the full text of the word.
      * @return The full text of the word.
      */
-    
     public String getFullText() {
         return fullText;
     }
@@ -102,17 +101,27 @@ public class Word {
      * Checks if the player has completed typing the word by comparing the type index with the length of the full text.
      * @return True if the player has completed typing the word, false otherwise.
      */
-
     public boolean isComplete() {
         return typeIndex >= fullText.length();
     }
 
     /**
+     * Returns the remaining text that the player needs to type. If the word is complete, it returns an empty string.
+     * @return The remaining text that the player needs to type, or an empty string if the word is complete.
+     */
+    public String getRemainingText() {
+        if(isComplete()) {
+            return "";
+        }
+        return fullText.substring(typeIndex);
+    }
+
+    /**
      * ToString
      * 
-     * Returns the text of the word to type. 
+     * Returns the full word text.
      */
-
+    
     @Override
     public String toString(){
         return fullText;
