@@ -57,10 +57,9 @@ public class Main extends Application {
         primaryStage.show();
 
         
-        
     }
 
-    public void playMusic(String path){
+    private void playMusic(String path){
         if(mediaPlayer != null){
             mediaPlayer.stop();
         }
