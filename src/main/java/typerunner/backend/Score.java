@@ -45,15 +45,15 @@ public class Score {
      * Calculate Score
      * 
      * Calculates the score value based on the fields.
-     * Literally just sums each individual value. 
-     * Games with less than 70% accuracy are not logged, avoiding keyboard mashing, 
+     * Just takes a sum but weighs the level higher since harder to achieve good score on harder level. 
+     * Games with less than 70% accuracy are not logged, to avoid keyboard mashing which
      * ensuring scores are fair and weighted properly with this calculation.
      * 
      * @return the calculated score value
      */
 
     public int calculateScore(Level level, int wpm, double accuracy) {
-        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
+        this.scoreValue = (int)((3 * this.level.getDifficulty()) + wpm + accuracy);
         return this.scoreValue;
     }
 
