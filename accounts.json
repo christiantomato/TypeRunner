@@ -1,59 +1,38 @@
 [
   {
     "playersManaging": [],
-    "username": "christomato",
-    "password": "iloveduffy",
-    "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracyPercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": true
-  },
-  {
-    "playersManaging": [],
-    "username": "admin",
-    "password": "password",
-    "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracyPercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "totalWordsTyped": 0
-    },
-    "isAdmin": true
-  },
-  {
-    "playersManaging": [],
     "username": "noh",
     "password": "123",
     "statistics": {
-      "averageWPM": 0.0,
-      "peakWPM": 0.0,
-      "accuracyPercentage": 0.0,
-      "level": 0,
-      "errorCount": 0,
-      "totalTimePlayed": 0,
-      "totalWordsTyped": 0
+      "gamesPlayed": 1,
+      "averageWPM": 39.0,
+      "peakWPM": 120.0,
+      "accuracyPercentage": 91.74311926605505,
+      "level": "HIGHSCHOOL",
+      "errorCount": 9,
+      "totalTimePlayed": 23.0,
+      "highscore": {
+        "level": "HIGHSCHOOL",
+        "wpm": 39,
+        "accuracy": 91.74311926605505,
+        "scoreValue": 131
+      },
+      "totalWordsTyped": 15
     },
     "isAdmin": true
   },
   {
-    "username": "Femi",
-    "password": "123",
+    "playersManaging": [],
+    "username": "christomato",
+    "password": "mypassword",
     "statistics": {
+      "gamesPlayed": 0,
       "averageWPM": 0.0,
       "peakWPM": 0.0,
       "accuracyPercentage": 0.0,
-      "level": 0,
+      "level": "HIGHSCHOOL",
       "errorCount": 0,
-      "totalTimePlayed": 0,
+      "totalTimePlayed": 0.0,
       "totalWordsTyped": 0
     },
     "isAdmin": true

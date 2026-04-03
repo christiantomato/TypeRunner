@@ -217,8 +217,19 @@ public class AccountManagementController {
         );
 
         if(confirmed) {
-            //TODO: call the backend method to reset the statistics
-            System.out.println("resetting statistics.");
+            //get the account manager
+            AccountManager accountManager = AccountManager.getInstance();
+            //find the player we are reseting the password for
+            Player player = accountManager.findPlayer(selectedPlayer);
+            //reset the password
+            boolean success = accountManager.resetStats(player);
+
+            if(success) {
+                System.out.println("success reseting stats");
+            }
+            else {
+                System.out.println("something is awry chap");
+            }
         }
     }
 

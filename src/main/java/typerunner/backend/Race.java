@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Manages the state and logic for a single race in the TypeRunner game. This
  * class tracks the player's progress, speed, stamina, and handles the
- * activation of power-ups like SpeedBoost and StaminaRefill based on game
+ * activation of power-ups like SpeedBoost and staminaRefill based on game
  * events.
  *
  * @author Olorunfemi Martins
@@ -18,56 +18,70 @@ import java.util.Random;
 
 public class Race {
 
+    //Typing 
+
+    /** The word list used for this specific race */
+    private ArrayList<Word> wordList;
     /** The total number of words in the race text.*/
     private int totalWords;
+    /** The actual string of words that the frontend will use */
+    private String raceText;
+    /** The index in the string of the race text */
+    private int currentRaceIndex = 0;
+    /** The index for the current word the player is typing from wordList */
+    private int currentWordIndex = 0;
+
+    //race variables
 
     /** The elapsed time in the race.*/
     private int time;
+    /** Track the start and end times of the race */
+    private long startTime;
+    private long endTime;
+    /** Counter for correct characters typed. */
+    private int correctCounter = 0;
+    /** Error count */
+    private int errorCount = 0;
 
-    /** The number of consecutively typed correct words.*/
-    private int wordsTyped;
+     /** Speed of the bot i.e. duration of translation */
+    private int botSpeed;
+
+    //player statistics tracking
 
     /** The player's current words per minute (WPM).*/
     private int wpm;
-
-    /** The player's current speed or progress metric. Will be used to determine how far the player goes in the screen*/
-    private int playerSpeed;
-
+    /** Peak wpm for the race */
+    private int peakWPM = 0;
+    /** Accuracy */
+    private double accuracy = 0.0;
+    /** Current score */
+    private Score score;
+    /** The number of consecutively typed correct words.*/
+    private int currentWordStreak;
     /** The player's current stamina, ranging from 0 to 100.*/
-    private int Stamina = 100;
+    private int stamina = 100;
 
-    /*The word list used for this specific race*/
-    private ArrayList<Word> wordList;
+    //constants
 
-    /**The actual string of words that the frontend will use*/
-    private String raceText;
-
-    /**The index for the race text*/
-    private int currentRaceIndex = 0;
-
-    /* *Track the current word the player is typing from wordList */
-    private int currentWordIndex = 0;
-
-    /* Track the start and end times of the race */
-    private long startTime;
-    private long endTime;
-
-    /*Speed of the bot i.e. duration of translation */
-    private int botSpeed;
+    /** base words constant */
+    public static final int BASE_WORDS = 15;
+    /** max words list constant */
+    public static final int MAX = 5460;
 
     public Race() {
-        //this.level = GameEngine.getInstance().getLevel();
-        //this.wordList = selectedWords;
         // Initialize starting values
         this.currentWordIndex = 0;
-        this.wordsTyped = 0;
-        this.Stamina = 100;
+        this.currentWordStreak = 0;
+        this.wpm = 0;
+        this.stamina = 100;
         this.time = 0;
+        this.score = new Score(GameEngine.getInstance().getLevel());
+        
 
         //get difficulty and num words
         ArrayList<Word> list = new ArrayList<>();
         int multiplier = GameEngine.getInstance().getLevel().getDifficulty();
-        int numWords = 25 * multiplier;
+        int numWords = BASE_WORDS * multiplier;
 
         Dictionary dictionary = new Dictionary();
         Random random = new Random();
@@ -79,7 +93,7 @@ public class Race {
         //list.add(dictionary.getWordList().get(randomIndex));
         //fullText.append(list.get(0).getFullText());
         for (int i = 0; i < numWords; i++) {
-            int randomIndex = random.nextInt(5460);
+            int randomIndex = random.nextInt(MAX);
             String wordToAdd = dictionary.getWordList().get(randomIndex).getFullText();
 
             //add a space after each word except for the last one
@@ -138,6 +152,7 @@ public class Race {
     public boolean checkInput(char input) {
         // when the first char is typed, start the timer
         if (currentRaceIndex == 0) {
+            GameEngine.getInstance().updateGame();
             System.out.println("starting timer");
             startRaceTime();
         }
@@ -159,25 +174,52 @@ public class Race {
         System.out.println("current word: " + currentWord);
         System.out.println("current word index now: " + currentWord.getTypeIndex());
         System.out.println("Elapsed time in seconds: " + getTimeInSeconds() + "s");
+        System.out.println("Current stamina: " + getStamina());
 
         //If the character they typed is correct, we check if the word is complete and move to the next one if it is 
         if (isCorrect) {
+            this.correctCounter++; // Increment correct character counter for accuracy calculation
             if (currentWord.isComplete()) {
                 System.out.println("going to next word.");
-                wordsTypedIncrement(currentWord); 
+                currentWordStreakIncrement(currentWord); 
                 currentWordIndex++;
             }
         } else {
             // Handle a typo: reduce stamina directly
-            reduceStamina(5);
+            reducestamina(5);
+
+            // If what they tpyed is wrong, increase errorCount
+             this.errorCount++;
+           
         }
 
         this.currentRaceIndex += 1;
+
+        //GAME END
         if (this.currentRaceIndex >= raceText.length()) {
             System.out.println("ending timer");
-            endRaceTime(); // End the timer when the last character is typed
+            //End the timer when the last character is typed
+            endRaceTime(); 
+            // when the player finishes a race, call the endGame method in GameEngine
+            GameEngine.getInstance().endGame(); 
         }
         return isCorrect;
+    }
+
+    /** 
+     * Calculate Accuracy */
+
+    public void updateAccuracy() {
+        this.accuracy = ((double) (((double)this.raceText.length() - (double)this.errorCount)/(double)this.raceText.length())) * 100;
+    }
+
+    /**
+     * Gets the player's accuracy
+     *
+     * @return the current accuracy.
+     */
+    public double getAccuracy() {
+        return this.accuracy;
     }
 
     /**
@@ -259,6 +301,16 @@ public class Race {
     }
 
     /**
+     * Error Count 
+     * @return error count
+     */
+    public int getErrorCount() {
+        return this.errorCount;
+    }
+
+    
+
+    /**
      * Sets the speed of the bot opponent. This will be used to set the
      * translation duration of the bot in the frontend and will be based on the
      * level difficulty and if the speedboost powerup is triggered or not
@@ -282,26 +334,13 @@ public class Race {
         if (this.endTime > 0) {
             now = endTime;
         }
-        return (int) ((now - startTime) / 1000);
+
+        this.time = (int) ((now - startTime) / 1000);
+        return time;
     }
 
-    /**
-     * Gets the player's current speed.
-     *
-     * @return the player's speed.
-     */
-    public int getPlayerSpeed() {
-        return playerSpeed;
-    }
 
-    /**
-     * Sets the player's current speed.
-     *
-     * @param playerSpeed the player's new speed.
-     */
-    public void setPlayerSpeed(int playerSpeed) {
-        this.playerSpeed = playerSpeed;
-    }
+    
 
     /**
      * Applies a speed boost to the player based on the current level. This
@@ -362,39 +401,58 @@ public class Race {
      * @param word the {@link Word} object that was just attempted by the
      * player.
      */
-    public void wordsTypedIncrement(Word word) {
+    public void currentWordStreakIncrement(Word word) {
         if (word.isComplete()) {
-            wordsTyped++;
+            currentWordStreak++;
         } else {
-            reduceStamina(20); // Reduce stamina by 20 for each incorrect word
-            wordsTyped = 0; // Reset consecutive words count on incorrect word 
+            reducestamina(10); // Reduce stamina by 20 for each incorrect word
+            System.out.println("REDUCED STAMINA " + stamina);
+            currentWordStreak = 0; // Reset consecutive words count on incorrect word 3
+
         }
 
-        int stams = checkStamina();
-        if (stams <= 50 && wordsTyped > 0) {
+        int stams = getStamina();
+        if (stams <= 50 && currentWordStreak >=5) {
             StaminaRefill staminaRefill = new StaminaRefill(20); // Example stamina bonus
             if (staminaRefill.isTriggered()) {
-                Stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
-                if (Stamina > 100) {
-                    Stamina = 100; // Cap stamina at 100
+                stamina += staminaRefill.getStaminaBonus(GameEngine.getInstance().getLevel().getDifficulty());
+                if (stamina > 100) {
+                    stamina = 100; // Cap stamina at 100
                 }
+                System.out.println("Stamina refill triggered! New stamina: " + stamina);
             }
         }
 
         /*Old logic for speedboost */
  /* 
         int levelnum = level.getDifficulty();
-        if (levelnum == 1 && wordsTyped == 5) {
+        if (levelnum == 1 && currentWordStreak == 5) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 2 && wordsTyped == 10) {
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
+        } else if (levelnum == 2 && currentWordStreak == 10) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 3 && wordsTyped == 15) {
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
+        } else if (levelnum == 3 && currentWordStreak == 15) {
             triggerSpeedBoost(levelnum);
-            wordsTyped = 0; // Reset consecutive words count after triggering boost
+            currentWordStreak = 0; // Reset consecutive words count after triggering boost
         }
          */
+    }
+
+    /**
+     * Updates the player's words per minute (WPM).
+     */
+    public void updateWpm() {
+
+        int elapsedTimeInSeconds = getTimeInSeconds();
+        if (elapsedTimeInSeconds > 0) {
+            this.wpm = (int) ((currentWordStreak / (double) elapsedTimeInSeconds) * 60);
+            if (this.wpm > this.peakWPM) {
+                this.peakWPM = this.wpm; // Update peak WPM if current WPM is higher
+            }
+        } else {
+            this.wpm = 0; // Avoid division by zero
+        }
     }
 
     /**
@@ -406,17 +464,32 @@ public class Race {
         return this.wpm;
     }
 
-    /**
-     * Updates the player's words per minute (WPM).
+     /**
+     * Getter for score
+     * 
+     * @return score
      */
-    public void updateWpm() {
+    public int getScore() {
+        return this.score.calculateScore(GameEngine.getInstance().getLevel(),this.wpm, this.accuracy);
+    }
 
-        int elapsedTimeInSeconds = getTimeInSeconds();
-        if (elapsedTimeInSeconds > 0) {
-            this.wpm = (int) ((wordsTyped / (double) elapsedTimeInSeconds) * 60);
-        } else {
-            this.wpm = 0; // Avoid division by zero
-        }
+    /**
+     * Get Peak WPM
+     * 
+     * @return peakWPM
+     * Getter for the peak WPM achieved during
+     */
+    public int getPeakWPM() {
+        return this.peakWPM;
+    }
+
+    /** 
+     * Getter for the number of correctly typed words after game ends
+     * 
+     * @return correctly typed words    
+     */
+    public int getCorrectlyTypedWords() {
+        return wordList.size(); 
     }
 
     /**
@@ -425,31 +498,23 @@ public class Race {
      * @return the current stamina value.
      */
     public int getStamina() {
-        return Stamina;
+        return stamina;
     }
 
-    /**
-     * Checks the player's current stamina.
-     *
-     * @return the current stamina value.
-     */
-    public int checkStamina() {
-        return Stamina;
-    }
 
     /**
-     * Reduces the player's stamina by a specified amount. Stamina will not drop
+     * Reduces the player's stamina by a specified amount. stamina will not drop
      * below 0.
      *
      * @param amount the amount to reduce stamina by.
      * @return the new stamina value after reduction.
      */
-    public int reduceStamina(int amount) {
-        Stamina -= amount;
-        if (Stamina < 0) {
-            Stamina = 0; // Ensure stamina doesn't go negative
+    public int reducestamina(int amount) {
+        stamina -= amount;
+        if (stamina < 0) {
+            stamina = 0; // Ensure stamina doesn't go negative
         }
-        return Stamina;
+        return stamina;
     }
 
 }

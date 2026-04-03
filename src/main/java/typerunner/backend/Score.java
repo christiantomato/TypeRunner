@@ -20,9 +20,11 @@ public class Score {
     /** what the level difficult was */
     private Level level;
     /** what their wpm achieved was */
-    private double wpm;
+    private int wpm;
     /** what their accuracy achieved was */
     private double accuracy;
+    /** the integer which stores the score */
+    private int scoreValue;
 
     /**
      * Score Constructor 
@@ -34,10 +36,10 @@ public class Score {
      * @param accuracy the accuracy achieved
      */
 
-    public Score(Level level, double wpm, double accuracy) {
+    public Score(Level level) {
         this.level = level;
-        this.wpm = wpm;
-        this.accuracy = accuracy;
+        this.wpm = 0;
+        this.accuracy = 0;
     }
 
     /**
@@ -56,14 +58,26 @@ public class Score {
      * @return the wpm int
      */
 
-    public double getWPM() {
+    public int getWPM() {
         return this.wpm;
+    }
+
+     /**
+     * Setter for WPM
+     * 
+     * Sets the new wpm.
+     * 
+     * @param newWpm the new wom
+     */
+
+    public void setWpm(int newWpm) {
+        this.wpm = newWpm;
     }
 
     /**
      * Getter for accuracy
      * 
-     * Gets the accuracy achieved by the player
+     * Gets the accuracy achieved by the player. 
      *
      * @return the accuracy int
      */
@@ -73,14 +87,51 @@ public class Score {
     }
 
     /**
-     * Calculate Score
+     * Setter for Accuracy
      * 
-     * Calculates the score value based on the fields
+     * Sets the new accuracy. 
+     * 
+     * @param newAccuracy the new accuracy 
+     */
+
+    public void setAccuracy(double newAccuracy) {
+        this.accuracy = newAccuracy;
+    }
+
+    /**
+     * Get Score Value
+     * 
+     * Gets the value of the score.
      * 
      * @return the score value
      */
 
-    public int calculateScore() {
-        return (int)(this.level.getDifficulty() + wpm + accuracy);
+    public int getScoreValue() {
+        return this.scoreValue;
+    }
+
+    /**
+     * Set Score Value
+     * 
+     * Sets a new score value.
+     * 
+     * @param newScore new score
+     */
+
+    public void setScoreValue(int newScore) {
+        this.scoreValue = newScore;
+    }
+
+    /**
+     * Calculate Score
+     * 
+     * Calculates the score value based on the fields.
+     * 
+     * @return the score value
+     */
+
+    public int calculateScore(Level level, int wpm, double accuracy) {
+        this.scoreValue = (int)(this.level.getDifficulty() + wpm + accuracy);
+        return this.scoreValue;
     }
 }

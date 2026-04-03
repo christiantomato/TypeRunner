@@ -66,16 +66,33 @@ public class GameEngine {
 
     public void updateGame() {
         // Update game state, check for win/loss conditions, etc.
+        currentRace.updateAccuracy();
+        currentRace.updateWpm();
     }
 
     /**
      * End Game
      * 
-     * Ends the game. 
+     * Ends the game, and writes all the statistics for the player.
      */
 
     public void endGame() {
-        isGameRunning = false;
+        System.out.println("WRITING DA STATS!!!");
+        //write all the statistics
+        Player player = LoginManager.getInstance().getCurrentUser();
+
+        
+        currentRace.updateAccuracy();
+        currentRace.updateWpm();
+
+        //dummy 
+        currentRace.getTimeInSeconds();
+
+        //Getting the race stats to update with recent stats
+        player.getStatistics().updateStats(currentRace.getWpm(), currentRace.getPeakWPM(), currentRace.getAccuracy(), currentRace.getErrorCount(), currentRace.getTimeInSeconds(), currentRace.getScore(), currentRace.getCorrectlyTypedWords());
+        AccountManager.getInstance().saveAccounts(); // save the statstiics to the user's account
+
+        this.isGameRunning = false;
     }
 
     /**
@@ -100,7 +117,6 @@ public class GameEngine {
         return this.currentRace;
     }
 
-
     /**
      * Set Level
      * 
@@ -123,5 +139,27 @@ public class GameEngine {
 
     public Level getLevel(){
         return this.currentLevel;
+    }
+
+    /**
+     * Is Game Running 
+     * 
+     * @return true if the game is running, false otherwise
+     */
+
+    public boolean isGameRunning() {
+        return this.isGameRunning;
+    }
+
+    /**
+     * Setter for Game Running
+     * 
+     * Sets the boolean
+     * 
+     * @param bool value
+     */
+
+    public void setGameRunning(boolean bool) {
+        this.isGameRunning = bool;
     }
 }
