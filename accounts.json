@@ -17,7 +17,7 @@
         "accuracy": 91.74311926605505,
         "scoreValue": 131
       },
-      "totalWordsTyped": 15
+      "wordsTyped": 0
     },
     "isAdmin": true
   },
@@ -39,7 +39,7 @@
         "accuracy": 88.9908256880734,
         "scoreValue": 118
       },
-      "totalWordsTyped": 15
+      "wordsTyped": 0
     },
     "isAdmin": true
   },
@@ -61,7 +61,7 @@
         "accuracy": 99.0909090909091,
         "scoreValue": 145
       },
-      "totalWordsTyped": 60
+      "wordsTyped": 0
     },
     "isAdmin": true
   },
@@ -70,20 +70,20 @@
     "username": "christomato",
     "password": "tomatopassword",
     "statistics": {
-      "gamesPlayed": 13,
-      "averageWPM": 50.46153846153846,
-      "peakWPM": 180.0,
-      "accuracyPercentage": 97.26895101922297,
+      "gamesPlayed": 28,
+      "averageWPM": 50.67857142857143,
+      "peakWPM": 120.0,
+      "accuracyPercentage": 97.23527177873538,
       "level": "COLLEGE",
-      "errorCount": 51,
-      "totalTimePlayed": 1.775200577E9,
+      "errorCount": 89,
+      "totalTimePlayed": 618.0,
       "highscore": {
         "level": "HIGHSCHOOL",
-        "wpm": 81,
-        "accuracy": 100.0,
-        "scoreValue": 182
+        "wpm": 60,
+        "accuracy": 98.14814814814815,
+        "scoreValue": 159
       },
-      "totalWordsTyped": 214
+      "wordsTyped": 405
     },
     "isAdmin": true
   }

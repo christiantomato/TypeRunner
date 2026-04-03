@@ -96,7 +96,7 @@ public class GameEngine {
             currentRace.getErrorCount(), 
             currentRace.getTimeInSeconds(), 
             currentRace.getScore(), 
-            currentRace.getCorrectlyTypedWords());
+            currentRace.getTypedWords());
         //write the changes
         AccountManager.getInstance().saveAccounts(); 
 

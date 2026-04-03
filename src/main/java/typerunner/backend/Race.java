@@ -491,7 +491,7 @@ public class Race {
      * 
      * @return typed words    
      */
-    public int getCorrectlyTypedWords() {
+    public int getTypedWords() {
         return this.currentWordIndex;
     }
 }
