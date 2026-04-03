@@ -31,6 +31,9 @@ public class Race {
     /** The index for the current word the player is typing from wordList */
     private int currentWordIndex = 0;
 
+    /** Perfect typed words count - no mistakes */
+    private int perfectWordStreak = 0;
+
     //race variables
 
     /** The elapsed time in the race.*/
@@ -197,6 +200,9 @@ public class Race {
 
             // If what they tpyed is wrong, increase errorCount
              this.errorCount++;
+
+            // Reset perfect word streak on a typo
+            this.perfectWordStreak = 0;
            
         }
 
@@ -315,6 +321,36 @@ public class Race {
         return this.errorCount;
     }
 
+    /**
+ * Trigger Setback
+ * 
+ * Returns the setback distance for bots based on the current level.
+ * Called when the player hits a word streak milestone.
+ * 
+ * @return the distance to push bots back
+ */
+    public double triggerSetback() {
+        switch (GameEngine.getInstance().getLevel()) {
+            case HIGHSCHOOL:
+                return 3;
+            case COLLEGE:
+                return 50.0;
+            case OLYMPICS:
+                return 80.0;
+            default:
+                return 30.0;
+        }
+    }
+
+    /**
+     * Check if setback should trigger
+     * Triggers every 5 correct words
+     * 
+     * @return true if the streak milestone was just hit
+     */
+    public boolean shouldTriggerSetback() {
+        return perfectWordStreak > 0 && perfectWordStreak % 5 == 0;
+}
     
 
     /**
@@ -355,12 +391,8 @@ public class Race {
      * speed.
      *
      * @param level the current game level, used to determine the boost amount.
-     */
+     
     public void triggerSpeedBoost(int level) {
-        // let's first get the player moving
-        // and logic should be changed so that the bots are the ones that move back
-
-
         /*
         switch (level) {
             case 1:
@@ -386,8 +418,9 @@ public class Race {
                 // Handle default case if needed
                 break;
         }
-         */
     }
+         */
+    
 
     /**
      * Sets the elapsed time for the race.
@@ -410,7 +443,8 @@ public class Race {
      */
     public void currentWordStreakIncrement(Word word) {
         if (word.isComplete()) {
-            currentWordStreak++;
+            this.currentWordStreak++;
+            this.perfectWordStreak++;
         } else {
             reducestamina(10); // Reduce stamina by 20 for each incorrect word
             System.out.println("REDUCED STAMINA " + stamina);
@@ -429,21 +463,6 @@ public class Race {
                 System.out.println("Stamina refill triggered! New stamina: " + stamina);
             }
         }
-
-        /*Old logic for speedboost */
- /* 
-        int levelnum = level.getDifficulty();
-        if (levelnum == 1 && currentWordStreak == 5) {
-            triggerSpeedBoost(levelnum);
-            currentWordStreak = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 2 && currentWordStreak == 10) {
-            triggerSpeedBoost(levelnum);
-            currentWordStreak = 0; // Reset consecutive words count after triggering boost
-        } else if (levelnum == 3 && currentWordStreak == 15) {
-            triggerSpeedBoost(levelnum);
-            currentWordStreak = 0; // Reset consecutive words count after triggering boost
-        }
-         */
     }
 
     /**
