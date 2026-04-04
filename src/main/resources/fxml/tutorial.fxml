@@ -48,11 +48,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <Text fx:id="description" lineSpacing="10.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="The first step in being able to play TypeRunner, is to create an account! To do so, first you must select on &quot;Admin Controls&quot; in the main menu, following this you must enter the games parental passkey; &quot;1234&quot;." textAlignment="CENTER" wrappingWidth="500.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
+            <Text fx:id="description" lineSpacing="10.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="2.0" styleClass="root" text="The first step in being able to play TypeRunner, is to create an account! To do so, first you must select on &quot;Admin Controls&quot; in the main menu, following this you must enter the games parental passkey; &quot;1234&quot;." textAlignment="CENTER" wrappingWidth="500.0" />
          </children>
       </VBox>
    </center>
