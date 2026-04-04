@@ -72,3 +72,4 @@ java --module-path /path/to/javafx/lib \
 https://gluonhq.com/products/scene-builder/
 * Passkey for the Admin Screen is: 1234
 * You can use the dummy account ("admin", "password") for testing.
+* In the zip file submission, you can find classes, JavaDoc, and the .jar under target. 
