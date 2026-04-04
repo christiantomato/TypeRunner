@@ -9,6 +9,7 @@ package typerunner.backend;
  * 
  * @author Olurnfemi Martins Kayode
  * @author Noh Woldetinsae
+ * @author Tanya Sahota
  */
 
 public class Bot extends Player {
