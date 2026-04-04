@@ -25,6 +25,11 @@ To run this project, ensure you have the following installed:
 
 ---
 
+## Libraries
+
+* JavaFX for GUI
+* JUnit for Testing
+
 ## Build & Run Instructions (Using Maven)
 
 1. Open a terminal in the project root directory.
