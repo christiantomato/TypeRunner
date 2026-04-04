@@ -52,7 +52,7 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 
 ---
 
-## Notes
+## Notes / References
 
 * GUI Screens built with the help of Scene Builder. 
 https://gluonhq.com/products/scene-builder/
