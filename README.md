@@ -53,7 +53,7 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 
 ## Notes / References
 
-* GUI Screens built with the help of Scene Builder. 
+* GUI Screens (fxml files) built with the help of Scene Builder. 
 https://gluonhq.com/products/scene-builder/
 * Passkey for the Admin Screen is: 1234
 * You can use the dummy account ("admin", "password") for testing.
