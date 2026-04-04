@@ -57,5 +57,3 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 https://gluonhq.com/products/scene-builder/
 * Passkey for the Admin Screen is: 1234
 * You can use the dummy account ("admin", "password") for testing.
-
----
