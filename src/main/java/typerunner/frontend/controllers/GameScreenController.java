@@ -28,7 +28,7 @@ import typerunner.frontend.ScreenNavigator;
 /**
  * Game Screen Controller
  * Controlls the GUI logic for the game screen
- * * @author Sahej Sethi
+ * @author Sahej Sethi
  * @author Christian Tamayo
  */
 
@@ -100,6 +100,7 @@ public class GameScreenController implements Initializable {
 
     @FXML
     private void setupGame(ActionEvent e) {
+        //disables buttons
         hardcoreButton.setDisable(true);
         startButton.setDisable(true);
 
@@ -279,29 +280,6 @@ public class GameScreenController implements Initializable {
         }
     }
 
-    // /**
-    //  * Update Statistics
-    //  * 
-    //  * Gets the current statistics from the backend to display on the frontend
-    //  */
-
-    // private void updateStats() {
-    //     //System.out.println("UPDATING STATS");
-    //     //get the race that is happening
-    //     Race race = GameEngine.getInstance().getCurrentRace();
-         
-    //     //set the stats
-    //     wpm.setText(String.valueOf(race.getWpm()));
-    //     time.setText(String.valueOf(race.getTimeInSeconds()));
-    //     score.setText(String.valueOf(race.getScore()));
-    //     peakWpm.setText(String.valueOf(race.getPeakWPM()));
-    //     health.setText(String.valueOf(race.getStamina()));
-
-    //     if(!GameEngine.getInstance().isGameRunning()) {
-    //         gameLoop.stop();
-    //     }
-    // }
-
     /**
      * Update Statistics
      * 
@@ -393,6 +371,9 @@ public class GameScreenController implements Initializable {
         }
     }
 
+    /**
+     * initilizes a new game engine instance, if one has not been initialized
+     */
     public void initialize(URL arg0, ResourceBundle arg1) {
         if(GameEngine.getInstance().getLevel() != null) {
             currLevel.setText(GameEngine.getInstance().getLevel().name());

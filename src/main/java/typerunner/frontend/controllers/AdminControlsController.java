@@ -4,6 +4,13 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import typerunner.frontend.ScreenNavigator;
 
+/**
+ * Controller for the Admin Controls screen
+ * 
+ * Handles GUI Inputs made on the screen taking the user to the correct screens following input
+ * 
+ * @author Sahej Sethi
+ */
 public class AdminControlsController {
 
     public void goToAccountManagement(ActionEvent e) throws IOException{
