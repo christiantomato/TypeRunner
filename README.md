@@ -1,4 +1,4 @@
-# TypeRunner - group 01
+# TypeRunner - Group 01
 
 ## Authors
 
@@ -12,8 +12,7 @@
 
 ## Overview
 
-TypeRunner is a Java-based typing gaming for users to improve their typing in an enjoyable manner. The game features statistics tracking so 
-the user can keep track of their typing progress, and a competitiive aspect with leaderboards. 
+TypeRunner is a Java-based typing game designed to help users improve their typing speed and accuracy in an enjoyable way. The application includes statistics tracking so users can monitor their progress, as well as a competitive leaderboard system.
 
 ---
 
@@ -22,20 +21,11 @@ the user can keep track of their typing progress, and a competitiive aspect with
 To run this project, ensure you have the following installed:
 
 * **Java Development Kit (JDK)** (version 23 or newer)
-* **JavaFX SDK** (latest version)
 * **Apache Maven**
-
-### How to Setup JavaFX
-
-1. Download the latest JavaFX SDK.
-2. Configure your environment variables or IDE to include the JavaFX libraries.
-3. If running from the command line, ensure the JavaFX `lib` path is properly set.
 
 ---
 
-## Build & Run Instructions
-
-### Using Maven (Recommended)
+## Build & Run Instructions (Using Maven)
 
 1. Open a terminal in the project root directory.
 2. Run the following command:
@@ -49,3 +39,25 @@ This will:
 * Clean previous builds
 * Compile the project
 * Launch the JavaFX application
+
+The pom.xml file has all configurations needed for javaFX and module paths, so no further action is needed. 
+
+---
+
+## Notes
+
+* If the application fails to launch, ensure your JavaFX SDK version is compatible with your JDK version.
+* Running through an IDE with Maven support is recommended for easier setup and debugging.
+* Make sure Maven is properly installed and available in your system PATH.
+
+---
+
+## References
+
+
+
+* JavaFX Official Documentation: https://openjfx.io/
+* Gluon JavaFX Downloads: https://gluonhq.com/products/javafx/
+* Apache Maven Documentation: https://maven.apache.org/
+
+---
