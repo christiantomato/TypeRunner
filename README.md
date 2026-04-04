@@ -29,6 +29,7 @@ To run this project, ensure you have the following installed:
 
 * JavaFX for GUI
 * JUnit for Testing
+---
 
 ## Build & Run Instructions (Using Maven)
 
