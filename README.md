@@ -46,7 +46,6 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 
 ## Debugging
 
-* If the application fails to launch, ensure your JavaFX SDK version is compatible with your JDK version.
 * Running through an IDE with Maven support is recommended for easier setup and debugging.
 * Make sure Maven is properly installed and available in your system PATH.
 
