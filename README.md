@@ -52,11 +52,9 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 
 ---
 
-## References
+## Notes
 
-
-* JavaFX Official Documentation: https://openjfx.io/
-* Gluon JavaFX Downloads: https://gluonhq.com/products/javafx/
-* Apache Maven Documentation: https://maven.apache.org/
+* GUI Screens built with the help of Scene Builder. 
+https://gluonhq.com/products/scene-builder/
 
 ---
