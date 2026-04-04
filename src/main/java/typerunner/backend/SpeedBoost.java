@@ -51,14 +51,15 @@ public class SpeedBoost implements PowerUp {
     public int getBoostDistance(int levelnum) {
         switch (levelnum) {
             case 1:
-                return 10;
+                this.boostDistance = 10;
             case 2:
-                return 20;
+                this.boostDistance = 20;
             case 3:
-                return 30;
+                this.boostDistance = 30;
             default:
-                return 0; // Default case if levelnum is out of the expected range
+                this.boostDistance = 0; // Default case if levelnum is out of the expected range
         }
+        return this.boostDistance;
     }
 
     /**
@@ -68,6 +69,14 @@ public class SpeedBoost implements PowerUp {
      */
     @Override
     public void trigger() {
+        //triggers a speed boost clearly whoever was supposed to work on this didn't do it 
+    }
 
+    public int getLevelNum() {
+        return this.levelnum;
+    }
+
+    public int getRequiredConsecutive() {
+        return this.requiredConsecutiveWords;
     }
 }
