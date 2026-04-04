@@ -4,8 +4,7 @@
     src: url("/fonts/PressStart2P-Regular.ttf");
 }
 
-/* Global Styles */
-
+/* style for titles */
 .titles{
     -fx-font-family: "Press Start 2P";
     -fx-text-fill: black;
@@ -14,6 +13,7 @@
     -fx-stroke-width: 3px;
 }
 
+/* defult button styles */
 .button{
     -fx-font-family: "Press Start 2P";
     -fx-font-size: 20px;
@@ -24,23 +24,22 @@
     -fx-border-width: 2px;
     -fx-border-color: white;
 }
-
 .button:hover{
     -fx-text-fill: white;
 }
 
+/*back button styles */
 .back-button{
     -fx-font-size: 15px;
 }
-
 .back-button:hover{
     -fx-font-size: 12px;
 }
 
+/*game screen button styles*/
 .game-button{
     -fx-font-size: 15px;
 }
-
 .hardcore-button{
     -fx-font-family: "Press Start 2P";
     -fx-font-size: 15px;
@@ -51,11 +50,11 @@
     -fx-border-width: 2px;
     -fx-border-color: white;
 }
-
 .hardcore-button.clicked{
     -fx-background-color: red;
 }
 
+/*defult text styles*/
 .root{
     -fx-background-image: url('/images/main-screen-background.png');
     -fx-background-size: cover;
@@ -65,33 +64,37 @@
     -fx-text-fill: black;
 }
 
+/*select level button styles*/
 .highschool-circle.clicked{
     -fx-fill: red;
 }
-
 .college-circle.clicked{
     -fx-fill: yellow;
 }
-
 .olympics-circle.clicked{
     -fx-fill: green;
 }
 
+/*passkey toggle style*/
 .passkey-toggle{
     -fx-text-fill: white;
 }
+
+/*text that needs black background to better see visually*/
 .text-background{
     -fx-background-color: black;
     -fx-padding: 4;
 }
+
+/*in game word style*/
 .paragraph-text Text{
     -fx-fill: white;
 }
 
+/*statistics in account management styling*/
 .dialog-pane .label {
     -fx-text-fill: black;
 }
-
 .dialog-pane .content.label {
     -fx-text-fill: white;
 }

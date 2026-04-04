@@ -41,6 +41,11 @@ public class PlayerScreenController {
         }
     }
 
+    /**
+     * methods that take gui button presses and send the player to the appropriate screen
+     * @param e
+     * @throws IOException
+     */
     public void newGame(ActionEvent e) throws IOException{
         System.out.println("new game");
         ScreenNavigator.switchScene(e, "/fxml/game-screen.fxml");
