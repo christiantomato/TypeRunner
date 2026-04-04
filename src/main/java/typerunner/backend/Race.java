@@ -12,6 +12,7 @@ import java.util.Random;
  * @author Christian Tamayo
  * @author Noh Woldetinsae
  * @author Olorunfemi Martins
+ * @author Tanya Sahota
  */
 
 public class Race {
