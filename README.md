@@ -31,7 +31,7 @@ To run this project, ensure you have the following installed:
 * JUnit for Testing
 ---
 
-## Build & Run Instructions (Using Maven)
+## Build & Run Instructions (Recommended to Use Maven)
 
 1. Open a terminal in the project root directory.
 2. Run the following command:
@@ -47,6 +47,15 @@ This will:
 * Launch the JavaFX application
 
 The pom.xml file has all configurations needed for javaFX and module paths, so no further action is needed. 
+
+### Note Without Maven
+
+There is a jar file in the submitted zip under target folder. If you really don't want to use Maven you will the need to install the JavaFX SDK and run the following: 
+```
+java --module-path /path/to/javafx/lib \
+     --add-modules javafx.controls,javafx.fxml \
+     -jar typerunner-1.0.jar
+```
 
 ---
 

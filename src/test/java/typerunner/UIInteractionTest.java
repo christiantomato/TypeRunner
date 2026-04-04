@@ -14,8 +14,8 @@ public class UIInteractionTest {
 
     private boolean clickStartButton() {
         return true; 
-
     }
+    
     @Test
     void testPauseButtonClick() {
         boolean isGamePaused = clickPauseButton();
