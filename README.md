@@ -1,6 +1,6 @@
 # TypeRunner
 
-## Commit History 
+## Authors - Commit History 
 (we were meant to config username and email to school credentials, but some of us forgot...)
 
     263  Christian Tamayo <ctamayo@uwo.ca>
