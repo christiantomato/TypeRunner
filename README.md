@@ -1,7 +1,7 @@
 # TypeRunner - Group 01
 
 ## Commit History 
-(we were meant to config username and email to school credentials, some of us forgot...)
+(we were meant to config username and email to school credentials; some of us forgot...)
 
     263  Christian Tamayo <ctamayo@uwo.ca>
     77  Noh Adhanom Woldetinsae <nwoldeti@uwo.ca>
