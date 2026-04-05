@@ -1,12 +1,18 @@
 # TypeRunner - Group 01
 
-## Authors
+## Commit History 
 
-* Christian Tamayo
-* Noh Woldetinsae
-* Sahej Sethi
-* Olorunfemi Martins
-* Tanya Sahota
+    263  Christian Tamayo <ctamayo@uwo.ca>
+    77  Noh Adhanom Woldetinsae <nwoldeti@uwo.ca>
+    20  Sahej Sethi <ssethi55@uwo.ca>
+    18  Crimills <sethisahej1@gmail.com>
+    15  Noh Woldetinsae <nohadhanom1@gmail.com>
+    10  Olorunfemi Martins <martins.femi000@gmail.com>
+    10  omarti3@uwo.ca <martins.femi000@gmail.com>
+     7  Tanya Sahota <tsahot@uwo.ca>
+     6  Tanya Singh Sahota <tsahot@uwo.ca>
+     3  Martins Olorunfemi Kayode <omarti3@uwo.ca>
+     1  christiantomato <christianntamayo@gmail.com>
 
 ---
 
