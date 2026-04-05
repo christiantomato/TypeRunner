@@ -1,4 +1,4 @@
-# TypeRunner - Group 01
+# TypeRunner
 
 ## Commit History 
 (we were meant to config username and email to school credentials, but some of us forgot...)
@@ -19,7 +19,7 @@
 
 ## Overview
 
-TypeRunner is a Java-based typing game designed to help users improve their typing speed and accuracy in an enjoyable way. The application includes statistics tracking so users can monitor their progress, as well as a competitive leaderboard system.
+TypeRunner is a Java-based typing game designed to help users improve their typing speed and accuracy in an enjoyable way. The application includes statistics tracking so users can monitor their progress, as well as a competitive leaderboard system (locally).
 
 ---
 
