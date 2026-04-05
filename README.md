@@ -55,15 +55,6 @@ This will:
 
 The pom.xml file has all configurations needed for javaFX and module paths, so no further action is needed. 
 
-### Note Without Maven
-
-There is a jar file in the submitted zip under target folder. If you really don't want to use Maven you will the need to install the JavaFX SDK and run the following: 
-```
-java --module-path /path/to/javafx/lib \
-     --add-modules javafx.controls,javafx.fxml \
-     -jar typerunner-1.0.jar
-```
-
 ---
 
 ## Debugging
@@ -79,4 +70,3 @@ java --module-path /path/to/javafx/lib \
 https://gluonhq.com/products/scene-builder/
 * Passkey for the Admin Screen is: 1234
 * You can use the dummy account ("admin", "password") for testing.
-* In the zip file submission, you can find classes, JavaDoc, and the .jar under target. 
