@@ -1,22 +1,5 @@
 # TypeRunner
 
-## Authors - Commit History 
-(we were meant to config username and email to school credentials, but some of us forgot...)
-
-    263  Christian Tamayo <ctamayo@uwo.ca>
-    77  Noh Adhanom Woldetinsae <nwoldeti@uwo.ca>
-    20  Sahej Sethi <ssethi55@uwo.ca>
-    18  Crimills <sethisahej1@gmail.com>
-    15  Noh Woldetinsae <nohadhanom1@gmail.com>
-    10  Olorunfemi Martins <martins.femi000@gmail.com>
-    10  omarti3@uwo.ca <martins.femi000@gmail.com>
-     7  Tanya Sahota <tsahot@uwo.ca>
-     6  Tanya Singh Sahota <tsahot@uwo.ca>
-     3  Martins Olorunfemi Kayode <omarti3@uwo.ca>
-     1  christiantomato <christianntamayo@gmail.com>
-
----
-
 ## Overview
 
 TypeRunner is a Java-based typing game designed to help users improve their typing speed and accuracy in an enjoyable way. The application includes statistics tracking so users can monitor their progress, as well as a competitive leaderboard system (locally).
@@ -70,3 +53,20 @@ The pom.xml file has all configurations needed for javaFX and module paths, so n
 https://gluonhq.com/products/scene-builder/
 * Passkey for the Admin Screen is: 1234
 * You can use the dummy account ("admin", "password") for testing.
+
+## Authors - Commit History 
+(we were meant to config username and email to school credentials, but some of us forgot...)
+
+    263  Christian Tamayo <ctamayo@uwo.ca>
+    77  Noh Adhanom Woldetinsae <nwoldeti@uwo.ca>
+    20  Sahej Sethi <ssethi55@uwo.ca>
+    18  Crimills <sethisahej1@gmail.com>
+    15  Noh Woldetinsae <nohadhanom1@gmail.com>
+    10  Olorunfemi Martins <martins.femi000@gmail.com>
+    10  omarti3@uwo.ca <martins.femi000@gmail.com>
+     7  Tanya Sahota <tsahot@uwo.ca>
+     6  Tanya Singh Sahota <tsahot@uwo.ca>
+     3  Martins Olorunfemi Kayode <omarti3@uwo.ca>
+     1  christiantomato <christianntamayo@gmail.com>
+
+---
